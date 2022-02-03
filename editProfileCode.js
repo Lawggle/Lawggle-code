@@ -164,7 +164,8 @@ MemberStack.onReady.then(function (member) {
       var facebook = $("#Facebook-url").val();
       var linkedin = $("#Linkedin-url").val();
       var instagram = $("#Instagram-url").val();
-      var language = $("select#Languages-2").val();
+      var languageItems = $("select#Languages-2").val();
+      var language = languageItems.join(", ");
 
       function successFuncp(data) {
         $("#updateLoading").css("opacity", "0");
