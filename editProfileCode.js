@@ -89,8 +89,8 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         console.log("disabling contact fields");
-        $("#Public-phone").attr("disabled", "disabled");
-        $("#Public-email").attr("disabled", "disabled");
+        // $("#Public-phone").attr("disabled", "disabled");
+        // $("#Public-email").attr("disabled", "disabled");
       }
 
       if (membership.name == "Free Plan") {
