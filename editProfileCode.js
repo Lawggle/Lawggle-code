@@ -78,11 +78,17 @@ MemberStack.onReady.then(function (member) {
       if (value.Consult) {
         $("#Consult").val(value.Consult);
       }
-      if (value["Public Phone"]) {
-        $("#Public-phone").val(value["Public Phone"]);
-      }
-      if (value["Public Email"]) {
-        $("#Public-email").val(value["Public Email"]);
+
+      if (membership.name == ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
+        if (value["Public Phone"]) {
+          $("#Public-phone").val(value["Public Phone"]);
+        }
+        if (value["Public Email"]) {
+          $("#Public-email").val(value["Public Email"]);
+        }
+      } else {
+        $("#Public-phone").attr("disabled", "disabled");
+        $("#Public-email").attr("disabled", "disabled");
       }
       if (value.Twitter) {
         $("#Twitter-url").val(value.Twitter);
