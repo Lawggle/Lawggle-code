@@ -92,18 +92,27 @@ MemberStack.onReady.then(function (member) {
         $("#Public-phone").attr("disabled", "disabled");
         $("#Public-email").attr("disabled", "disabled");
       }
-      if (value.Twitter) {
-        $("#Twitter-url").val(value.Twitter);
+
+      if (membership.name == "Free Plan") {
+        $("#Twitter-url").attr("disabled", "disabled");
+        $("#Facebook-url").attr("disabled", "disabled");
+        $("#Linkedin-url").attr("disabled", "disabled");
+        $("#Instagram-url").attr("disabled", "disabled");
+      } else {
+        if (value.Twitter) {
+          $("#Twitter-url").val(value.Twitter);
+        }
+        if (value.Facebook) {
+          $("#Facebook-url").val(value.Facebook);
+        }
+        if (value.Linkedin) {
+          $("#Linkedin-url").val(value.Linkedin);
+        }
+        if (value.Instagram) {
+          $("#Instagram-url").val(value.Instagram);
+        }
       }
-      if (value.Facebook) {
-        $("#Facebook-url").val(value.Facebook);
-      }
-      if (value.Linkedin) {
-        $("#Linkedin-url").val(value.Linkedin);
-      }
-      if (value.Instagram) {
-        $("#Instagram-url").val(value.Instagram);
-      }
+
       if (value.Language) {
         var langValues = value.Language;
         $.each(langValues.split(", "), function (i, e) {
@@ -121,16 +130,16 @@ MemberStack.onReady.then(function (member) {
   // $(".firm-url-wrap").hide();
   // }
 
-  if (membership.name == "Free Plan") {
-    $("#Twitter-url").attr("disabled", "disabled");
-    $("#Facebook-url").attr("disabled", "disabled");
-    $("#Linkedin-url").attr("disabled", "disabled");
-    $("#Instagram-url").attr("disabled", "disabled");
-    // $(".twitter-profile").hide();
-    // $(".facebook-profile").hide();
-    // $(".linkedin-profile").hide();
-    // $(".instagram-profile").hide();
-  }
+  // if (membership.name == "Free Plan") {
+  //   $("#Twitter-url").attr("disabled", "disabled");
+  //   $("#Facebook-url").attr("disabled", "disabled");
+  //   $("#Linkedin-url").attr("disabled", "disabled");
+  //   $("#Instagram-url").attr("disabled", "disabled");
+  // $(".twitter-profile").hide();
+  // $(".facebook-profile").hide();
+  // $(".linkedin-profile").hide();
+  // $(".instagram-profile").hide();
+  // }
 
   $("#profileUpdate").on("click", function () {
     console.log("updated profile button clicked");
