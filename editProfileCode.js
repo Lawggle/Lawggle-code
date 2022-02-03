@@ -88,7 +88,7 @@ MemberStack.onReady.then(function (member) {
           $("#Public-email").val(value["Public Email"]);
         }
       } else {
-        console.log("disabling contact fields");
+        console.log("disabling contact fields test");
         // $("#Public-phone").attr("disabled", "disabled");
         // $("#Public-email").attr("disabled", "disabled");
       }
