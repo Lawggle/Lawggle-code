@@ -80,6 +80,7 @@ MemberStack.onReady.then(function (member) {
       }
 
       if (membership.name == ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
+        console.log("enabling contact fields");
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
         }
@@ -87,6 +88,7 @@ MemberStack.onReady.then(function (member) {
           $("#Public-email").val(value["Public Email"]);
         }
       } else {
+        console.log("disabling contact fields");
         $("#Public-phone").attr("disabled", "disabled");
         $("#Public-email").attr("disabled", "disabled");
       }
@@ -111,13 +113,13 @@ MemberStack.onReady.then(function (member) {
     });
   }
 
-  if (membership.name != ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
-    $("#Public-phone").attr("disabled", "disabled");
-    $("#Public-email").attr("disabled", "disabled");
-    // $(".public-phone-wrap").hide();
-    // $(".public-email-wrap").hide();
-    // $(".firm-url-wrap").hide();
-  }
+  // if (membership.name != ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
+  //   $("#Public-phone").attr("disabled", "disabled");
+  //   $("#Public-email").attr("disabled", "disabled");
+  // $(".public-phone-wrap").hide();
+  // $(".public-email-wrap").hide();
+  // $(".firm-url-wrap").hide();
+  // }
 
   if (membership.name == "Free Plan") {
     $("#Twitter-url").attr("disabled", "disabled");
