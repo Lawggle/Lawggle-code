@@ -4,16 +4,22 @@ MemberStack.onReady.then(function (member) {
   var plan = membership.id;
 
   if (membership.name != ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
-    $(".public-phone-wrap").hide();
-    $(".public-email-wrap").hide();
-    $(".firm-url-wrap").hide();
+    $("#Public-phone").attr("disabled", "disabled");
+    $("#Public-email").attr("disabled", "disabled");
+    // $(".public-phone-wrap").hide();
+    // $(".public-email-wrap").hide();
+    // $(".firm-url-wrap").hide();
   }
 
   if (membership.name == "Free Plan") {
-    $(".twitter-profile").hide();
-    $(".facebook-profile").hide();
-    $(".linkedin-profile").hide();
-    $(".instagram-profile").hide();
+    $("#Twitter-url").attr("disabled", "disabled");
+    $("#Facebook-url").attr("disabled", "disabled");
+    $("#Linkedin-url").attr("disabled", "disabled");
+    $("#Instagram-url").attr("disabled", "disabled");
+    // $(".twitter-profile").hide();
+    // $(".facebook-profile").hide();
+    // $(".linkedin-profile").hide();
+    // $(".instagram-profile").hide();
   }
 
   $("#Hourly-rate option:first-child").attr("disabled", "disabled");
