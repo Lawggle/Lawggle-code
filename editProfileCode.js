@@ -13,29 +13,24 @@ $("#Type-law").on("change", function () {
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
-      console.log("Law area is", lawAreas[i]);
+      lawAreas[i].prop("selected", false);
       if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
         lawAreas[i].style.display = "none";
-        console.log("added display none to" + lawAreas[i].text);
       } else {
         lawAreas[i].style.display = "block";
       }
-
-      console.log(lawAreas[i]);
     }
   } else if (this.value == "Process Server") {
     // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
+      lawAreas[i].prop("selected", false);
       if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
         lawAreas[i].style.display = "block";
-        console.log("added display block to" + lawAreas[i].textContent);
       } else {
         lawAreas[i].style.display = "none";
       }
-
-      console.log(lawAreas[i]);
     }
   }
 });
