@@ -1,3 +1,21 @@
+$("#Type-law").on("change", function () {
+  console.log(this.value);
+
+  if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
+    // $("#areas-laywer").hide();
+    $("#Area-law").prop("required", false);
+    $("#Area-law").prop("disabled", true);
+  } else if (this.value == "Lawyer") {
+    // $("#areas-laywer").show();
+    $("#Area-law").prop("required", true);
+    $("#Area-law").prop("disabled", false);
+  } else if (this.value == "Process Server") {
+    // $("#areas-laywer").show();
+    $("#Area-law").prop("required", true);
+    $("#Area-law").prop("disabled", false);
+  }
+});
+
 MemberStack.onReady.then(function (member) {
   var mID = member["id"];
   var membership = member.membership;
@@ -42,6 +60,19 @@ MemberStack.onReady.then(function (member) {
       }
       if (value["Type of Pro"]) {
         $("#Type-law").val(value["Type of Pro"]);
+        if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
+          // $("#areas-laywer").hide();
+          $("#Area-law").prop("required", false);
+          $("#Area-law").prop("disabled", true);
+        } else if (this.value == "Lawyer") {
+          // $("#areas-laywer").show();
+          $("#Area-law").prop("required", true);
+          $("#Area-law").prop("disabled", false);
+        } else if (this.value == "Process Server") {
+          // $("#areas-laywer").show();
+          $("#Area-law").prop("required", true);
+          $("#Area-law").prop("disabled", false);
+        }
       }
       if (value["Area of Law"]) {
         var values = value["Area of Law"];
@@ -67,7 +98,7 @@ MemberStack.onReady.then(function (member) {
       if (value.Publications) {
         $("#Publications").val(value.Publications);
       }
-      // I dont know how to do these ones
+
       if (value["Hourly Rate"]) {
         $("#Hourly-rate").val(value["Hourly Rate"]);
       }
@@ -79,7 +110,7 @@ MemberStack.onReady.then(function (member) {
         $("#Consult").val(value.Consult);
       }
 
-      if (membership.name == ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
+      if (membership.name == ("Lawggle Elite" || "Lawggle Elite Annual")) {
         console.log("enabling contact fields");
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
@@ -88,9 +119,8 @@ MemberStack.onReady.then(function (member) {
           $("#Public-email").val(value["Public Email"]);
         }
       } else {
-        console.log("disabling contact fields test");
-        // $("#Public-phone").attr("disabled", "disabled");
-        // $("#Public-email").attr("disabled", "disabled");
+        $("#Public-phone").attr("disabled", "disabled");
+        $("#Public-email").attr("disabled", "disabled");
       }
 
       if (membership.name == "Free Plan") {
@@ -122,25 +152,6 @@ MemberStack.onReady.then(function (member) {
     });
   }
 
-  // if (membership.name != ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
-  //   $("#Public-phone").attr("disabled", "disabled");
-  //   $("#Public-email").attr("disabled", "disabled");
-  // $(".public-phone-wrap").hide();
-  // $(".public-email-wrap").hide();
-  // $(".firm-url-wrap").hide();
-  // }
-
-  // if (membership.name == "Free Plan") {
-  //   $("#Twitter-url").attr("disabled", "disabled");
-  //   $("#Facebook-url").attr("disabled", "disabled");
-  //   $("#Linkedin-url").attr("disabled", "disabled");
-  //   $("#Instagram-url").attr("disabled", "disabled");
-  // $(".twitter-profile").hide();
-  // $(".facebook-profile").hide();
-  // $(".linkedin-profile").hide();
-  // $(".instagram-profile").hide();
-  // }
-
   $("#profileUpdate").on("click", function () {
     console.log("updated profile button clicked");
     if ($("#wf-form-Contact-Form").valid()) {
@@ -153,7 +164,7 @@ MemberStack.onReady.then(function (member) {
       var items = $("select#Area-law").val();
       console.log("items", items);
       if (items.length > 5) {
-        if (membership.name != ("Lawggle Exclusive Plus" || "Lawggle Exclusive Plus Yearly")) {
+        if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
           makeCall = false;
           $(".morethan5").css("display", "flex");
           $("#updateLoading").css("opacity", "0");
@@ -175,9 +186,17 @@ MemberStack.onReady.then(function (member) {
 
       //var bio = $("#Bio").val();
       var education = $("#Education").val();
+      var edTwo = $("#Education-2").val();
+      var edThree = $("#Education-3").val();
       var associations = $("#Associations").val();
+      var assocTwo = $("#Associations-2").val();
+      var assocThree = $("#Associations-3").val();
       var recognitions = $("#Recognitions").val();
+      var recogTwo = $("#Recognitions-2").val();
+      var recogThree = $("#Recognitions-3").val();
       var publications = $("#Publications").val();
+      var pubTwo = $("#Publications-2").val();
+      var pubThree = $("#Publications-3").val();
       var rate = $("select#Hourly-rate").val();
       var contingency = $("select#Contingency").val();
       var consult = $("select#Consult").val();
@@ -213,9 +232,17 @@ MemberStack.onReady.then(function (member) {
             Address: address,
             Bio: bio,
             Education: education,
+            ["Education-2"]: edTwo,
+            ["Education-3"]: edThree,
             Associations: associations,
+            ["Associations-2"]: assocTwo,
+            ["Associations-3"]: assocThree,
             Recognitions: recognitions,
+            ["Recognitions-2"]: recogTwo,
+            ["Recognitions-3"]: recogThree,
             Publications: publications,
+            ["Publications-2"]: pubTwo,
+            ["Publications-3"]: pubThree,
             ["Hourly Rate"]: rate,
             Contingency: contingency,
             Consult: consult,
