@@ -19,7 +19,7 @@ $("#Type-law").on("change", function () {
         lawAreas[i].style.display = "block";
       }
 
-      console.log(elements[i]);
+      console.log(lawAreas[i]);
     }
   } else if (this.value == "Process Server") {
     // $("#areas-laywer").show();
@@ -33,7 +33,7 @@ $("#Type-law").on("change", function () {
         lawAreas[i].style.display = "none";
       }
 
-      console.log(elements[i]);
+      console.log(lawAreas[i]);
     }
   }
 });
