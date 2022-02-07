@@ -1,6 +1,8 @@
 $("#Type-law").on("change", function () {
   console.log(this.value);
 
+  var lawAreas = this.children;
+
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
     // $("#areas-laywer").hide();
     $("#Area-law").prop("required", false);
@@ -9,10 +11,30 @@ $("#Type-law").on("change", function () {
     // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
+    for (var i = 0; i < lawAreas.length; i++) {
+      if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
+        lawAreas[i].style.display = "none";
+        console.log("added display none to" + lawAreas[i].textContent);
+      } else {
+        lawAreas[i].style.display = "block";
+      }
+
+      console.log(elements[i]);
+    }
   } else if (this.value == "Process Server") {
     // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
+    for (var i = 0; i < lawAreas.length; i++) {
+      if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
+        lawAreas[i].style.display = "block";
+        console.log("added display block to" + lawAreas[i].textContent);
+      } else {
+        lawAreas[i].style.display = "none";
+      }
+
+      console.log(elements[i]);
+    }
   }
 });
 
