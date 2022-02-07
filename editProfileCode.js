@@ -1,7 +1,7 @@
 $("#Type-law").on("change", function () {
   console.log(this.value);
 
-  var lawAreas = this.children;
+  var lawAreas = $("#Area-law").children;
 
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
     // $("#areas-laywer").hide();
