@@ -99,7 +99,7 @@ MemberStack.onReady.then(function (member) {
         $("#Associations").val(value.Associations);
       }
       if (value["Associations-2"]) {
-        $("#Associations-2").val(value["Associations-3"]);
+        $("#Associations-2").val(value["Associations-2"]);
       }
       if (value["Associations-3"]) {
         $("#Associations-3").val(value["Associations-3"]);
