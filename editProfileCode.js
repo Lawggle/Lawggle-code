@@ -4,16 +4,23 @@ $("#Type-law").on("change", function () {
   var lawAreas = document.getElementById("Area-law").options;
   console.log("law areas are", lawAreas);
 
+  function unselect() {
+    $.each($("#Area-law option:selected"), function () {
+      $(this).prop("selected", false);
+    });
+  }
+
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
     // $("#areas-laywer").hide();
     $("#Area-law").prop("required", false);
     $("#Area-law").prop("disabled", true);
+    unselect();
   } else if (this.value == "Lawyer") {
     // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
-      lawAreas[i].prop("selected", false);
+      unselect();
       if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
         lawAreas[i].style.display = "none";
       } else {
@@ -25,7 +32,7 @@ $("#Type-law").on("change", function () {
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
-      lawAreas[i].prop("selected", false);
+      unselect();
       if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
         lawAreas[i].style.display = "block";
       } else {
