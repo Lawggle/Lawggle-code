@@ -1,7 +1,7 @@
 $("#Type-law").on("change", function () {
   console.log(this.value);
 
-  var lawAreas = $("#Area-law").options;
+  var lawAreas = document.getElementById("Area-law").options;
   console.log("law areas are", lawAreas);
 
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
