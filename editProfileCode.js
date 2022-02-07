@@ -1,7 +1,7 @@
 $("#Type-law").on("change", function () {
   console.log(this.value);
 
-  var lawAreas = $("#Area-law").children;
+  var lawAreas = $("#Area-law").options;
   console.log("law areas are", lawAreas);
 
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
@@ -14,9 +14,9 @@ $("#Type-law").on("change", function () {
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
       console.log("Law area is", lawAreas[i]);
-      if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
+      if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
         lawAreas[i].style.display = "none";
-        console.log("added display none to" + lawAreas[i].textContent);
+        console.log("added display none to" + lawAreas[i].text);
       } else {
         lawAreas[i].style.display = "block";
       }
