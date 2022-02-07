@@ -74,9 +74,19 @@ function successFunc(data) {
     }
 
     if (value.Education) {
-      $(".education-text").html(value.Education);
+      $("#ed-text").html(value.Education);
     } else {
       $("#education-block").remove();
+    }
+     if (value["Education-2"]) {
+      $("#ed-text2").html(value["Education-2"]);
+    } else {
+      $("#ed-list2").remove();
+    }
+     if (value["Education-3"]) {
+      $("#ed-text3").html(value["Education-3"]);
+    } else {
+      $("#ed-list3").remove();
     }
 
     if (value.Associations) {
@@ -84,17 +94,47 @@ function successFunc(data) {
     } else {
       $("#associations-block").remove();
     }
+    if (value["Associations-2"]) {
+      $("#assoc-text2").html(value["Associations-2"]);
+    } else {
+      $("#assoc-list2").remove();
+    }
+     if (value["Associations-3"]) {
+      $("#assoc-text3").html(value["Associations-3"]);
+    } else {
+      $("#assoc-list3").remove();
+    }
 
     if (value.Recognitions) {
-      $(".recognitions-text").html(value.Recognitions);
+      $("#recog-text").html(value.Recognitions);
     } else {
       $("#recognitions-block").remove();
     }
+    if (value["Recognitions-2"]) {
+      $("#recog-text2").html(value["Recognitions-2"]);
+    } else {
+      $("#recog-list2").remove();
+    }
+     if (value["Recognitions-3"]) {
+      $("#recog-text3").html(value["Recognitions-3"]);
+    } else {
+      $("#recog-list3").remove();
+    }
 
     if (value.Publications) {
-      $(".publications-text").html(value.Publications);
+      $("#publ-text").html(value.Publications);
     } else {
       $("#publications-block").remove();
+    }
+    if (value["Publications-2"]) {
+      $("#pub-text2").html(value["Publications-2"]);
+    } else {
+      $("#pub-list2").remove();
+    }
+     if (value["Publications-3"]) {
+      $("#pub-text3").html(value["Publications-3"]);
+    } else {
+      $("#pub-list3").remove();
     }
 
     //Changing text and href of contact details or hiding them if no value is present
