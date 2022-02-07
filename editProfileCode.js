@@ -1,8 +1,6 @@
+//? Resets options for Area of Law based on type of profession
 $("#Type-law").on("change", function () {
-  console.log(this.value);
-
   var lawAreas = document.getElementById("Area-law").options;
-  console.log("law areas are", lawAreas);
 
   function unselect() {
     $.each($("#Area-law option:selected"), function () {
