@@ -12,6 +12,7 @@ $("#Type-law").on("change", function () {
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
+      console.log("Law area is", lawAreas[i]);
       if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
         lawAreas[i].style.display = "none";
         console.log("added display none to" + lawAreas[i].textContent);
