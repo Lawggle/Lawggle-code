@@ -89,14 +89,38 @@ MemberStack.onReady.then(function (member) {
       if (value.Education) {
         $("#Education").val(value.Education);
       }
+      if (value["Education-2"]) {
+        $("#Education-2").val(value["Education-2"]);
+      }
+      if (value["Education-3"]) {
+        $("#Education-3").val(value["Education-3"]);
+      }
       if (value.Associations) {
         $("#Associations").val(value.Associations);
+      }
+      if (value["Associations-2"]) {
+        $("#Associations-2").val(value["Associations-3"]);
+      }
+      if (value["Associations-3"]) {
+        $("#Associations-3").val(value["Associations-3"]);
       }
       if (value.Recognitions) {
         $("#Recognitions").val(value.Recognitions);
       }
+      if (value["Recognitions-2"]) {
+        $("#Recognitions-2").val(value["Recognitions-2"]);
+      }
+      if (value["Recognitions-3"]) {
+        $("#Recognitions-3").val(value["Recognitions-3"]);
+      }
       if (value.Publications) {
         $("#Publications").val(value.Publications);
+      }
+      if (value["Publications-2"]) {
+        $("#Publications-2").val(value["Publications-2"]);
+      }
+      if (value["Publications-3"]) {
+        $("#Publications-3").val(value["Publications-3"]);
       }
 
       if (value["Hourly Rate"]) {
