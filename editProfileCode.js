@@ -43,6 +43,7 @@ MemberStack.onReady.then(function (member) {
   var membership = member.membership;
   var plan = membership.id;
 
+  // Links View live profile button to the profile page
   function goToURL() {
     location.href = `${window.location.origin}/profile-dev-2?profile=` + mID;
   }
@@ -50,6 +51,7 @@ MemberStack.onReady.then(function (member) {
     goToURL();
   });
 
+  // Makes firm required if membership if of type firm
   if (
     membership.id == "60819c9eab402c0004df28a1" ||
     (membership.id == "60819ccd63974f0004ce1471") | (membership.id == "60819d02f611bf0004395a2a")
@@ -173,7 +175,6 @@ MemberStack.onReady.then(function (member) {
       }
 
       if (membership.name == ("Lawggle Elite" || "Lawggle Elite Annual")) {
-        console.log("enabling contact fields");
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
         }
@@ -225,7 +226,7 @@ MemberStack.onReady.then(function (member) {
       var furl = $("#Firm-url").val();
       var type = $("select#Type-law").val();
       var items = $("select#Area-law").val();
-      console.log("items", items);
+      // Checks if number of areas selected is more than 5
       if (items.length > 5) {
         if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
           makeCall = false;
@@ -237,9 +238,6 @@ MemberStack.onReady.then(function (member) {
       } else {
         makeCall = true;
       }
-      console.log("make call", makeCall);
-      // var items = [];
-      //$("select#Area-law option:contains(Law)").prop("selected","selected")
 
       var pronouns = $("select#pronouns-field").val();
       var area = items.join(", ");
