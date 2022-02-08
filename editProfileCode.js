@@ -1,4 +1,6 @@
 //? Resets options for Area of Law based on type of profession
+const updateAreas = () => {};
+
 $("#Type-law").on("change", function () {
   var lawAreas = document.getElementById("Area-law").options;
 
@@ -9,12 +11,10 @@ $("#Type-law").on("change", function () {
   }
 
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
-    // $("#areas-laywer").hide();
     $("#Area-law").prop("required", false);
     $("#Area-law").prop("disabled", true);
     unselect();
   } else if (this.value == "Lawyer") {
-    // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
@@ -26,7 +26,6 @@ $("#Type-law").on("change", function () {
       }
     }
   } else if (this.value == "Process Server") {
-    // $("#areas-laywer").show();
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
@@ -84,18 +83,38 @@ MemberStack.onReady.then(function (member) {
       }
       if (value["Type of Pro"]) {
         $("#Type-law").val(value["Type of Pro"]);
+        function unselect() {
+          $.each($("#Area-law option:selected"), function () {
+            $(this).prop("selected", false);
+          });
+        }
+
         if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
-          // $("#areas-laywer").hide();
           $("#Area-law").prop("required", false);
           $("#Area-law").prop("disabled", true);
+          unselect();
         } else if (this.value == "Lawyer") {
-          // $("#areas-laywer").show();
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
+          for (var i = 0; i < lawAreas.length; i++) {
+            unselect();
+            if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
+              lawAreas[i].style.display = "none";
+            } else {
+              lawAreas[i].style.display = "block";
+            }
+          }
         } else if (this.value == "Process Server") {
-          // $("#areas-laywer").show();
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
+          for (var i = 0; i < lawAreas.length; i++) {
+            unselect();
+            if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
+              lawAreas[i].style.display = "block";
+            } else {
+              lawAreas[i].style.display = "none";
+            }
+          }
         }
       }
       if (value["Area of Law"]) {
