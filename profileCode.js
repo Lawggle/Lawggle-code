@@ -124,7 +124,7 @@ function successFunc(data) {
     }
 
     if (value.Publications) {
-      $("#publ-text").html(value.Publications);
+      $("#pub-text").html(value.Publications);
     } else {
       $("#publications-block").remove();
     }
