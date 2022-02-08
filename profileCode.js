@@ -204,7 +204,7 @@ function successFunc(data) {
         } else {
           var instagramUrl = value.Instagram;
         }
-        $("#instagram-url").attr("href", value.instagramUrl);
+        $("#instagram-url").attr("href", instagramUrl);
       } else {
         $("#instagram-url").remove();
       }
