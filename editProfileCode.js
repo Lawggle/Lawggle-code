@@ -76,6 +76,9 @@ MemberStack.onReady.then(function (member) {
       if (value.Url) {
         $("#Firm-url").val(value.Url);
       }
+      if (value.Pronouns) {
+        $("#pronouns-field").val(value.Pronouns);
+      }
       if (value["Type of Pro"]) {
         $("#Type-law").val(value["Type of Pro"]);
 
@@ -238,6 +241,7 @@ MemberStack.onReady.then(function (member) {
       // var items = [];
       //$("select#Area-law option:contains(Law)").prop("selected","selected")
 
+      var pronouns = $("select#pronouns-field").val();
       var area = items.join(", ");
       var address = $("#Address").val();
       var s = $("#Bio").val();
@@ -285,6 +289,7 @@ MemberStack.onReady.then(function (member) {
           },
 
           body: JSON.stringify({
+            Pronouns: pronouns,
             Firm: firm,
             ["Type of Pro"]: type,
             ["Area of Law"]: area,
