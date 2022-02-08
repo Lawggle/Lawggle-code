@@ -89,11 +89,15 @@ MemberStack.onReady.then(function (member) {
           });
         }
 
-        if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
+        if (
+          value["Type of Pro"] == "Notary" ||
+          value["Type of Pro"] == "Paralegal" ||
+          value["Type of Pro"] == "Court Agent"
+        ) {
           $("#Area-law").prop("required", false);
           $("#Area-law").prop("disabled", true);
           unselect();
-        } else if (this.value == "Lawyer") {
+        } else if (value["Type of Pro"] == "Lawyer") {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
@@ -104,7 +108,7 @@ MemberStack.onReady.then(function (member) {
               lawAreas[i].style.display = "block";
             }
           }
-        } else if (this.value == "Process Server") {
+        } else if (value["Type of Pro"] == "Process Server") {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
