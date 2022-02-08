@@ -28,7 +28,7 @@ $("#Type-law").on("change", function () {
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
-      unselect();
+      unselectLawAreas();
       if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
         lawAreas[i].style.display = "block";
       } else {
@@ -89,6 +89,7 @@ MemberStack.onReady.then(function (member) {
         ) {
           $("#Area-law").prop("required", false);
           $("#Area-law").prop("disabled", true);
+          unselectLawAreas();
         } else if (value["Type of Pro"] == "Lawyer") {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
