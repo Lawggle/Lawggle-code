@@ -78,12 +78,12 @@ function successFunc(data) {
     } else {
       $("#education-block").remove();
     }
-     if (value["Education-2"]) {
+    if (value["Education-2"]) {
       $("#ed-text2").html(value["Education-2"]);
     } else {
       $("#ed-list2").remove();
     }
-     if (value["Education-3"]) {
+    if (value["Education-3"]) {
       $("#ed-text3").html(value["Education-3"]);
     } else {
       $("#ed-list3").remove();
@@ -99,7 +99,7 @@ function successFunc(data) {
     } else {
       $("#assoc-list2").remove();
     }
-     if (value["Associations-3"]) {
+    if (value["Associations-3"]) {
       $("#assoc-text3").html(value["Associations-3"]);
     } else {
       $("#assoc-list3").remove();
@@ -115,7 +115,7 @@ function successFunc(data) {
     } else {
       $("#recog-list2").remove();
     }
-     if (value["Recognitions-3"]) {
+    if (value["Recognitions-3"]) {
       $("#recog-text3").html(value["Recognitions-3"]);
     } else {
       $("#recog-list3").remove();
@@ -131,7 +131,7 @@ function successFunc(data) {
     } else {
       $("#pub-list2").remove();
     }
-     if (value["Publications-3"]) {
+    if (value["Publications-3"]) {
       $("#pub-text3").html(value["Publications-3"]);
     } else {
       $("#pub-list3").remove();
@@ -169,22 +169,42 @@ function successFunc(data) {
     // Adding urls to social icons or hiding them if url not present
     if (value["Membership Type"] != "free" && (value.Twitter || value.Facebook || value.Linkedin || value.Instagram)) {
       if (value.Twitter) {
-        $("#twitter-url").attr("href", value.Twitter);
+        if (value.Twitter.str.startsWith("www")) {
+          var twitterUrl = `https://${value.Twitter}`;
+        } else {
+          var twitterUrl = value.Twitter;
+        }
+        $("#twitter-url").attr("href", twitterUrl);
       } else {
         $("#twitter-url").remove();
       }
       if (value.Facebook) {
-        $("#facebook-url").attr("href", value.Facebook);
+        if (value.Facebook.str.startsWith("www")) {
+          var facebookUrl = `https://${value.Facebook}`;
+        } else {
+          var facebookUrl = value.Facebook;
+        }
+        $("#facebook-url").attr("href", facebookUrl);
       } else {
         $("#facebook-url").remove();
       }
       if (value.Linkedin) {
-        $("#linkedin-url").attr("href", value.Linkedin);
+        if (value.Linkedin.str.startsWith("www")) {
+          var linkedinUrl = `https://${value.Linkedin}`;
+        } else {
+          var linkedinUrl = value.Linkedin;
+        }
+        $("#linkedin-url").attr("href", linkedinUrl);
       } else {
         $("#linkedin-url").remove();
       }
       if (value.Instagram) {
-        $("#instagram-url").attr("href", value.Instagram);
+        if (value.Instagram.str.startsWith("www")) {
+          var instagramUrl = `https://${value.Instagram}`;
+        } else {
+          var instagramUrl = value.Instagram;
+        }
+        $("#instagram-url").attr("href", value.instagramUrl);
       } else {
         $("#instagram-url").remove();
       }
