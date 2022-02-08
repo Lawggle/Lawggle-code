@@ -95,7 +95,6 @@ MemberStack.onReady.then(function (member) {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
-            unselectLawAreas();
             if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
               lawAreas[i].style.display = "none";
             } else {
@@ -106,7 +105,6 @@ MemberStack.onReady.then(function (member) {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
-            unselectLawAreas();
             if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
               lawAreas[i].style.display = "block";
             } else {
