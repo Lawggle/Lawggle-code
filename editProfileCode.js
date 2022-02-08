@@ -6,7 +6,7 @@ function unselectLawAreas() {
 
 var lawAreas = document.getElementById("Area-law").options;
 
-//? Resets options for Area of Law based on type of profession
+// Resets options for Area of Law based on type of profession
 
 $("#Type-law").on("change", function () {
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
@@ -43,10 +43,12 @@ MemberStack.onReady.then(function (member) {
   var membership = member.membership;
   var plan = membership.id;
 
-  $("#Hourly-rate option:first-child").attr("disabled", "disabled");
-  $("#Type-law option:first-child").attr("disabled", "disabled");
-  $("#Contingency option:first-child").attr("disabled", "disabled");
-  $("#Consult option:first-child").attr("disabled", "disabled");
+  function goToURL() {
+    location.href = `${window.location.origin}/profile-dev-2?profile=` + mID;
+  }
+  $('#liveProfile, a[href="#liveProfile"]').on("click", function () {
+    goToURL();
+  });
 
   if (
     membership.id == "60819c9eab402c0004df28a1" ||
@@ -55,17 +57,11 @@ MemberStack.onReady.then(function (member) {
     $("#Firm").prop("required", true);
   }
 
-  function goToURL() {
-    location.href = `${window.location.origin}/profile-dev-2?profile=` + mID;
-  }
-  $('#liveProfile, a[href="#liveProfile"]').on("click", function () {
-    goToURL();
-  });
-
   var url = "https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID;
 
   $.ajax({ url: url, success: successFunc });
 
+  // Runs on successfully loading data from google sheet
   function successFunc(data) {
     console.log(data);
     $(".loading").fadeOut();
@@ -215,6 +211,7 @@ MemberStack.onReady.then(function (member) {
     });
   }
 
+  // Runs on clicking the "Update Profile" button
   $("#profileUpdate").on("click", function () {
     console.log("updated profile button clicked");
     if ($("#wf-form-Contact-Form").valid()) {
@@ -359,6 +356,7 @@ $(document).ready(function () {
   $("#wf-form-Contact-Form").validate();
 });
 
+// Enables multiple option select for desktop
 $("select#Area-law, select#Languages-2")
   .mousedown(function (e) {
     if (screen.width > 991) {
@@ -380,6 +378,14 @@ $("select#Area-law, select#Languages-2")
     e.preventDefault();
   });
 
+// Hides alert messages after clicking on okay
 $(".okay-btn").on("click", function () {
   $(".morethan5").hide();
 });
+
+// Disabling the first select option "Select one.." for all the dropdowns
+$("#Hourly-rate option:first-child").attr("disabled", "disabled");
+$("#Type-law option:first-child").attr("disabled", "disabled");
+$("#Contingency option:first-child").attr("disabled", "disabled");
+$("#Consult option:first-child").attr("disabled", "disabled");
+$("#pronouns-field option:first-child").attr("disabled", "disabled");
