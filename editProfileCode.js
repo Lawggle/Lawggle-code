@@ -89,7 +89,6 @@ MemberStack.onReady.then(function (member) {
         ) {
           $("#Area-law").prop("required", false);
           $("#Area-law").prop("disabled", true);
-          unselect();
         } else if (value["Type of Pro"] == "Lawyer") {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
