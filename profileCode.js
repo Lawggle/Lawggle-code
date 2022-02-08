@@ -169,7 +169,7 @@ function successFunc(data) {
     // Adding urls to social icons or hiding them if url not present
     if (value["Membership Type"] != "free" && (value.Twitter || value.Facebook || value.Linkedin || value.Instagram)) {
       if (value.Twitter) {
-        if (value.Twitter.str.startsWith("www")) {
+        if (value.Twitter.startsWith("www")) {
           var twitterUrl = `https://${value.Twitter}`;
         } else {
           var twitterUrl = value.Twitter;
@@ -179,7 +179,7 @@ function successFunc(data) {
         $("#twitter-url").remove();
       }
       if (value.Facebook) {
-        if (value.Facebook.str.startsWith("www")) {
+        if (value.Facebook.startsWith("www")) {
           var facebookUrl = `https://${value.Facebook}`;
         } else {
           var facebookUrl = value.Facebook;
@@ -189,7 +189,7 @@ function successFunc(data) {
         $("#facebook-url").remove();
       }
       if (value.Linkedin) {
-        if (value.Linkedin.str.startsWith("www")) {
+        if (value.Linkedin.startsWith("www")) {
           var linkedinUrl = `https://${value.Linkedin}`;
         } else {
           var linkedinUrl = value.Linkedin;
@@ -199,7 +199,7 @@ function successFunc(data) {
         $("#linkedin-url").remove();
       }
       if (value.Instagram) {
-        if (value.Instagram.str.startsWith("www")) {
+        if (value.Instagram.startsWith("www")) {
           var instagramUrl = `https://${value.Instagram}`;
         } else {
           var instagramUrl = value.Instagram;
@@ -256,7 +256,7 @@ function successFunc(data) {
       );
 
       if (screen.width > 480) {
-        var contentString =
+        var contening =
           '<div id="content">' +
           '<div id="bodyContent">' +
           "<h4>" +
