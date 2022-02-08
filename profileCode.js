@@ -158,7 +158,14 @@ function successFunc(data) {
 
       if (value.Url) {
         $("#contact-website").text(value.Url);
-        $("#profile-website").attr("href", value.Url);
+
+        if (value.Url.startsWith("www")) {
+          var webUrl = `https://${value.Url}`;
+        } else {
+          var webUrl = value.Url;
+        }
+
+        $("#profile-website").attr("href", webUrl);
       } else {
         $("#profile-website").remove();
       }
