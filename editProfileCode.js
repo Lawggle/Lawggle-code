@@ -183,6 +183,7 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         $("#Public-phone").attr("disabled", "disabled");
+        $("#Public-phone").attr("placeholder", "update to Lawggle Premier");
         $("#Public-email").attr("disabled", "disabled");
       }
 
