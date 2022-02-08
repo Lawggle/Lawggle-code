@@ -1,24 +1,23 @@
+function unselectLawAreas() {
+  $.each($("#Area-law option:selected"), function () {
+    $(this).prop("selected", false);
+  });
+}
+
+var lawAreas = document.getElementById("Area-law").options;
+
 //? Resets options for Area of Law based on type of profession
-const updateAreas = () => {};
 
 $("#Type-law").on("change", function () {
-  var lawAreas = document.getElementById("Area-law").options;
-
-  function unselect() {
-    $.each($("#Area-law option:selected"), function () {
-      $(this).prop("selected", false);
-    });
-  }
-
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
     $("#Area-law").prop("required", false);
     $("#Area-law").prop("disabled", true);
-    unselect();
+    unselectLawAreas();
   } else if (this.value == "Lawyer") {
     $("#Area-law").prop("required", true);
     $("#Area-law").prop("disabled", false);
     for (var i = 0; i < lawAreas.length; i++) {
-      unselect();
+      unselectLawAreas();
       if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
         lawAreas[i].style.display = "none";
       } else {
@@ -83,11 +82,6 @@ MemberStack.onReady.then(function (member) {
       }
       if (value["Type of Pro"]) {
         $("#Type-law").val(value["Type of Pro"]);
-        function unselect() {
-          $.each($("#Area-law option:selected"), function () {
-            $(this).prop("selected", false);
-          });
-        }
 
         if (
           value["Type of Pro"] == "Notary" ||
@@ -101,7 +95,7 @@ MemberStack.onReady.then(function (member) {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
-            unselect();
+            unselectLawAreas();
             if (lawAreas[i].text == "Process Server" || lawAreas[i].text == "Skip Tracer") {
               lawAreas[i].style.display = "none";
             } else {
@@ -112,7 +106,7 @@ MemberStack.onReady.then(function (member) {
           $("#Area-law").prop("required", true);
           $("#Area-law").prop("disabled", false);
           for (var i = 0; i < lawAreas.length; i++) {
-            unselect();
+            unselectLawAreas();
             if (lawAreas[i].textContent == "Process Server" || lawAreas[i].textContent == "Skip Tracer") {
               lawAreas[i].style.display = "block";
             } else {
