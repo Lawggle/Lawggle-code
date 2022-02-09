@@ -200,10 +200,9 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         $("#Public-phone").attr("disabled", "disabled");
+        $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Elite");
         $("#Public-email").attr("disabled", "disabled");
-
-        $(".public-phone-wrap").addEventListener("mouseover", upgradeToElite());
-        $(".public-email-wrap").addEventListener("mouseover", upgradeToElite());
+        $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Elite");
       }
 
       if (membership.name == "Free Plan") {
