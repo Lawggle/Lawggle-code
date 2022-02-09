@@ -140,7 +140,10 @@ function successFunc(data) {
     }
 
     //Changing text and href of contact details or hiding them if no value is present
-    if (!value["Membership Type"].startsWith("free") && (value["Public Phone"] || value["Public Email"] || value.Url)) {
+    if (
+      value["Membership Plan ID"] == ("61b2ba635394970004dfbc58" || "61ff26ab40c00400042ad133") &&
+      (value["Public Phone"] || value["Public Email"] || value.Url)
+    ) {
       if (value["Public Phone"]) {
         $("#contact-mobile").text(value["Public Phone"]);
         $("#profile-mobile").attr("href", `tel:+${value["Public Phone"]}`);
@@ -177,7 +180,7 @@ function successFunc(data) {
 
     // Adding urls to social icons or hiding them if url not present
     if (
-      !value["Membership Type"].startsWith("free") &&
+      value["Membership Plan ID"] != "5ef284eb9eddae000437af3a" &&
       (value.Twitter || value.Facebook || value.Linkedin || value.Instagram)
     ) {
       if (value.Twitter) {
