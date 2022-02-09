@@ -22,6 +22,9 @@ $.ajax({ url: url, success: successFunc });
 $("#talk").click(function () {
   window.scrollTo(0, 0);
 });
+$(".profile-contact-button").click(function () {
+  window.scrollTo(0, 0);
+});
 
 function successFunc(data) {
   //  console.log(data);
