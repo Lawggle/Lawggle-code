@@ -175,6 +175,8 @@ MemberStack.onReady.then(function (member) {
       }
 
       if (membership.name == ("Lawggle Elite" || "Lawggle Elite Annual")) {
+        $("#Public-phone").removeClass("disabled");
+        $("#Public-email").removeClass("disabled");
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
         }
@@ -183,9 +185,7 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         $("#Public-phone").attr("disabled", "disabled");
-        $("#Public-phone").addClass("disabled");
         $("#Public-email").attr("disabled", "disabled");
-        $("#Public-email").addClass("disabled");
       }
 
       if (membership.name == "Free Plan") {
