@@ -283,7 +283,19 @@ MemberStack.onReady.then(function (member) {
       var rate = $("select#Hourly-rate").val();
       var contingency = $("select#Contingency").val();
       var consult = $("select#Consult").val();
-      var phone = $("#Public-phone").val();
+      var phoneValue = $("#Public-phone").val();
+      var phone = "";
+      // Check if phone number is formatted properly
+      if (phoneValue.length) {
+        var phoneTemp = phoneValue.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("+", "");
+        phone = phoneTemp.trim();
+        if (phone.length != 10) {
+          $(".alert-msg").text("Please enter your 10 digit phone number without any dashes, brackets or spaces");
+          $(".alert-wrap").css("display", "flex");
+          $("#updateLoading").css("opacity", "0");
+          makeCall = false;
+        }
+      }
       var email = $("#Public-email").val();
       var twitter = $("#Twitter-url").val();
       var facebook = $("#Facebook-url").val();
