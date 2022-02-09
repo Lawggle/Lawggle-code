@@ -6,6 +6,23 @@ function unselectLawAreas() {
 
 var lawAreas = document.getElementById("Area-law").options;
 
+const upgradeToPremier = () => {
+  $(".upgrade-text").text("Upgrade to Lawggle Premier to unlock this field");
+  $(".upgrade-message").css("display", "block");
+
+  setTimeout(() => {
+    $(".upgrade-message").css("display", "none");
+  }, 2000);
+};
+const upgradeToElite = () => {
+  $(".upgrade-text").text("Upgrade to Lawggle Elite to unlock this field");
+  $(".upgrade-message").css("display", "block");
+
+  setTimeout(() => {
+    $(".upgrade-message").css("display", "none");
+  }, 2000);
+};
+
 // Resets options for Area of Law based on type of profession
 
 $("#Type-law").on("change", function () {
@@ -175,8 +192,6 @@ MemberStack.onReady.then(function (member) {
       }
 
       if (membership.name == ("Lawggle Elite" || "Lawggle Elite Annual")) {
-        $("#Public-phone").removeClass("disabled");
-        $("#Public-email").removeClass("disabled");
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
         }
@@ -186,6 +201,9 @@ MemberStack.onReady.then(function (member) {
       } else {
         $("#Public-phone").attr("disabled", "disabled");
         $("#Public-email").attr("disabled", "disabled");
+
+        $("#Public-phone").hover(upgradeToElite());
+        $("#Public-email").hover(upgradeToElite());
       }
 
       if (membership.name == "Free Plan") {
