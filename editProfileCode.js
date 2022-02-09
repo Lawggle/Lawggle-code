@@ -253,15 +253,13 @@ MemberStack.onReady.then(function (member) {
       if (items.length > 5) {
         if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
           makeCall = false;
-          $(".morethan5").css("display", "flex");
+          $(".alert-wrap").css("display", "flex");
+          $(".alert-msg").text(
+            "Please select 5 or less Areas of Expertise or upgrade to Lawggle Elite Membership to increase limits"
+          );
           $("#updateLoading").css("opacity", "0");
-        } else {
-          makeCall = true;
         }
-      } else {
-        makeCall = true;
       }
-
       var pronouns = $("select#pronouns-field").val();
       var area = items.join(", ");
       var address = $("#Address").val();
@@ -406,7 +404,7 @@ $("select#Area-law, select#Languages-2")
 
 // Hides alert messages after clicking on okay
 $(".okay-btn").on("click", function () {
-  $(".morethan5").hide();
+  $(".alert-wrap").hide();
 });
 
 // Disabling the first select option "Select one.." for all the dropdowns
