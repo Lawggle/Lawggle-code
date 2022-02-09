@@ -202,8 +202,8 @@ MemberStack.onReady.then(function (member) {
         $("#Public-phone").attr("disabled", "disabled");
         $("#Public-email").attr("disabled", "disabled");
 
-        $("#Public-phone").hover(upgradeToElite());
-        $("#Public-email").hover(upgradeToElite());
+        $("#Public-phone").mouseenter(upgradeToElite());
+        $("#Public-email").mouseenter(upgradeToElite());
       }
 
       if (membership.name == "Free Plan") {
