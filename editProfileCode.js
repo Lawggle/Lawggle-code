@@ -183,8 +183,9 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         $("#Public-phone").attr("disabled", "disabled");
-        $("#Public-phone").attr("placeholder", "update to Lawggle Premier");
+        $("#Public-phone").addClass("disabled");
         $("#Public-email").attr("disabled", "disabled");
+        $("#Public-email").addClass("disabled");
       }
 
       if (membership.name == "Free Plan") {
