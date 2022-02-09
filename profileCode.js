@@ -161,7 +161,7 @@ function successFunc(data) {
       if (value.Url) {
         $("#contact-website").text(value.Url);
 
-        if (value.Url.startsWith("www")) {
+        if (!value.Url.startsWith("https")) {
           var webUrl = `https://${value.Url}`;
         } else {
           var webUrl = value.Url;
@@ -181,7 +181,7 @@ function successFunc(data) {
       (value.Twitter || value.Facebook || value.Linkedin || value.Instagram)
     ) {
       if (value.Twitter) {
-        if (value.Twitter.startsWith("www")) {
+        if (!value.Twitter.startsWith("https")) {
           var twitterUrl = `https://${value.Twitter}`;
         } else {
           var twitterUrl = value.Twitter;
@@ -191,7 +191,7 @@ function successFunc(data) {
         $("#twitter-url").remove();
       }
       if (value.Facebook) {
-        if (value.Facebook.startsWith("www")) {
+        if (!value.Facebook.startsWith("https")) {
           var facebookUrl = `https://${value.Facebook}`;
         } else {
           var facebookUrl = value.Facebook;
@@ -201,7 +201,7 @@ function successFunc(data) {
         $("#facebook-url").remove();
       }
       if (value.Linkedin) {
-        if (value.Linkedin.startsWith("www")) {
+        if (!value.Linkedin.startsWith("https")) {
           var linkedinUrl = `https://${value.Linkedin}`;
         } else {
           var linkedinUrl = value.Linkedin;
@@ -211,7 +211,7 @@ function successFunc(data) {
         $("#linkedin-url").remove();
       }
       if (value.Instagram) {
-        if (value.Instagram.startsWith("www")) {
+        if (!value.Instagram.startsWith("https")) {
           var instagramUrl = `https://${value.Instagram}`;
         } else {
           var instagramUrl = value.Instagram;
