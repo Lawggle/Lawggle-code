@@ -18,6 +18,11 @@ var url = "https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MI
 
 $.ajax({ url: url, success: successFunc });
 
+// scrolls to top on clicking contact button
+$("#talk").click(function () {
+  window.scrollTo(0, 0);
+});
+
 function successFunc(data) {
   //  console.log(data);
 
@@ -297,11 +302,5 @@ function successFunc(data) {
       });
     }
     initMap();
-  });
-
-  MemberStack.onReady.then(function (member) {
-    var mID = member["id"];
-    var membership = member.membership;
-    var plan = membership.id;
   });
 }
