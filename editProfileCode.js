@@ -202,7 +202,7 @@ MemberStack.onReady.then(function (member) {
         $("#Public-phone").attr("disabled", "disabled");
         $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Elite");
         $("#Public-email").attr("disabled", "disabled");
-        $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Elite");
+        $("#Public-email").attr("placeholder", "Upgrade to Lawggle Elite");
       }
 
       if (membership.name == "Free Plan") {
@@ -210,6 +210,10 @@ MemberStack.onReady.then(function (member) {
         $("#Facebook-url").attr("disabled", "disabled");
         $("#Linkedin-url").attr("disabled", "disabled");
         $("#Instagram-url").attr("disabled", "disabled");
+        $("#Twitter-url").attr("placeholder", "Upgrade to Lawggle Premier");
+        $("#Facebook-url").attr("placeholder", "Upgrade to Lawggle Premier");
+        $("#Linkedin-url").attr("placeholder", "Upgrade to Lawggle Premier");
+        $("#Instagram-url").attr("placeholder", "Upgrade to Lawggle Premier");
       } else {
         if (value.Twitter) {
           $("#Twitter-url").val(value.Twitter);
