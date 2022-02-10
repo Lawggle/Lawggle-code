@@ -25,20 +25,20 @@ const upgradeToElite = () => {
 
 const checkForContactInfo = (fieldName, fieldValue) => {
   if (fieldValue.match("www" || ".com" || "https:")) {
-    makeCall = false;
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain links`);
     $("#updateLoading").css("opacity", "0");
+    return false;
   }
 
   var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
+  console.log("numberMatch", numberMatch);
   if (numberMatch) {
-    makeCall = false;
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
     $("#updateLoading").css("opacity", "0");
+    return false;
   }
-  console.log("numberMatch", numberMatch);
 };
 
 // Resets options for Area of Law based on type of profession
@@ -261,7 +261,6 @@ MemberStack.onReady.then(function (member) {
     console.log("updated profile button clicked");
     if ($("#wf-form-Contact-Form").valid()) {
     }
-    console.log("oh yeah");
     $("#updateLoading").css("opacity", "1");
     var makeCall = true;
     var firm = $("#Firm").val();
@@ -319,7 +318,7 @@ MemberStack.onReady.then(function (member) {
       $("#updateLoading").css("opacity", "0");
     }
 
-    checkForContactInfo("address", address);
+    makecall = checkForContactInfo("address", address);
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
       makeCall = false;
@@ -328,7 +327,6 @@ MemberStack.onReady.then(function (member) {
       $("#updateLoading").css("opacity", "0");
     }
     var bio = bioValue.replace(/\n/g, "<br />");
-    console.log(area);
 
     //var bio = $("#Bio").val();
     var education = $("#Education").val();
