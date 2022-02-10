@@ -24,7 +24,7 @@ const upgradeToElite = () => {
 };
 
 const checkForContactInfo = (fieldName, fieldValue) => {
-  if (fieldValue.includes("www" || ".com" || "https:")) {
+  if (fieldValue.match("www" || ".com" || "https:")) {
     makeCall = false;
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain links`);
@@ -32,6 +32,12 @@ const checkForContactInfo = (fieldName, fieldValue) => {
   }
 
   var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
+  if (numberMatch) {
+    makeCall = false;
+    $(".alert-wrap").css("display", "flex");
+    $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
+    $("#updateLoading").css("opacity", "0");
+  }
   console.log("numberMatch", numberMatch);
 };
 
