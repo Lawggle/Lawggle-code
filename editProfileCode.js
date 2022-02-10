@@ -318,7 +318,7 @@ MemberStack.onReady.then(function (member) {
       $("#updateLoading").css("opacity", "0");
     }
 
-    makecall = checkForContactInfo("address", address);
+    makeCall = checkForContactInfo("address", address);
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
       makeCall = false;
