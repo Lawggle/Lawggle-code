@@ -24,7 +24,9 @@ const upgradeToElite = () => {
 };
 
 const checkForContactInfo = (fieldName, fieldValue) => {
-  if (fieldValue.match("www" || ".com" || "https:")) {
+  var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+
+  if (fieldValue.match(urlRegex)) {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain links`);
     $("#updateLoading").css("opacity", "0");
@@ -39,6 +41,7 @@ const checkForContactInfo = (fieldName, fieldValue) => {
     $("#updateLoading").css("opacity", "0");
     return false;
   }
+  return true;
 };
 
 // Resets options for Area of Law based on type of profession
