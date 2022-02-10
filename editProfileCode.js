@@ -249,6 +249,12 @@ MemberStack.onReady.then(function (member) {
     var firm = $("#Firm").val();
     var furl = $("#Firm-url").val();
     var type = $("select#Type-law").val();
+    if (type == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please select type of profession");
+      $("#updateLoading").css("opacity", "0");
+    }
     var items = $("select#Area-law").val();
     // Checks if number of areas selected is more than 5 or none
     if (items.length > 5) {
@@ -269,8 +275,20 @@ MemberStack.onReady.then(function (member) {
     var pronouns = $("select#pronouns-field").val();
     var area = items.join(", ");
     var address = $("#Address").val();
-    var s = $("#Bio").val();
-    var bio = s.replace(/\n/g, "<br />");
+    if (address == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please type in your address");
+      $("#updateLoading").css("opacity", "0");
+    }
+    var bioValue = $("#Bio").val();
+    if (bioValue == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please type in your bio");
+      $("#updateLoading").css("opacity", "0");
+    }
+    var bio = bioValue.replace(/\n/g, "<br />");
     console.log(area);
 
     //var bio = $("#Bio").val();
@@ -308,6 +326,12 @@ MemberStack.onReady.then(function (member) {
     var linkedin = $("#Linkedin-url").val();
     var instagram = $("#Instagram-url").val();
     var languageItems = $("select#Languages-2").val();
+    if (languageItems.length == 0) {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please select atleast language");
+      $("#updateLoading").css("opacity", "0");
+    }
     var language = languageItems.join(", ");
 
     function successFuncp(data) {
