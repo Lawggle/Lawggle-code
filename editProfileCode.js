@@ -247,6 +247,15 @@ MemberStack.onReady.then(function (member) {
     $("#updateLoading").css("opacity", "1");
     var makeCall = true;
     var firm = $("#Firm").val();
+    if (
+      !firm &&
+      membership.id == ("60819c9eab402c0004df28a1" || "60819ccd63974f0004ce1471" || "60819d02f611bf0004395a2a")
+    ) {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please enter your firm name");
+      $("#updateLoading").css("opacity", "0");
+    }
     var furl = $("#Firm-url").val();
     var type = $("select#Type-law").val();
     if (type == "") {
