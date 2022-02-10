@@ -242,125 +242,125 @@ MemberStack.onReady.then(function (member) {
   $("#profileUpdate").on("click", function () {
     console.log("updated profile button clicked");
     if ($("#wf-form-Contact-Form").valid()) {
-      console.log("oh yeah");
-      $("#updateLoading").css("opacity", "1");
-      var makeCall = true;
-      var firm = $("#Firm").val();
-      var furl = $("#Firm-url").val();
-      var type = $("select#Type-law").val();
-      var items = $("select#Area-law").val();
-      // Checks if number of areas selected is more than 5
-      if (items.length > 5) {
-        if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
-          makeCall = false;
-          $(".alert-wrap").css("display", "flex");
-          $(".alert-msg").text(
-            "Please select 5 or less Areas of Expertise or upgrade to Lawggle Elite Membership to increase limits"
-          );
-          $("#updateLoading").css("opacity", "0");
-        }
-      }
-      var pronouns = $("select#pronouns-field").val();
-      var area = items.join(", ");
-      var address = $("#Address").val();
-      var s = $("#Bio").val();
-      var bio = s.replace(/\n/g, "<br />");
-      console.log(area);
-
-      //var bio = $("#Bio").val();
-      var education = $("#Education").val();
-      var edTwo = $("#Education-2").val();
-      var edThree = $("#Education-3").val();
-      var associations = $("#Associations").val();
-      var assocTwo = $("#Associations-2").val();
-      var assocThree = $("#Associations-3").val();
-      var recognitions = $("#Recognitions").val();
-      var recogTwo = $("#Recognitions-2").val();
-      var recogThree = $("#Recognitions-3").val();
-      var publications = $("#Publications").val();
-      var pubTwo = $("#Publications-2").val();
-      var pubThree = $("#Publications-3").val();
-      var rate = $("select#Hourly-rate").val();
-      var contingency = $("select#Contingency").val();
-      var consult = $("select#Consult").val();
-      var phoneValue = $("#Public-phone").val();
-      var phone = "";
-      // Check if phone number is formatted properly
-      if (phoneValue.length) {
-        var phoneTemp = phoneValue.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("+", "");
-        phone = phoneTemp.trim();
-        if (phone.length != 10) {
-          $(".alert-msg").text("Please enter your 10 digit phone number without any dashes, brackets or spaces");
-          $(".alert-wrap").css("display", "flex");
-          $("#updateLoading").css("opacity", "0");
-          makeCall = false;
-        }
-      }
-      var email = $("#Public-email").val();
-      var twitter = $("#Twitter-url").val();
-      var facebook = $("#Facebook-url").val();
-      var linkedin = $("#Linkedin-url").val();
-      var instagram = $("#Instagram-url").val();
-      var languageItems = $("select#Languages-2").val();
-      var language = languageItems.join(", ");
-
-      function successFuncp(data) {
+    }
+    console.log("oh yeah");
+    $("#updateLoading").css("opacity", "1");
+    var makeCall = true;
+    var firm = $("#Firm").val();
+    var furl = $("#Firm-url").val();
+    var type = $("select#Type-law").val();
+    var items = $("select#Area-law").val();
+    // Checks if number of areas selected is more than 5
+    if (items.length > 5) {
+      if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
+        makeCall = false;
+        $(".alert-wrap").css("display", "flex");
+        $(".alert-msg").text(
+          "Please select 5 or less Areas of Expertise or upgrade to Lawggle Elite Membership to increase limits"
+        );
         $("#updateLoading").css("opacity", "0");
-        $("#updateSuccess").css("display", "block");
-        $("#updateSuccess").trigger("click");
-        console.log(data);
       }
+    }
+    var pronouns = $("select#pronouns-field").val();
+    var area = items.join(", ");
+    var address = $("#Address").val();
+    var s = $("#Bio").val();
+    var bio = s.replace(/\n/g, "<br />");
+    console.log(area);
 
-      if (makeCall) {
-        fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID, {
-          method: "PATCH",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
+    //var bio = $("#Bio").val();
+    var education = $("#Education").val();
+    var edTwo = $("#Education-2").val();
+    var edThree = $("#Education-3").val();
+    var associations = $("#Associations").val();
+    var assocTwo = $("#Associations-2").val();
+    var assocThree = $("#Associations-3").val();
+    var recognitions = $("#Recognitions").val();
+    var recogTwo = $("#Recognitions-2").val();
+    var recogThree = $("#Recognitions-3").val();
+    var publications = $("#Publications").val();
+    var pubTwo = $("#Publications-2").val();
+    var pubThree = $("#Publications-3").val();
+    var rate = $("select#Hourly-rate").val();
+    var contingency = $("select#Contingency").val();
+    var consult = $("select#Consult").val();
+    var phoneValue = $("#Public-phone").val();
+    var phone = "";
+    // Check if phone number is formatted properly
+    if (phoneValue.length) {
+      var phoneTemp = phoneValue.replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("+", "");
+      phone = phoneTemp.trim();
+      if (phone.length != 10) {
+        $(".alert-msg").text("Please enter your 10 digit phone number without any dashes, brackets or spaces");
+        $(".alert-wrap").css("display", "flex");
+        $("#updateLoading").css("opacity", "0");
+        makeCall = false;
+      }
+    }
+    var email = $("#Public-email").val();
+    var twitter = $("#Twitter-url").val();
+    var facebook = $("#Facebook-url").val();
+    var linkedin = $("#Linkedin-url").val();
+    var instagram = $("#Instagram-url").val();
+    var languageItems = $("select#Languages-2").val();
+    var language = languageItems.join(", ");
 
-          body: JSON.stringify({
-            Pronouns: pronouns,
-            Firm: firm,
-            ["Type of Pro"]: type,
-            ["Area of Law"]: area,
-            Url: furl,
-            Address: address,
-            Bio: bio,
-            Education: education,
-            ["Education-2"]: edTwo,
-            ["Education-3"]: edThree,
-            Associations: associations,
-            ["Associations-2"]: assocTwo,
-            ["Associations-3"]: assocThree,
-            Recognitions: recognitions,
-            ["Recognitions-2"]: recogTwo,
-            ["Recognitions-3"]: recogThree,
-            Publications: publications,
-            ["Publications-2"]: pubTwo,
-            ["Publications-3"]: pubThree,
-            ["Hourly Rate"]: rate,
-            Contingency: contingency,
-            Consult: consult,
-            ["Public Phone"]: phone,
-            ["Public Email"]: email,
-            Twitter: twitter,
-            Facebook: facebook,
-            Linkedin: linkedin,
-            Instagram: instagram,
-            Language: language,
-          }),
+    function successFuncp(data) {
+      $("#updateLoading").css("opacity", "0");
+      $("#updateSuccess").css("display", "block");
+      $("#updateSuccess").trigger("click");
+      console.log(data);
+    }
+
+    if (makeCall) {
+      fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID, {
+        method: "PATCH",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          Pronouns: pronouns,
+          Firm: firm,
+          ["Type of Pro"]: type,
+          ["Area of Law"]: area,
+          Url: furl,
+          Address: address,
+          Bio: bio,
+          Education: education,
+          ["Education-2"]: edTwo,
+          ["Education-3"]: edThree,
+          Associations: associations,
+          ["Associations-2"]: assocTwo,
+          ["Associations-3"]: assocThree,
+          Recognitions: recognitions,
+          ["Recognitions-2"]: recogTwo,
+          ["Recognitions-3"]: recogThree,
+          Publications: publications,
+          ["Publications-2"]: pubTwo,
+          ["Publications-3"]: pubThree,
+          ["Hourly Rate"]: rate,
+          Contingency: contingency,
+          Consult: consult,
+          ["Public Phone"]: phone,
+          ["Public Email"]: email,
+          Twitter: twitter,
+          Facebook: facebook,
+          Linkedin: linkedin,
+          Instagram: instagram,
+          Language: language,
+        }),
+      })
+        .then((data) => {
+          // The response comes here
+          console.log(data);
+          successFuncp(data);
         })
-          .then((data) => {
-            // The response comes here
-            console.log(data);
-            successFuncp(data);
-          })
-          .catch((error) => {
-            // Errors are reported there
-            console.log(error);
-          });
-      }
+        .catch((error) => {
+          // Errors are reported there
+          console.log(error);
+        });
     }
   });
 
