@@ -24,9 +24,7 @@ const upgradeToElite = () => {
 };
 
 const checkForContactInfo = (fieldName, fieldValue) => {
-  var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
-
-  if (fieldValue.match(urlRegex)) {
+  if (fieldValue.match(".com") || fieldValue.match("https") || fieldValue.match("www")) {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain links`);
     $("#updateLoading").css("opacity", "0");
