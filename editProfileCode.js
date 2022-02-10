@@ -32,7 +32,6 @@ const checkForContactInfo = (fieldName, fieldValue) => {
   }
 
   var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
-  console.log("numberMatch", numberMatch);
   if (numberMatch) {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
@@ -318,8 +317,8 @@ MemberStack.onReady.then(function (member) {
       $(".alert-msg").text("Please type in your address");
       $("#updateLoading").css("opacity", "0");
     }
+    makeCall = checkForContactInfo("Address", address);
 
-    makeCall = checkForContactInfo("address", address);
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
       makeCall = false;
@@ -327,6 +326,7 @@ MemberStack.onReady.then(function (member) {
       $(".alert-msg").text("Please type in your bio");
       $("#updateLoading").css("opacity", "0");
     }
+    makeCall = checkForContactInfo("Bio", bioValue);
     var bio = bioValue.replace(/\n/g, "<br />");
 
     //var bio = $("#Bio").val();
