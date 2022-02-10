@@ -23,6 +23,18 @@ const upgradeToElite = () => {
   }, 2000);
 };
 
+const checkForContactInfo = (fieldName, fieldValue) => {
+  if (fieldValue.includes("www" || ".com" || "https:")) {
+    makeCall = false;
+    $(".alert-wrap").css("display", "flex");
+    $(".alert-msg").text(`${fieldName} cannot contain links`);
+    $("#updateLoading").css("opacity", "0");
+  }
+
+  var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
+  console.log("numberMatch", numberMatch);
+};
+
 // Resets options for Area of Law based on type of profession
 
 $("#Type-law").on("change", function () {
@@ -278,7 +290,7 @@ MemberStack.onReady.then(function (member) {
     } else if (items.length == 0) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please select atleast one area of expertise");
+      $(".alert-msg").text("Please select at least one area of expertise");
       $("#updateLoading").css("opacity", "0");
     }
     var pronouns = $("select#pronouns-field").val();
@@ -288,7 +300,7 @@ MemberStack.onReady.then(function (member) {
     if (languageItems.length == 0) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please select atleast language");
+      $(".alert-msg").text("Please select at least one language");
       $("#updateLoading").css("opacity", "0");
     }
     var language = languageItems.join(", ");
@@ -300,6 +312,8 @@ MemberStack.onReady.then(function (member) {
       $(".alert-msg").text("Please type in your address");
       $("#updateLoading").css("opacity", "0");
     }
+
+    checkForContactInfo("address", address);
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
       makeCall = false;
