@@ -153,8 +153,10 @@ function successFunc(data) {
       (value["Public Phone"] || value["Public Email"] || value.Url)
     ) {
       if (value["Public Phone"]) {
-        $("#contact-mobile").text(value["Public Phone"]);
-        $("#profile-mobile").attr("href", `tel:+${value["Public Phone"]}`);
+        var match = value["Public Phone"].match(/^(\d{3})(\d{3})(\d{4})$/);
+        var contactNumber = "(" + match[1] + ") " + match[2] + "-" + match[3];
+        $("#profile-mobile").attr("href", `tel:+1${value["Public Phone"]}`);
+        $("#contact-mobile").text(contactNumber);
       } else {
         $("#profile-mobile").remove();
       }
