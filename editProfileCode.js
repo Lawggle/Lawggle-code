@@ -274,6 +274,16 @@ MemberStack.onReady.then(function (member) {
     }
     var pronouns = $("select#pronouns-field").val();
     var area = items.join(", ");
+
+    var languageItems = $("select#Languages-2").val();
+    if (languageItems.length == 0) {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please select atleast language");
+      $("#updateLoading").css("opacity", "0");
+    }
+    var language = languageItems.join(", ");
+
     var address = $("#Address").val();
     if (address == "") {
       makeCall = false;
@@ -325,14 +335,6 @@ MemberStack.onReady.then(function (member) {
     var facebook = $("#Facebook-url").val();
     var linkedin = $("#Linkedin-url").val();
     var instagram = $("#Instagram-url").val();
-    var languageItems = $("select#Languages-2").val();
-    if (languageItems.length == 0) {
-      makeCall = false;
-      $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please select atleast language");
-      $("#updateLoading").css("opacity", "0");
-    }
-    var language = languageItems.join(", ");
 
     function successFuncp(data) {
       $("#updateLoading").css("opacity", "0");
