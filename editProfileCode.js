@@ -250,7 +250,7 @@ MemberStack.onReady.then(function (member) {
     var furl = $("#Firm-url").val();
     var type = $("select#Type-law").val();
     var items = $("select#Area-law").val();
-    // Checks if number of areas selected is more than 5
+    // Checks if number of areas selected is more than 5 or none
     if (items.length > 5) {
       if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
         makeCall = false;
@@ -260,6 +260,11 @@ MemberStack.onReady.then(function (member) {
         );
         $("#updateLoading").css("opacity", "0");
       }
+    } else if (items.length == 0) {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please select atleast one area of expertise");
+      $("#updateLoading").css("opacity", "0");
     }
     var pronouns = $("select#pronouns-field").val();
     var area = items.join(", ");
