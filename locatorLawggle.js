@@ -317,6 +317,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         //$(".item.recurring").prependTo("#listings");
       } else {
         $(".no-results").addClass("display");
+        $("#listings").css("display", "none");
 
         $(".map").css("visibility", "hidden");
       }
