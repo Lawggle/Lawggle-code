@@ -79,7 +79,7 @@ MemberStack.onReady.then(function (member) {
 
   // Links View live profile button to the profile page
   function goToURL() {
-    location.href = `${window.location.origin}/profile-dev-2?profile=` + mID;
+    location.href = `${window.location.origin}/profile?profile=` + mID;
   }
   $('#liveProfile, a[href="#liveProfile"]').on("click", function () {
     goToURL();
