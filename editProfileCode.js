@@ -31,7 +31,8 @@ const checkForContactInfo = (fieldName, fieldValue) => {
     return false;
   }
 
-  var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
+  // var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
+  var numberMatch = fieldValue.match(/[0-9][0-9][0-9][0-9]/);
   if (numberMatch) {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
@@ -42,7 +43,6 @@ const checkForContactInfo = (fieldName, fieldValue) => {
 };
 
 // Resets options for Area of Law based on type of profession
-
 $("#Type-law").on("change", function () {
   if (this.value == "Notary" || this.value == "Paralegal" || this.value == "Court Agent") {
     $("#Area-law").prop("required", false);
@@ -317,7 +317,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-msg").text("Please type in your address");
       $("#updateLoading").css("opacity", "0");
     }
-    makeCall = checkForContactInfo("Address", address);
 
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
