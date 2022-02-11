@@ -31,7 +31,6 @@ const checkForContactInfo = (fieldName, fieldValue) => {
     return false;
   }
 
-  // var numberMatch = fieldValue.match(/[\+]?\d{10}|\(\d{3}\)\s?-\d{6}/);
   var numberMatch = fieldValue.match(/[0-9][0-9][0-9][0-9]/);
   if (numberMatch) {
     $(".alert-wrap").css("display", "flex");
