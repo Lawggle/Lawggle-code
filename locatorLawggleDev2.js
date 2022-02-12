@@ -200,6 +200,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     }
 
     function buildLocationList(data) {
+      // This happens first and then when the location is selected "active-c" class is changed to "active-d"
       data.features.forEach(function (store, i) {
         var prop = store.properties;
         var listings = document.getElementById("listings");
@@ -330,8 +331,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           var activeItem = document.getElementsByClassName("active");
           console.log("active item found in map idle", activeItem);
           activeItem[0].classList.remove("active");
-          parent.firstChild.find("a:first").click();
-          console.log("child clicked on", parent.firstChild);
+          console.log("firstChild clicking on", parent.firstChild);
+          console.log("firstElementChild clicking on", parent.firstElementChild);
+          parent.firstElementChild.find("a:first").click();
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
