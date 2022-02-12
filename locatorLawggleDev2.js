@@ -259,6 +259,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
             activeItem[0].classList.remove("active");
+            console.log("active item found");
+          } else {
+            console.log("active item not found");
           }
           this.parentNode.classList.add("active");
         });
