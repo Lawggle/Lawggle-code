@@ -331,9 +331,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           var activeItem = document.getElementsByClassName("active");
           console.log("active item found in map idle", activeItem);
           activeItem[0].classList.remove("active");
-          console.log("firstChild clicking on", parent.firstChild);
-          console.log("firstElementChild clicking on", parent.firstElementChild);
-          parent.firstElementChild.find("a:first").click();
+          var firstResult = document.getElementsByClassName("active-d")[0];
+          console.log("firstChild clicking on", firstResult);
+          firstResult.find("a:first").click();
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
@@ -362,7 +362,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // $('.listload').css("visibility","hidden");
         //}
 
-        $(".listload").css("visibility", "hidden").delay(2000);
+        $(".listload").css("visibility", "hidden").delay(1000);
         $(".footer-flex-container").addClass("s-build");
       }
     });
