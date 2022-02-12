@@ -298,54 +298,54 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     $("#listings").click(function () {
       map.resize();
     });
-    map.on("idle", () => {
-      console.log("entered map idle");
-      $(".listload").css("visibility", "visible");
+    // map.on("idle", () => {
+    console.log("entered map idle");
+    $(".listload").css("visibility", "visible");
+    $(".no-results").removeClass("display");
+
+    //   Checking if there are any active results, class of ".active-d"
+    if (document.querySelector(".active-d") !== null) {
       $(".no-results").removeClass("display");
+      // $('.listload').css("visibility","hidden");
 
-      //   Checking if there are any active results, class of ".active-d"
-      if (document.querySelector(".active-d") !== null) {
-        $(".no-results").removeClass("display");
-        // $('.listload').css("visibility","hidden");
+      $(".map").css("visibility", "visible");
 
-        $(".map").css("visibility", "visible");
-
-        var parent = $("#listings");
-        var divs = $(".item.recurring");
-        while (divs.length) {
-          parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-        }
-
-        //$('.item.recurring a.details').first().one().trigger('tap');
-
-        //$(".item.recurring").prependTo("#listings");
-      } else {
-        //   If there are no active results, show the 'no results' div
-        $(".no-results").addClass("display");
-        // $("#listings").css("display", "none");
-        $(".map").css("visibility", "hidden");
+      var parent = $("#listings");
+      var divs = $(".item.recurring");
+      while (divs.length) {
+        parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
       }
 
-      //  $("#listings .item:first").before( $( ".item.exclusive" ) );
-      // if(!$('.item.active').length){
-      //      $('.no-results').addClass('display');
+      //$('.item.recurring a.details').first().one().trigger('tap');
 
-      //}
+      //$(".item.recurring").prependTo("#listings");
+    } else {
+      //   If there are no active results, show the 'no results' div
+      $(".no-results").addClass("display");
+      // $("#listings").css("display", "none");
+      $(".map").css("visibility", "hidden");
+    }
 
-      //if(!$('.active-d').length){
+    //  $("#listings .item:first").before( $( ".item.exclusive" ) );
+    // if(!$('.item.active').length){
+    //      $('.no-results').addClass('display');
 
-      //   $('.no-results').addClass('display');
-      //  $('.map').css("visibility","hidden");
-      // $('.listload').css("visibility","hidden");
-      //   } else {
-      // $('.no-results').removeClass('display');
-      //   $('.map').css("visibility","visible");
-      // $('.listload').css("visibility","hidden");
-      //}
+    //}
 
-      $(".listload").css("visibility", "hidden").delay(2000);
-      $(".footer-flex-container").addClass("s-build");
-    });
+    //if(!$('.active-d').length){
+
+    //   $('.no-results').addClass('display');
+    //  $('.map').css("visibility","hidden");
+    // $('.listload').css("visibility","hidden");
+    //   } else {
+    // $('.no-results').removeClass('display');
+    //   $('.map').css("visibility","visible");
+    // $('.listload').css("visibility","hidden");
+    //}
+
+    $(".listload").css("visibility", "hidden").delay(2000);
+    $(".footer-flex-container").addClass("s-build");
+    // });
   });
 });
 $("#Expertise").hide();
