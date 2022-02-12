@@ -44,6 +44,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         }
       };
     }
+
+    // This is the access token of the MapBox api
     mapboxgl.accessToken = "pk.eyJ1IjoibGF3Z2dsZSIsImEiOiJja2RraDU0ZnYwb2lqMnhwbWw2eXVrMjNrIn0.ShD8eyKTv7exWDKR44bSoA";
     var map = new mapboxgl.Map({
       container: "map",
@@ -87,7 +89,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         },
       });
 
-    console.log(stores);
+    console.log("These are stores", stores);
 
     map.on("load", function (e) {
       console.log("Entered map load");
@@ -323,6 +325,13 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           while (divs.length) {
             parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
           }
+
+          // Removing active class from the current card
+          var activeItem = document.getElementsByClassName("active");
+          console.log("active item found in map idle", activeItem);
+          activeItem[0].classList.remove("active");
+          parent.firstChild.find("a:first").click();
+          console.log("child clicked on", parent.firstChild);
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
