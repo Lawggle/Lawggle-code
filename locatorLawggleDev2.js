@@ -199,6 +199,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       });
     }
 
+    // Results HTML is created here
     function buildLocationList(data) {
       // This happens first and then when the location is selected "active-c" class is changed to "active-d"
       data.features.forEach(function (store, i) {
@@ -272,7 +273,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     function flyToStore(currentFeature) {
       map.flyTo({
         center: currentFeature.geometry.coordinates,
-        zoom: 10,
+        zoom: 100,
       });
     }
 
