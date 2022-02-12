@@ -238,7 +238,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         if (prop.distance) {
           var roundedDistance = Math.round(prop.distance * 100) / 100;
           if (roundedDistance < 100) {
-            listing.className = prop.hide + " item active active-d " + prop.plan;
+            // listing.className = prop.hide + " item active active-d " + prop.plan;
+            //  removed the active class from the listing
+            listing.className = prop.hide + " item active-d " + prop.plan;
             details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
             details.innerHTML +=
               '<a href="profile?profile=' +
