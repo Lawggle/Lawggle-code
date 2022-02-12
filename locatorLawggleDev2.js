@@ -258,8 +258,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           }
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
-            activeItem[0].classList.remove("active");
             console.log("active item found", activeItem);
+            activeItem[0].classList.remove("active");
           } else {
             console.log("active item not found");
           }
@@ -309,6 +309,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       if (mapIdleCount < 2) {
         mapIdleCount++;
         console.log("entered map idle", mapIdleCount);
+        window.scrollTo(0, 0);
         $(".listload").css("visibility", "visible");
         $(".no-results").removeClass("display");
 
