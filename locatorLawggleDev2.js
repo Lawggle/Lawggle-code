@@ -203,7 +203,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         var listings = document.getElementById("listings");
         var listing = listings.appendChild(document.createElement("div"));
         listing.id = "listing-" + prop.id;
-        listing.className = "item active active-c";
+        listing.className = "item active-c";
         $("a.dropdown-link").click(function () {
           $(".filtertag").each(function () {
             var value = $(this).html();
