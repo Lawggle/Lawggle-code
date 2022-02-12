@@ -37,6 +37,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     return $.getJSON(url);
   }
   $.when(test()).then(function (jsonData) {
+    console.log("entered when test function");
     if (!("remove" in Element.prototype)) {
       Element.prototype.remove = function () {
         if (this.parentNode) {
