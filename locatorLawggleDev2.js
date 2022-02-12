@@ -175,6 +175,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       ];
     }
 
+    // Markers for the map are added here
     function addMarkers() {
       stores.features.forEach(function (marker) {
         var el = document.createElement("div");
