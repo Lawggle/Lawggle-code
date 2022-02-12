@@ -192,7 +192,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             activeItem[0].classList.remove("active");
           }
           var listing = document.getElementById("listing-" + marker.properties.id);
-          listing.classList.add("active");
+          // listing.classList.add("active");
         });
       });
     }
@@ -258,7 +258,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           if (activeItem[0]) {
             activeItem[0].classList.remove("active");
           }
-          this.parentNode.classList.add("active");
+          // this.parentNode.classList.add("active");
         });
       });
     }
