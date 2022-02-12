@@ -333,7 +333,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           activeItem[0].classList.remove("active");
           var firstResult = document.getElementsByClassName("active-d")[0];
           console.log("firstChild clicking on", firstResult);
-          firstResult.find("a:first").click();
+          firstResult.querySelector("a").click();
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
