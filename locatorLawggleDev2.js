@@ -303,7 +303,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     map.on("idle", () => {
       if (mapIdleCount < 2) {
         mapIdleCount++;
-        console.log("entered map idle");
+        console.log("entered map idle", mapIdleCount);
         $(".listload").css("visibility", "visible");
         $(".no-results").removeClass("display");
 
