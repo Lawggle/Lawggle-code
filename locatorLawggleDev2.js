@@ -138,7 +138,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         buildLocationList(stores);
         createPopUp(stores.features[0]);
         var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
-        // activeListing.classList.add("active");
+        activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
         map.fitBounds(bbox, {
           padding: 100,
@@ -192,7 +192,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             activeItem[0].classList.remove("active");
           }
           var listing = document.getElementById("listing-" + marker.properties.id);
-          // listing.classList.add("active");
+          listing.classList.add("active");
         });
       });
     }
@@ -260,7 +260,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           if (activeItem[0]) {
             activeItem[0].classList.remove("active");
           }
-          // this.parentNode.classList.add("active");
+          this.parentNode.classList.add("active");
         });
       });
     }
