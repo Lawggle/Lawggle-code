@@ -138,7 +138,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         buildLocationList(stores);
         createPopUp(stores.features[0]);
         var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
-        activeListing.classList.add("active");
+        // activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
         map.fitBounds(bbox, {
           padding: 100,
