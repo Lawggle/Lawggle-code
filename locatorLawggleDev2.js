@@ -273,7 +273,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     function flyToStore(currentFeature) {
       map.flyTo({
         center: currentFeature.geometry.coordinates,
-        zoom: 100,
+        zoom: 30,
       });
     }
 
