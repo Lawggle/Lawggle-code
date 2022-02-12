@@ -259,12 +259,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
             console.log("active item found", activeItem);
-            // activeItem[0].classList.remove("active");
-            activeItem.forEach((activeCard) => {
-              activeCard.classList.remove("active");
-            });
-          } else {
-            console.log("active item not found");
+            activeItem[0].classList.remove("active");
           }
           this.parentNode.classList.add("active");
         });
