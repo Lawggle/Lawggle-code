@@ -311,7 +311,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     var mapIdleCount = 0;
     map.on("idle", () => {
-      if (mapIdleCount < 2) {
+      if (mapIdleCount < 1) {
         mapIdleCount++;
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
@@ -337,6 +337,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           activeItem[0].classList.remove("active");
           var firstResult = document.getElementsByClassName("active-d")[0];
           console.log("firstChild clicking on", firstResult);
+
+          //! This is causing map to idle on mobile
           firstResult.querySelector("a").click();
 
           //$('.item.recurring a.details').first().one().trigger('tap');
