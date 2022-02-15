@@ -338,8 +338,13 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           var firstResult = document.getElementsByClassName("active-d")[0];
           console.log("firstChild clicking on", firstResult);
 
-          //! This is causing map to idle on mobile
+          //! This is causing map to idle on mobile and show map on first result
           firstResult.querySelector("a").click();
+
+          //! Hiding the map on mobile after the first time the result is clicked
+          if ($(window).width() < 769) {
+            $(".map-wrap, .map-display").hide();
+          }
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
@@ -439,12 +444,14 @@ $("#geocoder").on("select", function () {
 });
 
 if ($(window).width() < 769) {
+  // This hides the map for mobile by detault
   $(".map-wrap, .map-display").hide();
   $("#listings").click(function () {
     console.log("clicked");
     $(".map-wrap, .map-display").show();
     $(this).hide();
   });
+  // This hides the map for mobile by detault
   $(".map-display").click(function () {
     $(".map-wrap, .map-display").hide();
     $("#listings").show();
