@@ -344,6 +344,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           //! Hiding the map on mobile after the first time the result is clicked
           if ($(window).width() < 769) {
             $(".map-wrap, .map-display").hide();
+            $("#listings").show();
+            console.log("correcting display for mobile");
           }
 
           //$('.item.recurring a.details').first().one().trigger('tap');
