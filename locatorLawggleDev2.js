@@ -450,9 +450,10 @@ if ($(window).width() < 769) {
   // This hides the map for mobile by detault
   $(".map-wrap, .map-display").hide();
   $("#listings").click(function () {
-    console.log("clicked");
+    console.log("clicked on listing in mobile");
     $(".map-wrap, .map-display").show();
     $(this).hide();
+    window.scrollTo(0, 0);
   });
   // This hides the map for mobile by detault
   $(".map-display").click(function () {
