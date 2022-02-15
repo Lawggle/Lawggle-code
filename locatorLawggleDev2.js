@@ -202,6 +202,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     // Results HTML is created here
     function buildLocationList(data) {
+      console.log("Entered buildLocationList");
       // This happens first and then when the location is selected "active-c" class is changed to "active-d"
       data.features.forEach(function (store, i) {
         var prop = store.properties;
@@ -309,7 +310,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     var mapIdleCount = 0;
     map.on("idle", () => {
-      if (mapIdleCount < 2) {
+      if (mapIdleCount < 20) {
         mapIdleCount++;
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
