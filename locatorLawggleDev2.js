@@ -449,13 +449,15 @@ $("#geocoder").on("select", function () {
 if ($(window).width() < 769) {
   // This hides the map for mobile by detault
   $(".map-wrap, .map-display").hide();
+
+  // On clicking of the results it show map and hides listings
   $("#listings").click(function () {
     console.log("clicked on listing in mobile");
     $(".map-wrap, .map-display").show();
     $(this).hide();
-    window.scrollTo(0, 0);
   });
-  // This hides the map for mobile by detault
+
+  // on clicking the close button on map it hides the map and shows listings
   $(".map-display").click(function () {
     $(".map-wrap, .map-display").hide();
     $("#listings").show();
