@@ -340,13 +340,14 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           //! This is causing map to idle on mobile and show map on first result
           firstResult.querySelector("a").click();
+          $(".map-display").click();
+          console.log("correcting display for mobile");
 
           //! Hiding the map on mobile after the first time the result is clicked
-          if ($(window).width() < 769) {
-            $(".map-wrap, .map-display").hide();
-            $("#listings").show();
-            console.log("correcting display for mobile");
-          }
+          // if ($(window).width() < 769) {
+          //   $(".map-wrap, .map-display").hide();
+          //   $("#listings").show();
+          // }
 
           //$('.item.recurring a.details').first().one().trigger('tap');
 
