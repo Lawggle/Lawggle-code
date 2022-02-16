@@ -3,7 +3,8 @@ MemberStack.onReady.then(function (member) {
   var mID = member["id"];
 
   //   Get the sample row and row container
-  var templateRow = document.querySelector(".row-template .table-row");
+  var templateRow = document.querySelector("#sample-row");
+  templateRow.style.display = "none";
   const rowsWrapper = document.querySelector(".table-data-wrapper");
 
   //   Make API call to google sheet and get data
