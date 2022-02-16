@@ -20,13 +20,14 @@ MemberStack.onReady.then(function (member) {
       data.forEach((row, index) => {
         //   Create copy of sample row
         const newRow = templateRow.cloneNode(true);
+
         //   Replace data with row from sheet
         newRow.querySelector(".data-number").innerHTML = index;
         newRow.querySelector(".data-name").innerHTML = row["Pro Name"];
-        // newRow.querySelector(".data-number").innerHTML = index;
-        // newRow.querySelector(".data-number").innerHTML = index;
-        // newRow.querySelector(".data-number").innerHTML = index;
-        // newRow.querySelector(".data-number").innerHTML = index;
+        newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
+        newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
+        newRow.querySelector(".message-min").innerHTML = row["Message"].substring(1, 25) + "...";
+        newRow.querySelector(".message-max").innerHTML = row["Message"];
 
         // Adding event listener on show more button
         newRow.querySelector(".show-more").onclick = function () {
@@ -36,7 +37,7 @@ MemberStack.onReady.then(function (member) {
         };
 
         // Showing the sample row
-        newRow.style.display = "block";
+        newRow.style.display = "flex";
         rowsWrapper.appendChild(newRow);
       });
     })
