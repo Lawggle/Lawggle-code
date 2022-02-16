@@ -4,7 +4,7 @@ MemberStack.onReady.then(function (member) {
 
   //   Get the sample row and row container
   var templateRow = document.querySelector("#sample-row");
-  templateRow.style.display = "none";
+
   const rowsWrapper = document.querySelector(".table-data-wrapper");
 
   //   Make API call to google sheet and get data
@@ -33,4 +33,7 @@ MemberStack.onReady.then(function (member) {
     .catch((error) => {
       console.error(error);
     });
+
+  // Hiding the sample row
+  templateRow.style.display = "none";
 });
