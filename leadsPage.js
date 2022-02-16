@@ -16,6 +16,9 @@ MemberStack.onReady.then(function (member) {
 
       data.forEach((row, index) => {
         const newRow = templateRow.cloneNode(true);
+
+        newRow.querySelector(".data-number").innerHTML = index;
+
         rowsWrapper.appendChild(newRow);
       });
     })
