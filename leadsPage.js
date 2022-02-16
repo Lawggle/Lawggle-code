@@ -36,6 +36,23 @@ MemberStack.onReady.then(function (member) {
           this.style.display = "none";
         };
 
+        // Adding event listener to delete button
+        newRow.querySelector(".delete").onclick = function () {
+          newRow.style.display = "none";
+
+          fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/UUID/${row["UUID"]}`, {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("row deleted successfully");
+              console.log(data);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        };
+
         // Showing the sample row
         newRow.style.display = "flex";
         rowsWrapper.appendChild(newRow);
