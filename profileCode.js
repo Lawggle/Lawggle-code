@@ -248,6 +248,9 @@ function successFunc(data) {
     // Adding member name and email to talk modal form
     $("#Pro-Name").val(value["First Name"] + " " + value["Last Name"]);
     $("#Pro-Email").val(value["Email"]);
+    $("#Pro-MID").val(value["MID"]);
+    $("#Pro-Type").val(value["Membership Type"]);
+    $("#Pro-Plan-ID").val(value["Membership Plan ID"]);
 
     // Initialize and add the map
     function initMap() {
