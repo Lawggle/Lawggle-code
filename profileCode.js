@@ -1,3 +1,4 @@
+// Code to generate UUID starts here
 !(function (t, e) {
   "object" == typeof exports && "undefined" != typeof module
     ? (module.exports = e())
@@ -65,10 +66,10 @@
   };
 });
 
-// import { v4 as uuidv4 } from "uuid";
-var myuuid = uuidv4();
+// Code to generate UUID ends here
 
-console.log("UUID is", myuuid);
+// UUID for the lets talk form
+var UUID = uuidv4();
 
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = window.location.search.substring(1),
@@ -323,6 +324,7 @@ function successFunc(data) {
     $("#Pro-MID").val(value["MID"]);
     $("#Pro-Types").val(value["Membership Type"]);
     $("#Pro-Plan-ID").val(value["Membership Plan ID"]);
+    $("#UUID").val(UUID);
 
     // Initialize and add the map
     function initMap() {
