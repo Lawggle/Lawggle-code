@@ -11,4 +11,15 @@ MemberStack.onReady.then(function (member) {
     .catch((error) => {
       console.error(error);
     });
+
+  var templateRow = $(".row-template").firstElementChild;
+  const rowsWrapper = $(".table-data-wraper");
+
+  console.log("templateRow", templateRow);
+  console.log("rows wrapper", rowsWrapper);
+
+  data.forEach((row, index) => {
+    const newRow = templateRow.cloneNode(true);
+    rowsWrapper.appendChild(newRow);
+  });
 });
