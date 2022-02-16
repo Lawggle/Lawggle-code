@@ -19,6 +19,11 @@ MemberStack.onReady.then(function (member) {
         const newRow = templateRow.cloneNode(true);
         //   Replace data with row from sheet
         newRow.querySelector(".data-number").innerHTML = index;
+        newRow.querySelector(".data-name").innerHTML = row["Pro Name"];
+        // newRow.querySelector(".data-number").innerHTML = index;
+        // newRow.querySelector(".data-number").innerHTML = index;
+        // newRow.querySelector(".data-number").innerHTML = index;
+        // newRow.querySelector(".data-number").innerHTML = index;
 
         // Adding event listener on show more button
         newRow.querySelector(".show-more").onclick = function () {
