@@ -23,6 +23,7 @@ MemberStack.onReady.then(function (member) {
         newRow.querySelector(".show-more").onclick = function () {
           newRow.querySelector(".message-min").style.display = "none";
           newRow.querySelector(".message-max").style.display = "block";
+          this.style.display = "none";
         };
 
         rowsWrapper.appendChild(newRow);
