@@ -1,3 +1,9 @@
+import { v4 as uuidv4 } from "uuid";
+
+let myuuid = uuidv4();
+
+console.log("UUID is", myuuid);
+
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = window.location.search.substring(1),
     sURLVariables = sPageURL.split("&"),
