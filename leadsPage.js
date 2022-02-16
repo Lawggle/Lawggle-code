@@ -3,8 +3,8 @@
 MemberStack.onReady.then(function (member) {
   var mID = member["id"];
 
-  var templateRow = $(".row-template").firstElementChild;
-  const rowsWrapper = $(".table-data-wraper");
+  var templateRow = document.querySelector(".row-template .table-row");
+  const rowsWrapper = document.querySelector(".table-data-wrapper");
 
   console.log("templateRow", templateRow);
   console.log("rows wrapper", rowsWrapper);
