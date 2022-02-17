@@ -15,17 +15,18 @@ MemberStack.onReady.then(function (member) {
     .then((response) => response.json())
     .then((data) => {
       console.log("data is", data);
-
+      var count = 0;
       //   Run loop on returned results and render inside row container
-      data.forEach((row, index) => {
+      data.forEach((row) => {
         // Only render if row is not deleted ie hidden
-        console.log("hide value is", row.Hide);
+
         if (row.Hide != "TRUE") {
+          count++;
           //   Create copy of sample row
           const newRow = templateRow.cloneNode(true);
 
           //   Replace data with row from sheet
-          newRow.querySelector(".data-number").innerHTML = index + 1;
+          newRow.querySelector(".data-number").innerHTML = count;
           newRow.querySelector(".data-name").innerHTML = row["Pro Name"];
           newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
           newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
