@@ -18,8 +18,7 @@ MemberStack.onReady.then(function (member) {
       var count = 0;
       //   Run loop on returned results and render inside row container
       data.forEach((row) => {
-        // Only render if row is not deleted ie hidden
-
+        // Only render if row is not deleted i.e hidden
         if (row.Hide != "TRUE") {
           count++;
           //   Create copy of sample row
