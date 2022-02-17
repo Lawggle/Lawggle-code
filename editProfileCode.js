@@ -87,8 +87,8 @@ MemberStack.onReady.then(function (member) {
 
   // Makes firm required if membership if of type firm
   if (
-    membership.id == "60819c9eab402c0004df28a1" ||
-    (membership.id == "60819ccd63974f0004ce1471") | (membership.id == "60819d02f611bf0004395a2a")
+    membership.id == "620dd862f64f9b0004ffc4ce" ||
+    (membership.id == "620dd8b051846c00048f0e3b") | (membership.id == "620dd8dd51846c00048f0e3d")
   ) {
     $("#Firm").prop("required", true);
   }
@@ -265,7 +265,7 @@ MemberStack.onReady.then(function (member) {
     var firm = $("#Firm").val();
     if (
       !firm &&
-      membership.id == ("60819c9eab402c0004df28a1" || "60819ccd63974f0004ce1471" || "60819d02f611bf0004395a2a")
+      membership.id == ("620dd862f64f9b0004ffc4ce" || "620dd8b051846c00048f0e3b" || "620dd8dd51846c00048f0e3d")
     ) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
@@ -277,7 +277,7 @@ MemberStack.onReady.then(function (member) {
     if (type == "") {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please select type of profession");
+      $(".alert-msg").text("Please select your profession type");
       $("#updateLoading").css("opacity", "0");
     }
     var items = $("select#Area-law").val();
@@ -294,7 +294,7 @@ MemberStack.onReady.then(function (member) {
     } else if (items.length == 0) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please select at least one area of expertise");
+      $(".alert-msg").text("Please select at least one Area of Expertise");
       $("#updateLoading").css("opacity", "0");
     }
     var pronouns = $("select#pronouns-field").val();
@@ -313,7 +313,7 @@ MemberStack.onReady.then(function (member) {
     if (address == "") {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please type in your address");
+      $(".alert-msg").text("Please enter your address");
       $("#updateLoading").css("opacity", "0");
     }
 
@@ -321,7 +321,7 @@ MemberStack.onReady.then(function (member) {
     if (bioValue == "") {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please type in your bio");
+      $(".alert-msg").text("Please enter your bio");
       $("#updateLoading").css("opacity", "0");
     }
     makeCall = checkForContactInfo("Bio", bioValue);
@@ -481,4 +481,3 @@ $("#Hourly-rate option:first-child").attr("disabled", "disabled");
 $("#Type-law option:first-child").attr("disabled", "disabled");
 $("#Contingency option:first-child").attr("disabled", "disabled");
 $("#Consult option:first-child").attr("disabled", "disabled");
-$("#pronouns-field option:first-child").attr("disabled", "disabled");
