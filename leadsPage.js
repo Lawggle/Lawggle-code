@@ -26,7 +26,7 @@ MemberStack.onReady.then(function (member) {
 
           //   Replace data with row from sheet
           newRow.querySelector(".data-number").innerHTML = count;
-          newRow.querySelector(".data-name").innerHTML = row["Pro Name"];
+          newRow.querySelector(".data-name").innerHTML = row["Sender Name"];
           newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
           newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
           newRow.querySelector(".message-min").innerHTML = row["Message"].substring(0, 25) + "...";
