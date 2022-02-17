@@ -19,7 +19,7 @@ MemberStack.onReady.then(function (member) {
       //   Run loop on returned results and render inside row container
       data.forEach((row, index) => {
         // Only render if row is not deleted ie hidden
-        if (!row.Hide) {
+        if (!row.Hide == "true") {
           //   Create copy of sample row
           const newRow = templateRow.cloneNode(true);
 
