@@ -222,7 +222,7 @@ function successFunc(data) {
 
     //Changing text and href of contact details or hiding them if no value is present
     if (
-      value["Membership Plan ID"] == ("61b2ba635394970004dfbc58" || "61ff26ab40c00400042ad133") &&
+      value["Membership Plan ID"] == ("620dd7f584b4320004530679" || "620dd81e87772e0004fa3d94") &&
       (value["Public Phone"] || value["Public Email"] || value.Url)
     ) {
       if (value["Public Phone"]) {
