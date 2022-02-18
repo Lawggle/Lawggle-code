@@ -32,6 +32,8 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".data-phone").innerHTML = row["Sender Phone"];
           var messageMin = newRow.querySelector(".table-data.message-min");
           var messageMax = newRow.querySelector(".table-data.message-max");
+          messageMin.style.display = "block";
+          messageMax.style.display = "none";
 
           messageMin.innerHTML = row["Message"].substring(0, 25) + "...";
           messageMax.innerHTML = row["Message"];
