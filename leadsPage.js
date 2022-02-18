@@ -30,13 +30,30 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
           newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
           newRow.querySelector(".data-phone").innerHTML = row["Sender Phone"];
-          newRow.querySelector(".message-min").innerHTML = row["Message"].substring(0, 25) + "...";
-          newRow.querySelector(".message-max").innerHTML = row["Message"];
+          var messageMin = newRow.querySelector(".message-min");
+          var messageMax = newRow.querySelector(".message-max");
+
+          messageMin.innerHTML = row["Message"].substring(0, 25) + "...";
+          messageMax.innerHTML = row["Message"];
+
+          const moreText = newRow.querySelector(".more-text");
+          const lessText = newRow.querySelector(".less-text");
 
           // Adding event listener on show more button
           newRow.querySelector(".show-more").onclick = function () {
-            newRow.querySelector(".message-min").style.display = "none";
-            newRow.querySelector(".message-max").style.display = "block";
+            if (messageMin.style.display == "block") {
+              messageMin.style.display = "none";
+              messageMax.style.display = "block";
+
+              moreText.style.display = "none";
+              lessText.style.display = "block";
+            } else if (messageMin.style.display == "none") {
+              messageMin.style.display = "block";
+              messageMax.style.display = "none";
+
+              moreText.style.display = "block";
+              lessText.style.display = "none";
+            }
           };
 
           // Adding event listener to delete button
