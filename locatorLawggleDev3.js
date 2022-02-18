@@ -123,6 +123,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       addMarkers();
 
       geocoder.on("result", function (ev) {
+        console.log("ev is", ev);
         var searchResult = ev.result.geometry;
         var options = {
           units: "kilometers",
@@ -135,6 +136,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             configurable: true,
           });
         });
+
+        // This sorts it in ascending order of distance
         stores.features.sort(function (a, b) {
           if (a.properties.distance > b.properties.distance) {
             return 1;
@@ -148,11 +151,18 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         while (listings.firstChild) {
           listings.removeChild(listings.firstChild);
         }
+
+        // Creating the HTML for the results through this
         buildLocationList(stores);
+
+        // Adding popup in the map for the first result
         createPopUp(stores.features[0]);
+
+        // Adding the active listing class to the nearest result
         var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
         activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
+        console.log("bbox results is", bbox);
         map.fitBounds(bbox, {
           padding: 100,
         });
@@ -220,7 +230,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         var prop = store.properties;
         var listings = document.getElementById("listings");
         var listing = listings.appendChild(document.createElement("div"));
+
+        // Add ID to the listing
         listing.id = "listing-" + prop.id;
+
+        // Add actice-c classname
         listing.className = "item active-c";
         $("a.dropdown-link").click(function () {
           $(".filtertag").each(function () {
@@ -238,9 +252,13 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         // #id is added to each link to identify to fly to that position on the map
         link.id = "link-" + prop.id;
+
+        // adding image to prop
         if (prop.image) {
           link.innerHTML = '<div class="i-wrap"><img src="' + prop.image + '" class="l-profile"></div>';
         }
+
+        // This link does nothing since it is enclosed inside another link to change location on map
         link.innerHTML +=
           '<a href="profile?profile=' +
           prop.mid +
@@ -266,14 +284,19 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             //  removed the active class from the listing
             listing.className = prop.hide + " item active-d " + prop.plan;
             details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
+
+            // This is the link that opens their profile page on a new page
             details.innerHTML +=
               '<a href="profile?profile=' +
               prop.mid +
               '" target="_blank" class="blue l-profile-link">View Profile &#10230;</a>';
           }
         }
+
+        // Event listener added to the link to make it change location on map
         link.addEventListener("click", function (e) {
           for (var i = 0; i < data.features.length; i++) {
+            // Finding the features of that listing
             if (this.id === "link-" + data.features[i].properties.id) {
               var clickedListing = data.features[i];
               flyToStore(clickedListing);
