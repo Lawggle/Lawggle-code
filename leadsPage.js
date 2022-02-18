@@ -43,17 +43,16 @@ MemberStack.onReady.then(function (member) {
 
           // Adding event listener on show more button
           newRow.querySelector(".show-more").onclick = function () {
-            console.log("entered click function");
-            console.log("min display is", messageMin.style.display);
-            console.log("max display is", messageMax.style.display);
-
+            // If short message is shown
             if (messageMin.style.display == "block") {
               messageMin.style.display = "none";
               messageMax.style.display = "block";
 
               moreText.style.display = "none";
               lessText.style.display = "block";
-            } else if (messageMin.style.display == "none") {
+            }
+            // If full message is shown
+            else if (messageMin.style.display == "none") {
               messageMin.style.display = "block";
               messageMax.style.display = "none";
 
