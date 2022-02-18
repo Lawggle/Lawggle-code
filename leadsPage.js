@@ -19,7 +19,7 @@ MemberStack.onReady.then(function (member) {
       //   Run loop on returned results and render inside row container
       data.forEach((row) => {
         // Only render if row is not deleted i.e hidden
-        if (row.Hide != "TRUE" && row["Lead Verified"] != "no") {
+        if (row.Hide != "TRUE" && row["Lead Verified"] == "yes") {
           count++;
           //   Create copy of sample row
           const newRow = templateRow.cloneNode(true);
