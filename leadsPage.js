@@ -29,6 +29,7 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".data-name").innerHTML = row["Sender Name"];
           newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
           newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
+          newRow.querySelector(".data-phone").innerHTML = row["Sender Phone"];
           newRow.querySelector(".message-min").innerHTML = row["Message"].substring(0, 25) + "...";
           newRow.querySelector(".message-max").innerHTML = row["Message"];
 

@@ -235,7 +235,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         listing.id = "listing-" + prop.id;
 
         // Add actice-c classname
-        listing.className = "item active-c";
+        listing.className = "result-item active-c";
         $("a.dropdown-link").click(function () {
           $(".filtertag").each(function () {
             var value = $(this).html();
@@ -282,7 +282,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           if (roundedDistance < 100) {
             // listing.className = prop.hide + " item active active-d " + prop.plan;
             //  removed the active class from the listing
-            listing.className = prop.hide + " item active-d " + prop.plan;
+            listing.className = prop.hide + " result-item active-d " + prop.plan;
             details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
 
             // This is the link that opens their profile page on a new page
@@ -368,7 +368,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           $(".map").css("visibility", "visible");
 
           var parent = $("#listings");
-          var divs = $(".item.recurring");
+          var divs = $(".result-item.recurring");
           while (divs.length) {
             parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
           }
