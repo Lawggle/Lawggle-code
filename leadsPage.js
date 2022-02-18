@@ -30,8 +30,8 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".data-date").innerHTML = row["Date Submitted"];
           newRow.querySelector(".data-email").innerHTML = row["Sender Email"];
           newRow.querySelector(".data-phone").innerHTML = row["Sender Phone"];
-          var messageMin = newRow.querySelector(".message-min");
-          var messageMax = newRow.querySelector(".message-max");
+          var messageMin = newRow.querySelector(".table-data.message-min");
+          var messageMax = newRow.querySelector(".table-data.message-max");
 
           messageMin.innerHTML = row["Message"].substring(0, 25) + "...";
           messageMax.innerHTML = row["Message"];
@@ -41,6 +41,7 @@ MemberStack.onReady.then(function (member) {
 
           // Adding event listener on show more button
           newRow.querySelector(".show-more").onclick = function () {
+            console.log("entered click function");
             if (messageMin.style.display == "block") {
               messageMin.style.display = "none";
               messageMax.style.display = "block";
