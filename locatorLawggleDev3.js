@@ -249,7 +249,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // Setting the properties/details of the result
         resultItem.id = "listing-" + prop.id;
         resultItem.className = "result-item active-c";
-        resultItem.querySelector(".result-name").innerHTML = `${prop.name} + " " + ${prop.lastname}`;
+        resultItem.querySelector(".result-name").innerHTML = `${prop.name} ${prop.lastname}`;
         resultItem.querySelector(".result-protype").innerHTML = prop.type;
         resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
         resultItem.querySelector(".result-language").innerHTML = prop.language;
