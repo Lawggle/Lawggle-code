@@ -83,6 +83,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           mid: jsonData[i].MID,
           name: jsonData[i]["First Name"],
           plan: jsonData[i]["Membership Type"],
+          planID: jsonData[i]["Membership Plan ID"],
           profile: jsonData[i].Bio,
           lastname: jsonData[i]["Last Name"],
           firm: jsonData[i].Firm,
@@ -297,6 +298,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           }
 
           this.closest(".result-item").classList.add("active");
+
+          if ($(window).width() < 769) {
+            // Scrolls to top on mobile so that map is visible
+            window.scrollTo(0, 0);
+          }
         });
 
         // Appending the result Item
