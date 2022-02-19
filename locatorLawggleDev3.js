@@ -249,11 +249,34 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // Setting the properties/details of the result
         resultItem.id = "listing-" + prop.id;
         resultItem.className = "result-item active-c";
+        resultItem.querySelector(".result-name").innerHTML = `${prop.name} + " " + ${prop.lastname}`;
+        resultItem.querySelector(".result-protype").innerHTML = prop.type;
+        resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
+        resultItem.querySelector(".result-language").innerHTML = prop.language;
+        resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
+        resultItem.querySelector(".free-consult").innerHTML = prop.consult;
+
+        // TODO add socials links and see map link event listener
+
+        if (prop.firm) {
+          resultItem.querySelector(".result-profirm").innerHTML = prop.firm;
+        } else {
+          resultItem.querySelector(".result-profirm").innerHTML = "";
+        }
 
         // Getting the View Profile Button and setting properties
-        profileButton = resultItem.querySelector(".view-map-button");
+        profileButton = resultItem.querySelector(".view-profile-button");
         profileButton.id = "link-" + prop.id;
         profileButton.href = `profile?profile=${prop.mid}`;
+
+        // Getting the View Map Button and setting properties
+        mapButton = resultItem.querySelector(".view-map-button");
+        mapButton.id = "link-" + prop.id;
+
+        // Adding image to Result
+        if (prop.image) {
+          resultItem.querySelector(".result-image").src = prop.image;
+        }
 
         //TODO --------------------------------------- Code for new result above this ---------------------------
 
@@ -261,10 +284,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         listings.appendChild(resultItem);
         // var listing = listings.appendChild(document.createElement("div"));
         var listing = document.createElement("div");
-
         // Add ID to the listing
         listing.id = "listing-" + prop.id;
-
         // Add actice-c classname
         listing.className = "result-item active-c";
         $("a.dropdown-link").click(function () {
@@ -275,20 +296,16 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             }
           });
         });
-
         // This is the link that when clicked changes the location on map and adds active class
         var link = listing.appendChild(document.createElement("a"));
         link.href = "#";
         link.className = "details";
-
         // #id is added to each link to identify to fly to that position on the map
         link.id = "link-" + prop.id;
-
         // adding image to prop
         if (prop.image) {
           link.innerHTML = '<div class="i-wrap"><img src="' + prop.image + '" class="l-profile"></div>';
         }
-
         // This link does nothing since it is enclosed inside another link to change location on map
         link.innerHTML +=
           '<a href="profile?profile=' +
