@@ -169,8 +169,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         createPopUp(stores.features[0]);
 
         // Adding the active listing class to the nearest result
-        var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
-        activeListing.classList.add("active");
+        // var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
+        // activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
         console.log("bbox results is", bbox);
         map.fitBounds(bbox, {
@@ -245,6 +245,19 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         var prop = store.properties;
         var listings = document.getElementById("listings");
+
+        // Setting the properties/details of the result
+        resultItem.id = "listing-" + prop.id;
+        resultItem.className = "result-item active-c";
+
+        // Getting the View Profile Button and setting properties
+        profileButton = resultItem.querySelector(".view-map-button");
+        profileButton.id = "link-" + prop.id;
+        profileButton.attr("href", `profile?profile=${prop.mid}`);
+
+        //TODO --------------------------------------- Code for new result above this ---------------------------
+
+        // Appending the result Item
         listings.appendChild(resultItem);
         // var listing = listings.appendChild(document.createElement("div"));
         var listing = document.createElement("div");
@@ -398,9 +411,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           }
 
           // Removing active class from the current card
-          var activeItem = document.getElementsByClassName("active");
-          console.log("active item found in map idle", activeItem);
-          activeItem[0].classList.remove("active");
+          // var activeItem = document.getElementsByClassName("active");
+          // console.log("active item found in map idle", activeItem);
+          // activeItem[0].classList.remove("active");
           var firstResult = document.getElementsByClassName("active-d")[0];
           console.log("firstChild clicking on", firstResult);
 
