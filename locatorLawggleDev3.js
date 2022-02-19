@@ -269,14 +269,49 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         profileButton.id = "link-" + prop.id;
         profileButton.href = `profile?profile=${prop.mid}`;
 
-        // Getting the View Map Button and setting properties
-        mapButton = resultItem.querySelector(".view-map-button");
-        mapButton.id = "link-" + prop.id;
-
         // Adding image to Result
         if (prop.image) {
           resultItem.querySelector(".result-image").src = prop.image;
         }
+
+        if (prop.distance) {
+          console.log("result has distance");
+          var roundedDistance = Math.round(prop.distance * 100) / 100;
+
+          // If distance is less than 100 then we add active-d class to it
+          if (roundedDistance < 100) {
+            resultItem.className = prop.hide + " result-item active-d " + prop.plan;
+            resultItem.querySelector(".result-distance").innerHTML = roundedDistance;
+          }
+        }
+
+        // Getting the View Map Button and setting properties
+        mapButton = resultItem.querySelector(".view-map-button");
+        mapButton.id = "link-" + prop.id;
+
+        // Event listener added to the link to make it change location on map
+        mapButton.addEventListener("click", function (e) {
+          // for (var i = 0; i < data.features.length; i++) {
+          //   // Finding the features of that listing
+          //   if (this.id === "link-" + data.features[i].properties.id) {
+          //     var clickedListing = data.features[i];
+          //     flyToStore(clickedListing);
+          //     createPopUp(clickedListing);
+          //   }
+          // }
+
+          flyToStore(store);
+          createPopUp(store);
+
+          // Removing active tag from currently active listing
+          // var activeItem = document.getElementsByClassName("active");
+          // if (activeItem[0]) {
+          // console.log("active item found", activeItem);
+          // activeItem[0].classList.remove("active");
+          // }
+          // Adding active tag to the clicked active
+          this.parentNode.classList.add("active");
+        });
 
         //TODO --------------------------------------- Code for new result above this ---------------------------
 
