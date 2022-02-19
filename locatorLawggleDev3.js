@@ -120,10 +120,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
       $(".loader").hide();
 
-      console.log("Location stores being built 1");
-      buildLocationList(stores);
-      addMarkers();
+      // console.log("Location stores being built 1");
+      // buildLocationList(stores);
+      // addMarkers();
 
+      // This is where it stops waiting for user location input
       geocoder.on("result", function (ev) {
         console.log("ev is", ev);
         var searchResult = ev.result.geometry;
@@ -157,6 +158,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // Creating the HTML for the results through this
         console.log("Location stores being built 2");
         buildLocationList(stores);
+        addMarkers();
 
         // Adding popup in the map for the first result
         createPopUp(stores.features[0]);
@@ -228,7 +230,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     function buildLocationList(data) {
       console.log("Entered buildLocationList");
       mapIdleCount = 0;
-      // This happens first and then when the location is selected "active-c" class is changed to "active-d"
+      // Running a loop, creating
       data.features.forEach(function (store, i) {
         var prop = store.properties;
         var listings = document.getElementById("listings");
@@ -285,8 +287,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // If distance is less than 100 then we add active-d class to it
           if (roundedDistance < 100) {
             // listing.className = prop.hide + " item active active-d " + prop.plan;
-            //  removed the active class from the listing
+            //  removed the active-c class from the listing and replaced with active-d
             listing.className = prop.hide + " result-item active-d " + prop.plan;
+
+            // adding the distance to detail
             details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
 
             // This is the link that opens their profile page on a new page
