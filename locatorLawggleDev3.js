@@ -476,14 +476,14 @@ if ($(window).width() < 769) {
   $(".map-wrap, .map-display").hide();
 
   // On clicking of the results it show map and hides listings on mobile
-  $("#listings").click(function () {
+  $(".view-map-button").click(function () {
     $(".map-wrap, .map-display").show();
-    $("#results-wrap").css("display", "none");
+    $(".results-wrap").css("display", "none");
   });
 
   // on clicking the close button on map it hides the map and shows listings
   $(".map-display").click(function () {
     $(".map-wrap, .map-display").hide();
-    $("#results-wrap").css("display", "block");
+    $(".results-wrap").css("display", "block");
   });
 }
