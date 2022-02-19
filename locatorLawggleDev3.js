@@ -38,6 +38,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
   $.when(test()).then(function (jsonData) {
     console.log("entered when test function");
 
+    console.log("element prototype", Element.prototype);
+
     if (!("remove" in Element.prototype)) {
       Element.prototype.remove = function () {
         if (this.parentNode) {
