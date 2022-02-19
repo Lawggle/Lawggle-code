@@ -16,6 +16,9 @@ $("#Expertise .w-dropdown-link").click(function () {
   expert = $(this).html();
   $("#Expertise").html(this);
 });
+
+// ---------------------------------------------------- Search function starts ----------------------------------------------------
+
 $("#fireSearch .w-dropdown-link").on("click", function () {
   $(".loader").show();
   function test(type, language) {
@@ -35,10 +38,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     console.log(url);
     return $.getJSON(url);
   }
+
+  // Once the api returns results
   $.when(test()).then(function (jsonData) {
     console.log("entered when test function");
-
-    console.log("element prototype", Element.prototype);
 
     if (!("remove" in Element.prototype)) {
       Element.prototype.remove = function () {
@@ -232,11 +235,19 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     function buildLocationList(data) {
       console.log("Entered buildLocationList");
       mapIdleCount = 0;
+
+      // Getting the template result
+      var templateResult = document.querySelector("#template-result");
+
       // Running a loop, creating
       data.features.forEach(function (store, i) {
+        const resultItem = templateResult.cloneNode(true);
+
         var prop = store.properties;
         var listings = document.getElementById("listings");
-        var listing = listings.appendChild(document.createElement("div"));
+        listings.appendChild(resultItem);
+        // var listing = listings.appendChild(document.createElement("div"));
+        var listing = document.createElement("div");
 
         // Add ID to the listing
         listing.id = "listing-" + prop.id;
@@ -438,6 +449,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     });
   });
 });
+
+// ----------------------------------------------------- Search function ends -----------------------------------------------------
+
 $("#Expertise").hide();
 $("#Lawyer").click(function () {
   $("#Expertise").delay(500).fadeIn();
@@ -466,6 +480,7 @@ $("#Expertise-2 .dropdown-link").click(function () {
 $("#Notary, #Immigration, #Paralegal, #Court").click(function () {
   $(".next.button").trigger("tap");
 });
+
 $("#fireSearch .w-dropdown-link").click(function () {
   $(this).addClass("l-active");
   $(".next.button").trigger("tap");
@@ -477,6 +492,7 @@ $("#fireSearch .w-dropdown-link").click(function () {
   // }
   $("#fireSearch, #fireSearch + .w-dropdown-list").toggleClass("w--open");
 });
+
 $(".w-dropdown-link").click(function () {
   //$('.l-active' ).each(function(){
   var d = $(this).html();
@@ -486,6 +502,7 @@ $(".next.button").on("click", function () {
   $(this).addClass("gone");
 });
 
+// Doing only for ios devices
 jQuery(document).ready(function () {
   if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
     $("#geocoder").keydown(function () {
