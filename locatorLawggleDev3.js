@@ -275,7 +275,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         }
 
         if (prop.distance) {
-          console.log("result has distance");
           var roundedDistance = Math.round(prop.distance * 100) / 100;
 
           // If distance is less than 100 then we add active-d class to it
@@ -291,26 +290,17 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         // Event listener added to the link to make it change location on map
         mapButton.addEventListener("click", function (e) {
-          // for (var i = 0; i < data.features.length; i++) {
-          //   // Finding the features of that listing
-          //   if (this.id === "link-" + data.features[i].properties.id) {
-          //     var clickedListing = data.features[i];
-          //     flyToStore(clickedListing);
-          //     createPopUp(clickedListing);
-          //   }
-          // }
-
           flyToStore(store);
           createPopUp(store);
 
           // Removing active tag from currently active listing
-          // var activeItem = document.getElementsByClassName("active");
-          // if (activeItem[0]) {
-          // console.log("active item found", activeItem);
-          // activeItem[0].classList.remove("active");
-          // }
-          // Adding active tag to the clicked active
-          this.parentNode.classList.add("active");
+          var activeItem = document.getElementsByClassName("active");
+          if (activeItem[0]) {
+            console.log("active item found", activeItem);
+            activeItem[0].classList.remove("active");
+          }
+
+          this.closest(".result-item").classList.add("active");
         });
 
         //TODO --------------------------------------- Code for new result above this ---------------------------
@@ -359,7 +349,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         /* Add details to the individual listing. */
         var details = listing.appendChild(document.createElement("div"));
         if (prop.distance) {
-          console.log("prop has distance");
           var roundedDistance = Math.round(prop.distance * 100) / 100;
 
           // If distance is less than 100 then we add active-d class to it
@@ -470,7 +459,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           console.log("firstChild clicking on", firstResult);
 
           //! This is causing map to idle on mobile and show map on first result
-          firstResult.querySelector("a").click();
+          firstResult.querySelector(".view-map-button").click();
           $(".map-display").click();
           console.log("correcting display for mobile");
           // Map-display is the close button for the map
