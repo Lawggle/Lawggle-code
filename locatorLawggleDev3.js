@@ -253,7 +253,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // Getting the View Profile Button and setting properties
         profileButton = resultItem.querySelector(".view-map-button");
         profileButton.id = "link-" + prop.id;
-        profileButton.attr("href", `profile?profile=${prop.mid}`);
+        profileButton.href = `profile?profile=${prop.mid}`;
 
         //TODO --------------------------------------- Code for new result above this ---------------------------
 
