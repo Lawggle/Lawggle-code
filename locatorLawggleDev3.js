@@ -477,14 +477,13 @@ if ($(window).width() < 769) {
 
   // On clicking of the results it show map and hides listings on mobile
   $("#listings").click(function () {
-    console.log("clicked on listing in mobile");
     $(".map-wrap, .map-display").show();
-    $(this).hide();
+    $("#results-wrap").css("display", "none");
   });
 
   // on clicking the close button on map it hides the map and shows listings
   $(".map-display").click(function () {
     $(".map-wrap, .map-display").hide();
-    $("#listings").show();
+    $("#results-wrap").css("display", "block");
   });
 }
