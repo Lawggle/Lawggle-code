@@ -256,7 +256,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
         resultItem.querySelector(".free-consult").innerHTML = prop.consult;
 
-        // TODO add socials links and see map link event listener
+        // TODO add socials links and make them conditionals based on plan ID
 
         if (prop.firm) {
           resultItem.querySelector(".result-profirm").innerHTML = prop.firm;
@@ -303,91 +303,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           this.closest(".result-item").classList.add("active");
         });
 
-        //TODO --------------------------------------- Code for new result above this ---------------------------
-
         // Appending the result Item
         listings.appendChild(resultItem);
-        // var listing = listings.appendChild(document.createElement("div"));
-        var listing = document.createElement("div");
-        // Add ID to the listing
-        listing.id = "listing-" + prop.id;
-        // Add actice-c classname
-        listing.className = "result-item active-c";
-        $("a.dropdown-link").click(function () {
-          $(".filtertag").each(function () {
-            var value = $(this).html();
-            if (value == prop.type) {
-              //  listing.className = 'item';
-            }
-          });
-        });
-        // This is the link that when clicked changes the location on map and adds active class
-        var link = listing.appendChild(document.createElement("a"));
-        link.href = "#";
-        link.className = "details";
-        // #id is added to each link to identify to fly to that position on the map
-        link.id = "link-" + prop.id;
-        // adding image to prop
-        if (prop.image) {
-          link.innerHTML = '<div class="i-wrap"><img src="' + prop.image + '" class="l-profile"></div>';
-        }
-        // This link does nothing since it is enclosed inside another link to change location on map
-        link.innerHTML +=
-          '<a href="profile?profile=' +
-          prop.mid +
-          '" target="_blank" class="blue l-profile-link"><h4>' +
-          prop.name +
-          " " +
-          prop.lastname +
-          "</h4></a>";
-        if (prop.firm) {
-          link.innerHTML += "<h5>" + prop.firm + "<h5>";
-        }
-
-        link.innerHTML += "<span>" + prop.type + "</span>";
-
-        /* Add details to the individual listing. */
-        var details = listing.appendChild(document.createElement("div"));
-        if (prop.distance) {
-          var roundedDistance = Math.round(prop.distance * 100) / 100;
-
-          // If distance is less than 100 then we add active-d class to it
-          if (roundedDistance < 100) {
-            // listing.className = prop.hide + " item active active-d " + prop.plan;
-            //  removed the active-c class from the listing and replaced with active-d
-            listing.className = prop.hide + " result-item active-d " + prop.plan;
-
-            // adding the distance to detail
-            details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
-
-            // This is the link that opens their profile page on a new page
-            details.innerHTML +=
-              '<a href="profile?profile=' +
-              prop.mid +
-              '" target="_blank" class="blue l-profile-link">View Profile &#10230;</a>';
-          }
-        }
-
-        // Event listener added to the link to make it change location on map
-        link.addEventListener("click", function (e) {
-          for (var i = 0; i < data.features.length; i++) {
-            // Finding the features of that listing
-            if (this.id === "link-" + data.features[i].properties.id) {
-              var clickedListing = data.features[i];
-              flyToStore(clickedListing);
-              createPopUp(clickedListing);
-            }
-          }
-
-          // Removing active tag from currently active listing
-          var activeItem = document.getElementsByClassName("active");
-          if (activeItem[0]) {
-            console.log("active item found", activeItem);
-            activeItem[0].classList.remove("active");
-          }
-          // Adding active tag to the clicked active
-          this.parentNode.classList.add("active");
-        });
       });
     }
 
