@@ -119,6 +119,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       // #geocoder is the field where the user inputs place in the "where are you located step"
       document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
       $(".loader").hide();
+
+      console.log("Location stores being built 1");
       buildLocationList(stores);
       addMarkers();
 
@@ -153,6 +155,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         }
 
         // Creating the HTML for the results through this
+        console.log("Location stores being built 2");
         buildLocationList(stores);
 
         // Adding popup in the map for the first result
@@ -276,6 +279,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         /* Add details to the individual listing. */
         var details = listing.appendChild(document.createElement("div"));
         if (prop.distance) {
+          console.log("prop has distance");
           var roundedDistance = Math.round(prop.distance * 100) / 100;
 
           // If distance is less than 100 then we add active-d class to it
@@ -303,11 +307,14 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
               createPopUp(clickedListing);
             }
           }
+
+          // Removing active tag from currently active listing
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
             console.log("active item found", activeItem);
             activeItem[0].classList.remove("active");
           }
+          // Adding active tag to the clicked active
           this.parentNode.classList.add("active");
         });
       });
