@@ -32,10 +32,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         "*"
     );
     url = url.replace(/ /g, "%20");
-    console.log(pro);
-    console.log(expert);
-    console.log(lang);
-    console.log(url);
+    // console.log(pro);
+    // console.log(expert);
+    // console.log(lang);
+    // console.log(url);
     return $.getJSON(url);
   }
 
@@ -131,7 +131,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
       // This is where it stops waiting for user location input
       geocoder.on("result", function (ev) {
-        console.log("ev is", ev);
         var searchResult = ev.result.geometry;
         var options = {
           units: "kilometers",
@@ -161,7 +160,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         }
 
         // Creating the HTML for the results through this
-        console.log("Location stores being built 2");
         buildLocationList(stores);
         addMarkers();
 
@@ -172,7 +170,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
         // activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
-        console.log("bbox results is", bbox);
         map.fitBounds(bbox, {
           padding: 100,
         });
@@ -233,7 +230,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     // Results HTML is created here
     function buildLocationList(data) {
-      console.log("Entered buildLocationList");
+      // console.log("Entered buildLocationList");
       mapIdleCount = 0;
 
       // Getting the template result
@@ -280,7 +277,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // If distance is less than 100 then we add active-d class to it
           if (roundedDistance < 100) {
             resultItem.className = prop.hide + " result-item active-d " + prop.plan;
-            resultItem.querySelector(".result-distance").innerHTML = roundedDistance;
+            resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
           }
         }
 
@@ -296,7 +293,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Removing active tag from currently active listing
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
-            console.log("active item found", activeItem);
             activeItem[0].classList.remove("active");
           }
 
@@ -357,23 +353,20 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         if (document.querySelector(".active-d") !== null) {
           // Remove the no results display
           $(".no-results").removeClass("display");
-          // $('.listload').css("visibility","hidden");
 
           // Show the map
           $(".map").css("visibility", "visible");
 
           var parent = $("#listings");
           var divs = $(".result-item.recurring");
+
+          // Shuffle the paid members
           while (divs.length) {
             parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
           }
 
-          // Removing active class from the current card
-          // var activeItem = document.getElementsByClassName("active");
-          // console.log("active item found in map idle", activeItem);
-          // activeItem[0].classList.remove("active");
           var firstResult = document.getElementsByClassName("active-d")[0];
-          console.log("firstChild clicking on", firstResult);
+          // console.log("firstChild clicking on", firstResult);
 
           //! This is causing map to idle on mobile and show map on first result
           firstResult.querySelector(".view-map-button").click();
@@ -391,28 +384,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           //$(".item.recurring").prependTo("#listings");
         } else {
-          //   If there are no active results within 100kms, show the 'no results' div
           $(".no-results").addClass("display");
-          // $("#listings").css("display", "none");
+
           $(".map").css("visibility", "hidden");
         }
-
-        //  $("#listings .item:first").before( $( ".item.exclusive" ) );
-        // if(!$('.item.active').length){
-        //      $('.no-results').addClass('display');
-
-        //}
-
-        //if(!$('.active-d').length){
-
-        //   $('.no-results').addClass('display');
-        //  $('.map').css("visibility","hidden");
-        // $('.listload').css("visibility","hidden");
-        //   } else {
-        // $('.no-results').removeClass('display');
-        //   $('.map').css("visibility","visible");
-        // $('.listload').css("visibility","hidden");
-        //}
 
         $(".listload").css("visibility", "hidden").delay(1000);
         $(".footer-flex-container").addClass("s-build");
