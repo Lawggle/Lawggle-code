@@ -304,8 +304,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             window.scrollTo(0, 0);
 
             // On clicking of the results it shows map and hides listings on mobile
-            $(".map-wrap, .map-display").show();
+            $(".map-wrap").show();
             $(".results-wrap").css("display", "none");
+            $(".map-display").css("display", "flex");
           }
         });
 
