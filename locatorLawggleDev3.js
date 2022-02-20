@@ -302,6 +302,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           if ($(window).width() < 769) {
             // Scrolls to top on mobile so that map is visible
             window.scrollTo(0, 0);
+
+            // On clicking of the results it show map and hides listings on mobile
+            $(".map-wrap, .map-display").show();
+            $(".results-wrap").css("display", "none");
           }
         });
 
@@ -473,13 +477,8 @@ $("#geocoder").on("select", function () {
 
 if ($(window).width() < 769) {
   // This hides the map for mobile by default
-  $(".map-wrap, .map-display").hide();
 
-  // On clicking of the results it show map and hides listings on mobile
-  $(".view-map-button").click(function () {
-    $(".map-wrap, .map-display").show();
-    $(".results-wrap").css("display", "none");
-  });
+  $(".map-wrap, .map-display").hide();
 
   // on clicking the close button on map it hides the map and shows listings
   $(".map-display").click(function () {
