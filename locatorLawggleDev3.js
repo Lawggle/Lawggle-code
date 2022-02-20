@@ -237,7 +237,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       // Getting the template result
       var templateResult = document.querySelector("#template-result");
 
-      // Running a loop, creating
+      // Running a loop, creating each card here
       data.features.forEach(function (store, i) {
         const resultItem = templateResult.cloneNode(true);
 
@@ -299,11 +299,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           this.closest(".result-item").classList.add("active");
 
-          if ($(window).width() < 769) {
+          if ($(window).width() < 480) {
             // Scrolls to top on mobile so that map is visible
             window.scrollTo(0, 0);
 
-            // On clicking of the results it show map and hides listings on mobile
+            // On clicking of the results it shows map and hides listings on mobile
             $(".map-wrap, .map-display").show();
             $(".results-wrap").css("display", "none");
           }
@@ -475,7 +475,7 @@ $("#geocoder").on("select", function () {
   console.log("tapped");
 });
 
-if ($(window).width() < 769) {
+if ($(window).width() < 480) {
   // This hides the map for mobile by default
 
   $(".map-wrap, .map-display").hide();
