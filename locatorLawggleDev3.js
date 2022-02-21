@@ -337,7 +337,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             resultItem.querySelector(".instagram-url").style.display = "none";
           }
         } else {
-          resultItem.querySelector(".result-socials-block").style.display = none;
+          resultItem.querySelector(".result-socials-block").style.display = "none";
           console.log("hiding socials");
         }
         // Appending the result Item
