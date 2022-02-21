@@ -310,6 +310,36 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           }
         });
 
+        // Adding conditionals for socials based on membership type
+        if (prop.planID != "5ef284eb9eddae000437af3a") {
+          // Url for twitter or hide
+          if (prop.twitter) {
+            resultItem.querySelector(".twitter-url").href = prop.twitter;
+          } else {
+            resultItem.querySelector(".twitter-url").style.display = "none";
+          }
+          // Url for facebook or hide
+          if (prop.facebook) {
+            resultItem.querySelector(".facebook-url").href = prop.facebook;
+          } else {
+            resultItem.querySelector(".facebook-url").style.display = "none";
+          }
+          // Url for linkedin or hide
+          if (prop.linkedin) {
+            resultItem.querySelector(".linkedin-url").href = prop.linkedin;
+          } else {
+            resultItem.querySelector(".linkedin-url").style.display = "none";
+          }
+          // Url for instagram or hide
+          if (prop.instagram) {
+            resultItem.querySelector(".instagram-url").href = prop.instagram;
+          } else {
+            resultItem.querySelector(".instagram-url").style.display = "none";
+          }
+        } else {
+          resultItem.querySelector(".result-socials-block").style.display = none;
+          console.log("hiding socials");
+        }
         // Appending the result Item
         listings.appendChild(resultItem);
       });
