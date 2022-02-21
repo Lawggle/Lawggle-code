@@ -83,6 +83,8 @@ MemberStack.onReady.then(function (member) {
           // Showing the sample row
           newRow.style.display = "flex";
           rowsWrapper.appendChild(newRow);
+
+          $(".no-leads").hide();
         }
       });
     })
