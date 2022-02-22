@@ -449,6 +449,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           // Show the no results display
           $("#no-results").css("display", "block");
+          $("#listings").css("display", "none");
           $(".map").css("visibility", "hidden");
         }
 
