@@ -89,6 +89,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
 var profile = getUrlParameter("profile");
 var url = "https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + profile;
 
+$(".profile-card").css("opacity", "0%");
+$(".profile-details").css("display", "none");
+
 $.ajax({ url: url, success: successFunc });
 
 // scrolls to top on clicking contact button
