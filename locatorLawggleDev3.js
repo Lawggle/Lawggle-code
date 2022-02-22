@@ -412,6 +412,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           const askLawggleCard = document.querySelector(".ask-lawggle");
           listings.appendChild(askLawggleCard);
 
+          // Show Listings
+          $("#listings").css("display", "block");
+
           // Remove the no results display
           $("#no-results").css("display", "none");
 
@@ -450,6 +453,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Show the no results display
           $("#no-results").css("display", "block");
           $("#listings").css("display", "none");
+
           $(".map").css("visibility", "hidden");
         }
 
