@@ -208,27 +208,28 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     function addMarkers() {
       stores.features.forEach(function (marker) {
         if (marker.properties.hide == "yes") {
-          console.log(marker.properties.name + "should be hidden");
+          // Don't create marker for hidden pros
+        } else {
+          var el = document.createElement("div");
+          el.id = "marker-" + marker.properties.id;
+          el.className = "marker";
+          new mapboxgl.Marker(el, {
+            offset: [0, -23],
+          })
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+          el.addEventListener("click", function (e) {
+            flyToStore(marker);
+            createPopUp(marker);
+            var activeItem = document.getElementsByClassName("active");
+            e.stopPropagation();
+            if (activeItem[0]) {
+              activeItem[0].classList.remove("active");
+            }
+            var listing = document.getElementById("listing-" + marker.properties.id);
+            listing.classList.add("active");
+          });
         }
-        var el = document.createElement("div");
-        el.id = "marker-" + marker.properties.id;
-        el.className = "marker";
-        new mapboxgl.Marker(el, {
-          offset: [0, -23],
-        })
-          .setLngLat(marker.geometry.coordinates)
-          .addTo(map);
-        el.addEventListener("click", function (e) {
-          flyToStore(marker);
-          createPopUp(marker);
-          var activeItem = document.getElementsByClassName("active");
-          e.stopPropagation();
-          if (activeItem[0]) {
-            activeItem[0].classList.remove("active");
-          }
-          var listing = document.getElementById("listing-" + marker.properties.id);
-          listing.classList.add("active");
-        });
       });
     }
 
