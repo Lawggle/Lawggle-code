@@ -358,7 +358,7 @@ function successFunc(data) {
       );
 
       if (screen.width > 480) {
-        var contening =
+        var contentString =
           '<div id="content">' +
           '<div id="bodyContent">' +
           "<h4>" +
