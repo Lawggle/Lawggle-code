@@ -445,7 +445,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           //$(".item.recurring").prependTo("#listings");
         } else {
-          $(".no-results").addClass("display");
+          // $(".no-results").addClass("display");
+
+          // Remove the no results display
+          $(".no-results").css("display", "block");
           $(".map").css("visibility", "hidden");
         }
 
