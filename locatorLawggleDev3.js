@@ -436,7 +436,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           const askLawggleCard = document.querySelector(".ask-lawggle");
           listings.appendChild(askLawggleCard);
 
-          var spacingElement = listing.appendChild(document.createElement("div"));
+          var spacingElement = listings.appendChild(document.createElement("div"));
           spacingElement.style.height = "15px";
 
           // Show Listings
