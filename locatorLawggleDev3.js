@@ -513,6 +513,7 @@ jQuery(document).ready(function () {
 
 $("#geocoder").on("select", function () {
   $(".next.button").removeClass("gone");
+  $(".next.button").css("margin-top", "80px");
   // $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
