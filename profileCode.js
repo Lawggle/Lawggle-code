@@ -99,6 +99,7 @@ $(".profile-contact-button").click(function () {
   window.scrollTo(0, 0);
 });
 
+// This function runs when the API returns successfully
 function successFunc(data) {
   //  console.log(data);
 
