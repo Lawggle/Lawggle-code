@@ -113,6 +113,10 @@ function successFunc(data) {
   // Nest everything isnide Memberstack function to have access to the membership type
 
   $.each(data, function (key, value) {
+    $(".profile-card").css("opacity", "100%");
+    $(".profile-details").css("display", "block");
+    $(".profile-animation").css("display", "none");
+
     if (value.Photo) {
       $(".profile-image").attr("src", value.Photo);
     }
