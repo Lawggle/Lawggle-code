@@ -519,10 +519,8 @@ $("#geocoder").on("select", function () {
 
 document.querySelector("#geocoder").onclick = function () {
   if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-    $("#geocoder").keydown(function () {
-      $(".next.button").removeClass("gone");
-      $(".next.button").css("margin-top", "80px");
-    });
+    $(".next.button").removeClass("gone");
+    $(".next.button").css("margin-top", "80px");
   }
 };
 
