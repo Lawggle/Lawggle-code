@@ -331,25 +331,49 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         if (prop.planID != "5ef284eb9eddae000437af3a") {
           // Url for twitter or hide
           if (prop.twitter) {
-            resultItem.querySelector(".twitter-url").href = prop.twitter;
+            // Adding https if not present
+            if (!prop.twitter.startsWith("https")) {
+              var twitterUrl = `https://${value.twitter}`;
+            } else {
+              var twitterUrl = prop.twitter;
+            }
+            resultItem.querySelector(".twitter-url").href = twitterUrl;
           } else {
             resultItem.querySelector(".twitter-url").style.display = "none";
           }
           // Url for facebook or hide
           if (prop.facebook) {
-            resultItem.querySelector(".facebook-url").href = prop.facebook;
+            if (!prop.facebook.startsWith("https")) {
+              var facebookUrl = `https://${value.facebook}`;
+            } else {
+              var facebookUrl = prop.facebook;
+            }
+
+            resultItem.querySelector(".facebook-url").href = facebookUrl;
           } else {
             resultItem.querySelector(".facebook-url").style.display = "none";
           }
           // Url for linkedin or hide
           if (prop.linkedin) {
-            resultItem.querySelector(".linkedin-url").href = prop.linkedin;
+            if (!prop.linkedin.startsWith("https")) {
+              var linkedinUrl = `https://${value.linkedin}`;
+            } else {
+              var linkedinUrl = prop.linkedin;
+            }
+
+            resultItem.querySelector(".linkedin-url").href = linkedinUrl;
           } else {
             resultItem.querySelector(".linkedin-url").style.display = "none";
           }
           // Url for instagram or hide
           if (prop.instagram) {
-            resultItem.querySelector(".instagram-url").href = prop.instagram;
+            if (!prop.instagram.startsWith("https")) {
+              var instagramUrl = `https://${value.instagram}`;
+            } else {
+              var instagramUrl = prop.instagram;
+            }
+
+            resultItem.querySelector(".instagram-url").href = instagramUrl;
           } else {
             resultItem.querySelector(".instagram-url").style.display = "none";
           }
