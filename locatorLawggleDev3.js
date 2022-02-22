@@ -241,12 +241,13 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       // Getting the template result
       var templateResult = document.querySelector("#template-result");
 
+      var listings = document.getElementById("listings");
+
       // Running a loop, creating each card here
       data.features.forEach(function (store, i) {
         const resultItem = templateResult.cloneNode(true);
 
         var prop = store.properties;
-        var listings = document.getElementById("listings");
 
         // Setting the properties/details of the result
         resultItem.id = "listing-" + prop.id;
@@ -407,6 +408,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         //   Checking if there are any active results, class of ".active-d"
         if (document.querySelector(".active-d") !== null) {
+          // Adding ask lawggle card
+          const askLawggleCard = document.querySelector(".ask-lawggle");
+          listings.appendChild(askLawggleCard);
+
           // Remove the no results display
           $(".no-results").removeClass("display");
 
@@ -441,7 +446,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           //$(".item.recurring").prependTo("#listings");
         } else {
           $(".no-results").addClass("display");
-
           $(".map").css("visibility", "hidden");
         }
 
