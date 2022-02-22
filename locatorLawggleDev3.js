@@ -254,16 +254,16 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         // Conditional for rate
         if (prop.rate) {
-          resultItem.querySelector(".rates-details").style.display = "none";
-        } else {
           resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
+        } else {
+          resultItem.querySelector(".rates-details").style.display = "none";
         }
 
         // Conditional for Consultation
         if (prop.consult) {
-          resultItem.querySelector(".consultation-details").style.display = "none";
-        } else {
           resultItem.querySelector(".free-consult").innerHTML = prop.consult;
+        } else {
+          resultItem.querySelector(".consultation-details").style.display = "none";
         }
 
         // TODO add socials links and make them conditionals based on plan ID
