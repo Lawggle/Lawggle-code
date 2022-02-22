@@ -512,7 +512,7 @@ jQuery(document).ready(function () {
 });
 
 $("#geocoder").on("select", function () {
-  // $(".next.button").trigger("tap");
+  $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
 });
