@@ -207,6 +207,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     // Markers for the map are added here
     function addMarkers() {
       stores.features.forEach(function (marker) {
+        if (marker.properties.hide == "yes") {
+          console.log(marker.properties.name + "should be hidden");
+        }
         var el = document.createElement("div");
         el.id = "marker-" + marker.properties.id;
         el.className = "marker";
@@ -511,15 +514,17 @@ jQuery(document).ready(function () {
   }
 });
 
+// Tapping the next button automatically on slecting location (doesn't work for Ipad)
 $("#geocoder").on("select", function () {
   $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
 });
 
+// Adding next button to the select location step
 document.querySelector("#geocoder").onclick = function () {
   $(".next.button").removeClass("gone");
-  $(".next.button").css("margin-top", "60px");
+  $(".next.button").css("margin-top", "80px");
 };
 
 if ($(window).width() < 480) {
