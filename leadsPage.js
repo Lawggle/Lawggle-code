@@ -8,12 +8,16 @@ MemberStack.onReady.then(function (member) {
   // Hiding the sample row
   templateRow.style.display = "none";
 
+  $(".table-wrapper").css("opacity", "0%");
+
   const rowsWrapper = document.querySelector(".table-data-wrapper");
 
   //   Make API call to google sheet and get data
   fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/MID/${mID}`)
     .then((response) => response.json())
     .then((data) => {
+      $(".table-wrapper").css("opacity", "100%");
+      $(".leads-animation").css("display", "none");
       console.log("data is", data);
       var count = 0;
       //   Run loop on returned results and render inside row container
