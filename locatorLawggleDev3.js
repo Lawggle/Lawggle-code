@@ -404,7 +404,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
         $(".listload").css("visibility", "visible");
-        $(".no-results").removeClass("display");
+        $("#no-results").removeClass("display");
 
         //   Checking if there are any active results, class of ".active-d"
         if (document.querySelector(".active-d") !== null) {
@@ -413,7 +413,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           listings.appendChild(askLawggleCard);
 
           // Remove the no results display
-          $(".no-results").removeClass("display");
+          $("#no-results").removeClass("display");
 
           // Show the map
           $(".map").css("visibility", "visible");
@@ -445,10 +445,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           //$(".item.recurring").prependTo("#listings");
         } else {
-          // $(".no-results").addClass("display");
+          // $("#no-results").addClass("display");
 
           // Remove the no results display
-          $(".no-results").css("display", "block");
+          $("#no-results").css("display", "block");
           $(".map").css("visibility", "hidden");
         }
 
