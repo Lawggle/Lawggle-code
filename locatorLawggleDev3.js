@@ -413,7 +413,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           listings.appendChild(askLawggleCard);
 
           // Remove the no results display
-          $("#no-results").removeClass("display");
+          $("#no-results").css("display", "none");
 
           // Show the map
           $(".map").css("visibility", "visible");
@@ -447,7 +447,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         } else {
           // $("#no-results").addClass("display");
 
-          // Remove the no results display
+          // Show the no results display
           $("#no-results").css("display", "block");
           $(".map").css("visibility", "hidden");
         }
