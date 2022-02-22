@@ -2,7 +2,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"></script>
 <style> 
 
-.listings .item.yes {
+.listings .result-item.yes {
 display: none!important; 
 }
  #selectorTags {
@@ -29,11 +29,11 @@ display: inline-block;
   padding: 20px;
   background: #fff;
 }
-.listings .item.active-c {
-display: none!important;
+.listings .result-item.active-c {
+display: none!important; 
 }
-.listings .item.active-d {
-display: block;
+.listings .result-item.active-d {
+display: flex;
 }
 .item.non-active {
 display: none;
@@ -55,91 +55,45 @@ min-height: 90px;
   font-weight: 700;
   font-size: 16px;
 }
-.l-profile {
-width: 80px;
-margin-right: 10px;
-float: left;
-display: inline-block;
-}
-.l-profile-link {
-display: block;
-padding: 4px 0;
-text-decoration: none;
-color: #00adee;
-font-size: 14px;
-}
+
 .item .l-profile-link {
 padding-left: 90px;
 }
 .content-l {
 padding: 0 10px 6px;
 }
-.content-l span,
-.details span {
-background: #f3f3f3;
-    border-radius: 20px;
-    padding: 3px 10px;
-    }
-    .details span {
-   background: #fff;
-    display: table-cell;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 0px 8px;
-    line-height: 20px;
-    border: 1px solid #ddd;
-    }
 .listings .item .title small { font-weight: 400; }
 
 .listings .item.active .title,
 .listings .item .title:hover { color: #333; }
 
-.listings .item.active {
-  background: #fff;
-  border-left: 4px solid #00adee;
-  display: block;
-}
-.item .details {
-color: #333;
-line-height: 1.6em;
-text-decoration: none;
-display: block;
-font-size: 14px;
-overflow: hidden;
-}
 .mapboxgl-popup-content h4{
 font-size: 16px;
 color: #fff;
 }
-.item .details h4 {
-font-size: 16px;
-color: #333;
-margin: 0px
-}
-.item .details h5 {
-margin: 6px 0;
-}
+
 .mapboxgl-popup-content .mapboxgl-popup-close-button {
 color: #fff;
+min-height: 10px;
+min-width: 10px;
 }
 .mapboxgl-popup .mapboxgl-popup-content {
-padding: 0px;
+padding: 1px;
 }
 .mapboxgl-popup .mapboxgl-popup-content h4 {
 margin: 0;
 padding: 6px 20px;
 background: #00adee;
 }
-
 .mapboxgl-popup {
   max-width: 200px;
 }
 .marker {
     border: none;
     cursor: pointer;
-    height: 56px;
-    width: 56px;
-    background-image: url("https://i.imgur.com/MK4NUzI.png");
+    height: 40px;
+    width: 40px;
+    background-image: url("https://uploads-ssl.webflow.com/5e5dd661bbf5f1863333707a/6214115a3c12d53181076626_map%20pin.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0, 0, 0, 0);
@@ -153,7 +107,7 @@ background: #00adee;
 
 ::-webkit-scrollbar {
   width: 0px;
-  height: 3px;
+  height: 1px;
   border-left: 0;
   background: rgba(0, 0, 0, 0.1);
 }
@@ -161,11 +115,12 @@ background: #00adee;
 ::-webkit-scrollbar-track {
   background: none;
 }
-
+/*
 ::-webkit-scrollbar-thumb {
   background: #00853e;
   border-radius: 0;
 }
+*/
 .gone {
 opacity: 0;
 }
@@ -230,10 +185,6 @@ width: 90vw;
 .mapboxgl-canvas {
     left: 0;
     bottom: 0;
-}
-.main-wrapper .hero-section {
-padding-top: 80px;
-}
 }
 .item.exclusive {
     background: #f3f3f3!important;
