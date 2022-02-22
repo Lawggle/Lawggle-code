@@ -518,10 +518,8 @@ $("#geocoder").on("select", function () {
 });
 
 document.querySelector("#geocoder").onclick = function () {
-  if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-    $(".next.button").removeClass("gone");
-    $(".next.button").css("margin-top", "80px");
-  }
+  $(".next.button").removeClass("gone");
+  $(".next.button").css("margin-top", "60px");
 };
 
 if ($(window).width() < 480) {
