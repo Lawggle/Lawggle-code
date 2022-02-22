@@ -251,8 +251,20 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         resultItem.querySelector(".result-protype").innerHTML = prop.type;
         resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
         resultItem.querySelector(".result-language").innerHTML = prop.language;
-        resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
-        resultItem.querySelector(".free-consult").innerHTML = prop.consult;
+
+        // Conditional for rate
+        if (prop.rate) {
+          resultItem.querySelector(".rates-details").style.display = "none";
+        } else {
+          resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
+        }
+
+        // Conditional for Consultation
+        if (prop.consult) {
+          resultItem.querySelector(".consultation-details").style.display = "none";
+        } else {
+          resultItem.querySelector(".free-consult").innerHTML = prop.consult;
+        }
 
         // TODO add socials links and make them conditionals based on plan ID
 
@@ -338,7 +350,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           }
         } else {
           resultItem.querySelector(".result-socials-block").style.display = "none";
-          console.log("hiding socials");
         }
         // Appending the result Item
         listings.appendChild(resultItem);
