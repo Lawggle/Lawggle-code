@@ -118,8 +118,11 @@ MemberStack.onReady.then(function (member) {
         var totalClicks = 0;
         campaigns.forEach((booster) => {
           totalClicks = totalClicks + booster.Clicks;
+
+          console.log("booster clicks", booster.Clicks);
         });
 
+        console.log("total clicks", totalClicks);
         $("#total-clicks").text(totalClicks);
       })
       .catch((error) => {
