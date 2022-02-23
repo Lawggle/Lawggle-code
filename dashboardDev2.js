@@ -96,24 +96,31 @@ MemberStack.onReady.then(function (member) {
 
   const getStats = () => {
     // Get the leads stats
-    //   Make API call to google sheet and get data
+    //   Make API call to google sheet and get leads data
     fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/MID/${mID}`)
       .then((response) => response.json())
-      .then((data) => {
-        $("#active-leads").text(data.length);
-        console.log("data length is", data.length);
+      .then((leads) => {
+        $("#active-leads").text(leads.length);
+        console.log("leads length is", leads.length);
       })
       .catch((error) => {
         console.error(error);
       });
 
-    //   Make API call to google sheet and get leads data
+    //   Make API call to google sheet and get boosters data
     fetch(`https://sheet.best/api/sheets/9a50a3e6-171c-4369-a6a0-9f97aa4f56d6/MID/${mID}`)
       .then((response) => response.json())
-      .then((data) => {
-        $("#total-campaigns").text(data.length);
-        console.log("boosters length is", data.length);
-        console.log("boosters are", data);
+      .then((campaigns) => {
+        $("#total-campaigns").text(campaigns.length);
+
+        console.log("boosters are", campaigns);
+
+        var totalClicks = 0;
+        campaigns.forEach((booster) => {
+          totalClicks = totalClicks + booster.Clicks;
+        });
+
+        $("#total-clicks").text(totalClicks);
       })
       .catch((error) => {
         console.error(error);
