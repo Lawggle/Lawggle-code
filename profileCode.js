@@ -132,6 +132,10 @@ function successFunc(data) {
     }
     $(".profile-type").text(value["Type of Pro"]);
 
+    if (value["Type of Pro"] == ("Notary" || "Paralegal" || "Court Agent")) {
+      $("#areas-block").css("display", "none");
+    }
+
     if (value.Firm) {
       $(".profile-firm").text(value.Firm);
     } else {
