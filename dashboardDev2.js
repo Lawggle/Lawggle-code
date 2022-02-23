@@ -115,9 +115,9 @@ MemberStack.onReady.then(function (member) {
 
         console.log("boosters are", campaigns);
 
-        var totalClicks = 0;
+        let totalClicks = 0;
         campaigns.forEach((booster) => {
-          totalClicks = totalClicks + booster.Clicks;
+          totalClicks = parseInt(totalClicks) + parseInt(booster.Clicks);
 
           console.log("booster clicks", booster.Clicks);
         });
