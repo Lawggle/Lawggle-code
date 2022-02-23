@@ -333,7 +333,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           if (prop.twitter) {
             // Adding https if not present
             if (!prop.twitter.startsWith("https")) {
-              var twitterUrl = `https://${value.twitter}`;
+              var twitterUrl = `https://${prop.twitter}`;
             } else {
               var twitterUrl = prop.twitter;
             }
@@ -344,7 +344,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Url for facebook or hide
           if (prop.facebook) {
             if (!prop.facebook.startsWith("https")) {
-              var facebookUrl = `https://${value.facebook}`;
+              var facebookUrl = `https://${prop.facebook}`;
             } else {
               var facebookUrl = prop.facebook;
             }
@@ -356,7 +356,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Url for linkedin or hide
           if (prop.linkedin) {
             if (!prop.linkedin.startsWith("https")) {
-              var linkedinUrl = `https://${value.linkedin}`;
+              var linkedinUrl = `https://${prop.linkedin}`;
             } else {
               var linkedinUrl = prop.linkedin;
             }
@@ -368,7 +368,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Url for instagram or hide
           if (prop.instagram) {
             if (!prop.instagram.startsWith("https")) {
-              var instagramUrl = `https://${value.instagram}`;
+              var instagramUrl = `https://${prop.instagram}`;
             } else {
               var instagramUrl = prop.instagram;
             }
