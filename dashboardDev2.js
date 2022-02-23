@@ -101,7 +101,6 @@ MemberStack.onReady.then(function (member) {
       .then((response) => response.json())
       .then((leads) => {
         $("#active-leads").text(leads.length);
-        console.log("leads length is", leads.length);
       })
       .catch((error) => {
         console.error(error);
@@ -113,16 +112,11 @@ MemberStack.onReady.then(function (member) {
       .then((campaigns) => {
         $("#total-campaigns").text(campaigns.length);
 
-        console.log("boosters are", campaigns);
-
         let totalClicks = 0;
         campaigns.forEach((booster) => {
           totalClicks = parseInt(totalClicks) + parseInt(booster.Clicks);
-
-          console.log("booster clicks", booster.Clicks);
         });
 
-        console.log("total clicks", totalClicks);
         $("#total-clicks").text(totalClicks);
       })
       .catch((error) => {
