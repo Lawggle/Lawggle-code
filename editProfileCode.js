@@ -1,3 +1,5 @@
+var makeCall = true;
+
 function unselectLawAreas() {
   $.each($("#Area-law option:selected"), function () {
     $(this).prop("selected", false);
@@ -28,7 +30,7 @@ const checkForContactInfo = (fieldName, fieldValue) => {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain links`);
     $("#updateLoading").css("opacity", "0");
-    return false;
+    makeCall = false;
   }
 
   var numberMatch = fieldValue.match(/[0-9][0-9][0-9][0-9]/);
@@ -36,9 +38,8 @@ const checkForContactInfo = (fieldName, fieldValue) => {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
     $("#updateLoading").css("opacity", "0");
-    return false;
+    makeCall = false;
   }
-  return true;
 };
 
 // Resets options for Area of Law based on type of profession
@@ -261,7 +262,7 @@ MemberStack.onReady.then(function (member) {
     if ($("#wf-form-Contact-Form").valid()) {
     }
     $("#updateLoading").css("opacity", "1");
-    var makeCall = true;
+    makeCall = true;
     var firm = $("#Firm").val();
     if (
       !firm &&
@@ -324,7 +325,7 @@ MemberStack.onReady.then(function (member) {
       $(".alert-msg").text("Please enter your bio");
       $("#updateLoading").css("opacity", "0");
     }
-    makeCall = checkForContactInfo("Bio", bioValue);
+    checkForContactInfo("Bio", bioValue);
     var bio = bioValue.replace(/\n/g, "<br />");
 
     //var bio = $("#Bio").val();
