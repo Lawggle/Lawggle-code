@@ -93,6 +93,34 @@ MemberStack.onReady.then(function (member) {
       .then(console.log)
       .catch(console.error);
   });
+
+  const getStats = () => {
+    // Get the leads stats
+    //   Make API call to google sheet and get data
+    fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/MID/${mID}`)
+      .then((response) => response.json())
+      .then((data) => {
+        $("#active-leads").text(data.length);
+        console.log("data length is", data.length);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    //   Make API call to google sheet and get leads data
+    fetch(`https://sheet.best/api/sheets/9a50a3e6-171c-4369-a6a0-9f97aa4f56d6/MID/${mID}`)
+      .then((response) => response.json())
+      .then((data) => {
+        $("#total-campaigns").text(data.length);
+        console.log("boosters length is", data.length);
+        console.log("boosters are", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  getStats();
 });
 
 $("#addMember").on("click", function () {
