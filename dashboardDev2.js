@@ -7,9 +7,9 @@ MemberStack.onReady.then(function (member) {
   var mEmail = member["email"];
   var mPhone = member["phone"];
   
-  $("#mPlan").val(mPlan);
-  $("#mEmail").val(mEmail);
-  $("#mPhone").val(mPhone);
+  $("#mPlan").text(mPlan);
+  $("#mEmail").text(mEmail);
+  $("#mPhone").text(mPhone);
   
   console.log(plan);
   if (membership == "5ef284eb9eddae000437af3a") {
