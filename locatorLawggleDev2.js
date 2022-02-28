@@ -430,6 +430,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
         $(".listload").css("visibility", "visible");
+        $(".map").css("visibility", "hidden");
 
         //   Checking if there are any active results, class of ".active-d"
         if (document.querySelector(".active-d") !== null) {
@@ -497,6 +498,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           var spacingElement = listings.appendChild(document.createElement("div"));
           spacingElement.style.height = "15px";
+
+          $(".map").css("visibility", "visible");
           // $("#listings").css("display", "none");
         } else if (locationSelected) {
           // Show the no-results display
