@@ -430,7 +430,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
         $(".listload").css("visibility", "visible");
-        $("#no-results").removeClass("display");
 
         //   Checking if there are any active results, class of ".active-d"
         if (document.querySelector(".active-d") !== null) {
