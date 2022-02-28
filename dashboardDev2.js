@@ -3,6 +3,14 @@ MemberStack.onReady.then(function (member) {
   var Firm = member["firm-name"];
   var membership = member.membership;
   var plan = membership.id;
+  var mPlan = membership.name;
+  var mEmail = member["email"];
+  var mPhone = member["phone"];
+  
+  $("#mPlan").text(mPlan);
+  $("#mEmail").text(mEmail);
+  $("#mPhone").text(mPhone);
+  
   console.log(plan);
   if (membership == "5ef284eb9eddae000437af3a") {
     $("#upGrade").show();
@@ -25,11 +33,11 @@ MemberStack.onReady.then(function (member) {
   if (plan == "620dd81e87772e0004fa3d94") {
     $(".firm-adds").hide();
   }
-
   if (Firm) {
     $("#Firm-2").val(Firm);
   }
 
+  
   fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID)
     .then((response) => response.json())
     .then((data) => {
