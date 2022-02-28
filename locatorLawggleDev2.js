@@ -293,11 +293,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         if (prop.distance) {
           var roundedDistance = Math.round(prop.distance * 100) / 100;
+          resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
 
           // If distance is less than 100 then we add active-d class to it
           if (roundedDistance < 100) {
             resultItem.className = prop.hide + " result-item active-d " + prop.plan;
-            resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
           }
         }
 
