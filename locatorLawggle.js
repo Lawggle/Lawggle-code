@@ -16,6 +16,9 @@ $("#Expertise .w-dropdown-link").click(function () {
   expert = $(this).html();
   $("#Expertise").html(this);
 });
+
+// ---------------------------------------------------- Search function starts ----------------------------------------------------
+
 $("#fireSearch .w-dropdown-link").on("click", function () {
   $(".loader").show();
   function test(type, language) {
@@ -29,14 +32,17 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         "*"
     );
     url = url.replace(/ /g, "%20");
-    console.log(pro);
-    console.log(expert);
-    console.log(url);
-    console.log(lang);
-    console.log(url);
+    // console.log(pro);
+    // console.log(expert);
+    // console.log(lang);
+    // console.log(url);
     return $.getJSON(url);
   }
+
+  // Once the api returns results
   $.when(test()).then(function (jsonData) {
+    console.log("entered when test function");
+
     if (!("remove" in Element.prototype)) {
       Element.prototype.remove = function () {
         if (this.parentNode) {
@@ -44,7 +50,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         }
       };
     }
+
+    // This is the access token of the MapBox api
     mapboxgl.accessToken = "pk.eyJ1IjoibGF3Z2dsZSIsImEiOiJja2RraDU0ZnYwb2lqMnhwbWw2eXVrMjNrIn0.ShD8eyKTv7exWDKR44bSoA";
+
+    // New map gets created here
     var map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/lawggle/ckdkhap9e159e1imq6foj0ln5",
@@ -55,10 +65,13 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     });
     map.addControl(new mapboxgl.NavigationControl());
 
+    // Stores object created
     var stores = {
       type: "FeatureCollection",
       features: [],
     };
+
+    // Adding data from the search results into the features in stores object
     for (i = 0; i < jsonData.length; i++)
       stores.features.push({
         type: "Feature",
@@ -70,9 +83,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           mid: jsonData[i].MID,
           name: jsonData[i]["First Name"],
           plan: jsonData[i]["Membership Type"],
+          planID: jsonData[i]["Membership Plan ID"],
           profile: jsonData[i].Bio,
           lastname: jsonData[i]["Last Name"],
           firm: jsonData[i].Firm,
+          area: jsonData[i]["Area of Law"],
           //"city": jsonData[i].City,
           type: jsonData[i]["Type of Pro"],
           image: jsonData[i].Photo,
@@ -82,12 +97,15 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           twitter: jsonData[i].Twitter,
           facebook: jsonData[i].Facebook,
           linkedin: jsonData[i].Linkedin,
+          instagram: jsonData[i].Instagram,
+          rate: jsonData[i]["Hourly Rate"],
           hide: jsonData[i].Hide,
           address: jsonData[i].Address,
+          consult: jsonData[i].Consult,
         },
       });
 
-    console.log(stores);
+    console.log("These are stores", stores);
 
     map.on("load", function (e) {
       console.log("Entered map load");
@@ -104,11 +122,15 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         placeholder: "Address, city or postal code...",
       });
 
+      // #geocoder is the field where the user inputs place in the "where are you located step"
       document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
       $(".loader").hide();
-      buildLocationList(stores);
-      addMarkers();
 
+      // console.log("Location stores being built 1");
+      // buildLocationList(stores);
+      // addMarkers();
+
+      // This is where it stops waiting for user location input
       geocoder.on("result", function (ev) {
         var searchResult = ev.result.geometry;
         var options = {
@@ -122,6 +144,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             configurable: true,
           });
         });
+
+        // This sorts it in ascending order of distance
         stores.features.sort(function (a, b) {
           if (a.properties.distance > b.properties.distance) {
             return 1;
@@ -135,10 +159,17 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         while (listings.firstChild) {
           listings.removeChild(listings.firstChild);
         }
+
+        // Creating the HTML for the results through this
         buildLocationList(stores);
+        addMarkers();
+
+        // Adding popup in the map for the first result
         createPopUp(stores.features[0]);
-        var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
-        activeListing.classList.add("active");
+
+        // Adding the active listing class to the nearest result
+        // var activeListing = document.getElementById("listing-" + stores.features[0].properties.id);
+        // activeListing.classList.add("active");
         var bbox = getBbox(stores, 0, searchResult);
         map.fitBounds(bbox, {
           padding: 100,
@@ -173,100 +204,191 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       ];
     }
 
+    // Markers for the map are added here
     function addMarkers() {
       stores.features.forEach(function (marker) {
-        var el = document.createElement("div");
-        el.id = "marker-" + marker.properties.id;
-        el.className = "marker";
-        new mapboxgl.Marker(el, {
-          offset: [0, -23],
-        })
-          .setLngLat(marker.geometry.coordinates)
-          .addTo(map);
-        el.addEventListener("click", function (e) {
-          flyToStore(marker);
-          createPopUp(marker);
-          var activeItem = document.getElementsByClassName("active");
-          e.stopPropagation();
-          if (activeItem[0]) {
-            activeItem[0].classList.remove("active");
-          }
-          var listing = document.getElementById("listing-" + marker.properties.id);
-          listing.classList.add("active");
-        });
+        if (marker.properties.hide == "yes") {
+          // Don't create marker for hidden pros
+        } else {
+          var el = document.createElement("div");
+          el.id = "marker-" + marker.properties.id;
+          el.className = "marker";
+          new mapboxgl.Marker(el, {
+            offset: [0, -23],
+          })
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+          el.addEventListener("click", function (e) {
+            flyToStore(marker);
+            createPopUp(marker);
+            var activeItem = document.getElementsByClassName("active");
+            e.stopPropagation();
+            if (activeItem[0]) {
+              activeItem[0].classList.remove("active");
+            }
+            var listing = document.getElementById("listing-" + marker.properties.id);
+            listing.classList.add("active");
+          });
+        }
       });
     }
 
+    // Results HTML is created here
     function buildLocationList(data) {
+      // console.log("Entered buildLocationList");
+      mapIdleCount = 0;
+
+      // Getting the template result
+      var templateResult = document.querySelector("#template-result");
+
+      var listings = document.getElementById("listings");
+
+      // Running a loop, creating each card here
       data.features.forEach(function (store, i) {
+        const resultItem = templateResult.cloneNode(true);
+
         var prop = store.properties;
-        var listings = document.getElementById("listings");
-        var listing = listings.appendChild(document.createElement("div"));
-        listing.id = "listing-" + prop.id;
-        listing.className = "item active active-c";
-        $("a.dropdown-link").click(function () {
-          $(".filtertag").each(function () {
-            var value = $(this).html();
-            if (value == prop.type) {
-              //  listing.className = 'item';
-            }
-          });
-        });
-        var link = listing.appendChild(document.createElement("a"));
-        link.href = "#";
-        link.className = "details";
-        link.id = "link-" + prop.id;
-        if (prop.image) {
-          link.innerHTML = '<div class="i-wrap"><img src="' + prop.image + '" class="l-profile"></div>';
+
+        // Setting the properties/details of the result
+        resultItem.id = "listing-" + prop.id;
+        resultItem.className = "result-item active-c";
+        resultItem.querySelector(".result-name").innerHTML = `${prop.name} ${prop.lastname}`;
+        resultItem.querySelector(".result-protype").innerHTML = prop.type;
+        resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
+        resultItem.querySelector(".result-language").innerHTML = prop.language;
+
+        // Conditional for rate
+        if (prop.rate) {
+          resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
+        } else {
+          resultItem.querySelector(".rates-details").style.display = "none";
         }
-        link.innerHTML +=
-          '<a href="profile?profile=' +
-          prop.mid +
-          '" target="_blank" class="blue l-profile-link"><h4>' +
-          prop.name +
-          " " +
-          prop.lastname +
-          "</h4></a>";
+
+        // Conditional for Consultation
+        if (prop.consult) {
+          resultItem.querySelector(".free-consult").innerHTML = prop.consult;
+        } else {
+          resultItem.querySelector(".consultation-details").style.display = "none";
+        }
+
+        // TODO add socials links and make them conditionals based on plan ID
+
         if (prop.firm) {
-          link.innerHTML += "<h5>" + prop.firm + "<h5>";
+          resultItem.querySelector(".result-profirm").innerHTML = prop.firm;
+        } else {
+          resultItem.querySelector(".result-profirm").innerHTML = "";
         }
 
-        link.innerHTML += "<span>" + prop.type + "</span>";
+        // Getting the View Profile Button and setting properties
+        profileButton = resultItem.querySelector(".view-profile-button");
+        profileButton.id = "link-" + prop.id;
+        profileButton.href = `profile?profile=${prop.mid}`;
 
-        /* Add details to the individual listing. */
-        var details = listing.appendChild(document.createElement("div"));
+        // Adding image to Result
+        if (prop.image) {
+          resultItem.querySelector(".result-image").src = prop.image;
+        }
+
         if (prop.distance) {
           var roundedDistance = Math.round(prop.distance * 100) / 100;
+
+          // If distance is less than 100 then we add active-d class to it
           if (roundedDistance < 100) {
-            listing.className = prop.hide + " item active active-d " + prop.plan;
-            details.innerHTML += '<p class="l-distance"><strong>' + roundedDistance + " kms away</strong></p>";
-            details.innerHTML +=
-              '<a href="profile?profile=' +
-              prop.mid +
-              '" target="_blank" class="blue l-profile-link">View Profile &#10230;</a>';
+            resultItem.className = prop.hide + " result-item active-d " + prop.plan;
+            resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
           }
         }
-        link.addEventListener("click", function (e) {
-          for (var i = 0; i < data.features.length; i++) {
-            if (this.id === "link-" + data.features[i].properties.id) {
-              var clickedListing = data.features[i];
-              flyToStore(clickedListing);
-              createPopUp(clickedListing);
-            }
-          }
+
+        // Getting the View Map Button and setting properties
+        mapButton = resultItem.querySelector(".view-map-button");
+        mapButton.id = "link-" + prop.id;
+
+        // Event listener added to the link to make it change location on map
+        mapButton.addEventListener("click", function (e) {
+          flyToStore(store);
+          createPopUp(store);
+
+          // Removing active tag from currently active listing
           var activeItem = document.getElementsByClassName("active");
           if (activeItem[0]) {
             activeItem[0].classList.remove("active");
           }
-          this.parentNode.classList.add("active");
+
+          this.closest(".result-item").classList.add("active");
+
+          if ($(window).width() < 480) {
+            // Scrolls to top on mobile so that map is visible
+            window.scrollTo(0, 0);
+
+            // On clicking of the results it shows map and hides listings on mobile
+            $(".map-wrap").show();
+            $(".results-wrap").css("display", "none");
+            $(".map-display").css("display", "flex");
+          }
         });
+
+        // Adding conditionals for socials based on membership type
+        if (prop.planID != "5ef284eb9eddae000437af3a") {
+          // Url for twitter or hide
+          if (prop.twitter) {
+            // Adding https if not present
+            if (!prop.twitter.startsWith("https")) {
+              var twitterUrl = `https://${prop.twitter}`;
+            } else {
+              var twitterUrl = prop.twitter;
+            }
+            resultItem.querySelector(".twitter-url").href = twitterUrl;
+          } else {
+            resultItem.querySelector(".twitter-url").style.display = "none";
+          }
+          // Url for facebook or hide
+          if (prop.facebook) {
+            if (!prop.facebook.startsWith("https")) {
+              var facebookUrl = `https://${prop.facebook}`;
+            } else {
+              var facebookUrl = prop.facebook;
+            }
+
+            resultItem.querySelector(".facebook-url").href = facebookUrl;
+          } else {
+            resultItem.querySelector(".facebook-url").style.display = "none";
+          }
+          // Url for linkedin or hide
+          if (prop.linkedin) {
+            if (!prop.linkedin.startsWith("https")) {
+              var linkedinUrl = `https://${prop.linkedin}`;
+            } else {
+              var linkedinUrl = prop.linkedin;
+            }
+
+            resultItem.querySelector(".linkedin-url").href = linkedinUrl;
+          } else {
+            resultItem.querySelector(".linkedin-url").style.display = "none";
+          }
+          // Url for instagram or hide
+          if (prop.instagram) {
+            if (!prop.instagram.startsWith("https")) {
+              var instagramUrl = `https://${prop.instagram}`;
+            } else {
+              var instagramUrl = prop.instagram;
+            }
+
+            resultItem.querySelector(".instagram-url").href = instagramUrl;
+          } else {
+            resultItem.querySelector(".instagram-url").style.display = "none";
+          }
+        } else {
+          resultItem.querySelector(".result-socials-block").style.display = "none";
+        }
+        // Appending the result Item
+        listings.appendChild(resultItem);
       });
     }
 
     function flyToStore(currentFeature) {
       map.flyTo({
         center: currentFeature.geometry.coordinates,
-        zoom: 10,
+        zoom: 15,
       });
     }
 
@@ -298,56 +420,79 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
     $("#listings").click(function () {
       map.resize();
     });
+
+    var mapIdleCount = 0;
     map.on("idle", () => {
-      console.log("entered map idle");
-      $(".listload").css("visibility", "visible");
-      $(".no-results").removeClass("display");
+      if (mapIdleCount < 1) {
+        mapIdleCount++;
+        console.log("entered map idle", mapIdleCount);
+        window.scrollTo(0, 0);
+        $(".listload").css("visibility", "visible");
+        $("#no-results").removeClass("display");
 
-      //   Checking if there are any active results, class of ".active-d"
-      if (document.querySelector(".active-d") !== null) {
-        $(".no-results").removeClass("display");
-        // $('.listload').css("visibility","hidden");
+        //   Checking if there are any active results, class of ".active-d"
+        if (document.querySelector(".active-d") !== null) {
+          // Adding ask lawggle card
+          const askLawggleCard = document.querySelector(".ask-lawggle");
+          listings.appendChild(askLawggleCard);
 
-        $(".map").css("visibility", "visible");
+          var spacingElement = listings.appendChild(document.createElement("div"));
+          spacingElement.style.height = "15px";
 
-        var parent = $("#listings");
-        var divs = $(".item.recurring");
-        while (divs.length) {
-          parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+          // Show Listings
+          $("#listings").css("display", "block");
+
+          // Remove the no results display
+          $("#no-results").css("display", "none");
+
+          // Show the map
+          $(".map").css("visibility", "visible");
+
+          var parent = $("#listings");
+          var divs = $(".result-item.recurring");
+
+          // Shuffle the paid members
+          while (divs.length) {
+            parent.prepend(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+          }
+
+          var firstResult = document.getElementsByClassName("active-d")[0];
+          // console.log("firstChild clicking on", firstResult);
+
+          //! This is causing map to idle on mobile and show map on first result
+          firstResult.querySelector(".view-map-button").click();
+          $(".map-display").click();
+          console.log("correcting display for mobile");
+          // Map-display is the close button for the map
+
+          //! Hiding the map on mobile after the first time the result is clicked
+          // if ($(window).width() < 769) {
+          //   $(".map-wrap, .map-display").hide();
+          //   $("#listings").show();
+          // }
+
+          //$('.item.recurring a.details').first().one().trigger('tap');
+
+          //$(".item.recurring").prependTo("#listings");
+        } else {
+          // $("#no-results").addClass("display");
+
+          // Show the no results display
+          $("#no-results").css("display", "block");
+          $("#listings").css("display", "none");
+
+          $(".map").css("visibility", "hidden");
         }
 
-        //$('.item.recurring a.details').first().one().trigger('tap');
-
-        //$(".item.recurring").prependTo("#listings");
-      } else {
-        //   If there are no active results, show the 'no results' div
-        $(".no-results").addClass("display");
-        // $("#listings").css("display", "none");
-        $(".map").css("visibility", "hidden");
+        $(".listload").css("visibility", "hidden").delay(1000);
+        $(".footer-flex-container").addClass("s-build");
       }
-
-      //  $("#listings .item:first").before( $( ".item.exclusive" ) );
-      // if(!$('.item.active').length){
-      //      $('.no-results').addClass('display');
-
-      //}
-
-      //if(!$('.active-d').length){
-
-      //   $('.no-results').addClass('display');
-      //  $('.map').css("visibility","hidden");
-      // $('.listload').css("visibility","hidden");
-      //   } else {
-      // $('.no-results').removeClass('display');
-      //   $('.map').css("visibility","visible");
-      // $('.listload').css("visibility","hidden");
-      //}
-
-      $(".listload").css("visibility", "hidden").delay(2000);
-      $(".footer-flex-container").addClass("s-build");
     });
   });
 });
+
+// ----------------------------------------------------- Search function ends -----------------------------------------------------
+
 $("#Expertise").hide();
 $("#Lawyer").click(function () {
   $("#Expertise").delay(500).fadeIn();
@@ -376,6 +521,7 @@ $("#Expertise-2 .dropdown-link").click(function () {
 $("#Notary, #Immigration, #Paralegal, #Court").click(function () {
   $(".next.button").trigger("tap");
 });
+
 $("#fireSearch .w-dropdown-link").click(function () {
   $(this).addClass("l-active");
   $(".next.button").trigger("tap");
@@ -387,6 +533,7 @@ $("#fireSearch .w-dropdown-link").click(function () {
   // }
   $("#fireSearch, #fireSearch + .w-dropdown-list").toggleClass("w--open");
 });
+
 $(".w-dropdown-link").click(function () {
   //$('.l-active' ).each(function(){
   var d = $(this).html();
@@ -396,6 +543,7 @@ $(".next.button").on("click", function () {
   $(this).addClass("gone");
 });
 
+// Doing only for ios devices
 jQuery(document).ready(function () {
   if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
     $("#geocoder").keydown(function () {
@@ -406,21 +554,27 @@ jQuery(document).ready(function () {
   }
 });
 
+// Tapping the next button automatically on slecting location (doesn't work for Ipad)
 $("#geocoder").on("select", function () {
   $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
 });
 
-if ($(window).width() < 769) {
+// Adding next button to the select location step
+document.querySelector("#geocoder").onclick = function () {
+  $(".next.button").removeClass("gone");
+  $(".next.button").css("margin-top", "80px");
+};
+
+if ($(window).width() < 480) {
+  // This hides the map for mobile by default
+
   $(".map-wrap, .map-display").hide();
-  $("#listings").click(function () {
-    console.log("clicked");
-    $(".map-wrap, .map-display").show();
-    $(this).hide();
-  });
+
+  // on clicking the close button on map it hides the map and shows listings
   $(".map-display").click(function () {
     $(".map-wrap, .map-display").hide();
-    $("#listings").show();
+    $(".results-wrap").css("display", "block");
   });
 }
