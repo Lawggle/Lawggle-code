@@ -425,7 +425,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     var mapIdleCount = 0;
     map.on("idle", () => {
-      if (mapIdleCount < 1 && locationSelected) {
+      if (mapIdleCount < 1) {
         mapIdleCount++;
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
@@ -445,7 +445,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           $("#listings").css("display", "block");
 
           // Remove the no results display
-          $("#no-results").css("display", "none");
+          // $("#no-results").css("display", "none");
 
           // Show the map
           $(".map").css("visibility", "visible");
@@ -476,12 +476,31 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           //$('.item.recurring a.details').first().one().trigger('tap');
 
           //$(".item.recurring").prependTo("#listings");
-        } else {
+        } else if (document.querySelector(".active-c") !== null && locationSelected) {
           // $("#no-results").addClass("display");
 
           // Show the no results display
-          $("#no-results").css("display", "block");
-          $("#listings").css("display", "none");
+          const noResultsElement = document.querySelector("#no-results");
+          const noResults = noResultsElement.cloneNode(true);
+          noResults.style.display = "block";
+          listings.insertBefore(noResults, listings.firstChild);
+
+          const resultsover100 = document.querySelectorAll(".active-c");
+          const over100Array = [...resultsover100];
+
+          over100Array.forEach((result) => {
+            result.style.display = "flex";
+          });
+
+          const askLawggleCard = document.querySelector(".ask-lawggle");
+          listings.appendChild(askLawggleCard);
+          // $("#listings").css("display", "none");
+        } else if (locationSelected) {
+          // Show the no results display
+          const noResultsElement = document.querySelector("#no-results");
+          const noResults = noResultsElement.cloneNode(true);
+          noResults.style.display = "block";
+          listings.insertBefore(noResults, listings.firstChild);
 
           $(".map").css("visibility", "hidden");
         }
