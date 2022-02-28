@@ -482,7 +482,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Show the no results display
           const noResultsElement = document.querySelector("#no-results");
           const noResults = noResultsElement.cloneNode(true);
-          noResults.style.display = "block";
+          noResults.querySelector(".no-results-in-area").style.display = "block";
+          noResults.querySelector(".no-results-text").style.display = "none";
           listings.insertBefore(noResults, listings.firstChild);
 
           const resultsover100 = document.querySelectorAll(".active-c");
@@ -494,12 +495,14 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           const askLawggleCard = document.querySelector(".ask-lawggle");
           listings.appendChild(askLawggleCard);
+
+          var spacingElement = listings.appendChild(document.createElement("div"));
+          spacingElement.style.height = "15px";
           // $("#listings").css("display", "none");
         } else if (locationSelected) {
-          // Show the no results display
+          // Show the no-results display
           const noResultsElement = document.querySelector("#no-results");
           const noResults = noResultsElement.cloneNode(true);
-          noResults.style.display = "block";
           listings.insertBefore(noResults, listings.firstChild);
 
           $(".map").css("visibility", "hidden");
