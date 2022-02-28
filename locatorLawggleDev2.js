@@ -19,6 +19,8 @@ $("#Expertise .w-dropdown-link").click(function () {
 
 // ---------------------------------------------------- Search function starts ----------------------------------------------------
 
+var locationSelected = false;
+
 $("#fireSearch .w-dropdown-link").on("click", function () {
   $(".loader").show();
   function test(type, language) {
@@ -423,7 +425,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
     var mapIdleCount = 0;
     map.on("idle", () => {
-      if (mapIdleCount < 1) {
+      if (mapIdleCount < 1 && locationSelected) {
         mapIdleCount++;
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
@@ -559,6 +561,7 @@ $("#geocoder").on("select", function () {
   $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
+  locationSelected = true;
 });
 
 // Adding next button to the select location step
