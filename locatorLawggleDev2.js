@@ -158,9 +158,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           return 0; // a must be equal to b
         });
         var listings = document.getElementById("listings");
-        while (listings.firstChild) {
-          listings.removeChild(listings.firstChild);
-        }
+        // while (listings.firstChild) {
+        // listings.removeChild(listings.firstChild);
+        // }
 
         // Creating the HTML for the results through this
         buildLocationList(stores);
