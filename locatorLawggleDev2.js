@@ -502,6 +502,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           // Show the no-results display
           const noResultsElement = document.querySelector("#no-results");
           const noResults = noResultsElement.cloneNode(true);
+          noResults.querySelector(".no-results-in-area").style.display = "none";
+          noResults.querySelector(".no-results-text").style.display = "block";
           listings.insertBefore(noResults, listings.firstChild);
 
           $(".map").css("visibility", "hidden");
