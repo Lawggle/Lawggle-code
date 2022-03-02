@@ -260,6 +260,30 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
         resultItem.querySelector(".result-language").innerHTML = prop.language;
 
+        // Adding the Canada or USA flag based on Country
+
+        const caFlag = resultItem.querySelector(".result-ca-flag");
+        const usFlag = resultItem.querySelector(".result-usa-flag");
+        const mapPin = resultItem.querySelector(".result-map-pin");
+        if (prop.country == "Canada") {
+          caFlag.style.display = "block";
+          usFlag.style.display = "none";
+          mapPin.style.display = "none";
+        } else if (
+          prop.country == "USA" ||
+          prop.country == "US" ||
+          prop.country == "America" ||
+          prop.country == "United States"
+        ) {
+          usFlag.style.display = "block";
+          caFlag.style.display = "none";
+          mapPin.style.display = "none";
+        } else {
+          usFlag.style.display = "none";
+          caFlag.style.display = "none";
+          mapPin.style.display = "block";
+        }
+
         // Conditional for rate
         if (prop.rate) {
           resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
@@ -310,24 +334,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         mapButton.addEventListener("click", function (e) {
           flyToStore(store);
           createPopUp(store);
-          
-        // Adding the Canada or USA flag based on Country
-         if (prop.country == "Canada") {
-            resultItem.querySelector(".result-ca-flag").style.display = "block";
-            resultItem.querySelector(".result-usa-flag").style.display = "none";
-        } else if (
-            prop.country == "USA" ||
-            prop.country == "US" ||
-            prop.country == "America" ||
-            prop.country == "United States"
-        ) {
-          resultItem.querySelector(".result-usa-flag").style.display = "block";
-          resultItem.querySelector(".result-ca-flag").style.display = "none";
-        } else {
-            resultItem.querySelector(".result-usa-flag").style.display = "none";
-            resultItem.querySelector(".result-ca-flag").style.display = "none";
-            resultItem.querySelector(".result-map-pin").style.display = "block";
-        }
 
           // Removing active tag from currently active listing
           var activeItem = document.getElementsByClassName("active");
