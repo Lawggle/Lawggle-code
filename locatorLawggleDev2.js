@@ -262,23 +262,23 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         // Adding the Canada or USA flag based on Country
 
-        let caFlag = resultItem.querySelector(".result-ca-flag").style.display;
-        let usFlag = resultItem.querySelector(".result-usa-flag").style.display;
-        let mapPin = resultItem.querySelector(".result-map-pin").style.display;
-        usFlag = "none";
-        caFlag = "none";
-        mapPin = "none";
+        const caFlag = resultItem.querySelector(".result-ca-flag");
+        const usFlag = resultItem.querySelector(".result-usa-flag");
+        const mapPin = resultItem.querySelector(".result-map-pin");
+        usFlag.style.display = "none";
+        caFlag.style.display = "none";
+        mapPin.style.display = "none";
         if (prop.country == "Canada") {
-          caFlag = "block";
+          caFlag.style.display = "block";
         } else if (
           prop.country == "USA" ||
           prop.country == "US" ||
           prop.country == "America" ||
           prop.country == "United States"
         ) {
-          usFlag = "block";
+          usFlag.style.display = "block";
         } else {
-          mapPin = "block";
+          mapPin.style.display = "block";
         }
 
         // Conditional for rate
