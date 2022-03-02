@@ -268,14 +268,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         usFlag.style.display = "none";
         caFlag.style.display = "none";
         mapPin.style.display = "none";
+
         if (prop.country == "Canada") {
           caFlag.style.display = "block";
-        } else if (
-          prop.country == "USA" ||
-          prop.country == "US" ||
-          prop.country == "America" ||
-          prop.country == "United States"
-        ) {
+        } else if (prop.country == ("USA" || "US" || "America" || "United States")) {
           usFlag.style.display = "block";
         } else {
           mapPin.style.display = "block";
