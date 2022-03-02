@@ -19,6 +19,8 @@ $("#Expertise .w-dropdown-link").click(function () {
 
 // ---------------------------------------------------- Search function starts ----------------------------------------------------
 
+var locationSelected = false;
+
 $("#fireSearch .w-dropdown-link").on("click", function () {
   $(".loader").show();
   function test(type, language) {
@@ -102,6 +104,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           hide: jsonData[i].Hide,
           address: jsonData[i].Address,
           consult: jsonData[i].Consult,
+          country: jsonData[i].Country,
         },
       });
 
@@ -156,9 +159,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           return 0; // a must be equal to b
         });
         var listings = document.getElementById("listings");
-        while (listings.firstChild) {
-          listings.removeChild(listings.firstChild);
-        }
+        // while (listings.firstChild) {
+        // listings.removeChild(listings.firstChild);
+        // }
 
         // Creating the HTML for the results through this
         buildLocationList(stores);
@@ -257,6 +260,23 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         resultItem.querySelector(".result-practice-area").innerHTML = prop.area;
         resultItem.querySelector(".result-language").innerHTML = prop.language;
 
+        // Adding the Canada or USA flag based on Country
+
+        const caFlag = resultItem.querySelector(".result-ca-flag");
+        const usFlag = resultItem.querySelector(".result-usa-flag");
+        const mapPin = resultItem.querySelector(".result-map-pin");
+        usFlag.style.display = "none";
+        caFlag.style.display = "none";
+        mapPin.style.display = "none";
+
+        if (prop.country == "Canada") {
+          caFlag.style.display = "block";
+        } else if (prop.country == ("USA" || "US" || "America" || "United States")) {
+          usFlag.style.display = "block";
+        } else {
+          mapPin.style.display = "block";
+        }
+
         // Conditional for rate
         if (prop.rate) {
           resultItem.querySelector(".rate-per-hour").innerHTML = prop.rate;
@@ -291,11 +311,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         if (prop.distance) {
           var roundedDistance = Math.round(prop.distance * 100) / 100;
+          resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
 
           // If distance is less than 100 then we add active-d class to it
           if (roundedDistance < 100) {
             resultItem.className = prop.hide + " result-item active-d " + prop.plan;
-            resultItem.querySelector(".result-distance").innerHTML = roundedDistance + "km";
           }
         }
 
@@ -428,7 +448,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         console.log("entered map idle", mapIdleCount);
         window.scrollTo(0, 0);
         $(".listload").css("visibility", "visible");
-        $("#no-results").removeClass("display");
+        $(".map").css("visibility", "hidden");
 
         //   Checking if there are any active results, class of ".active-d"
         if (document.querySelector(".active-d") !== null) {
@@ -443,7 +463,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           $("#listings").css("display", "block");
 
           // Remove the no results display
-          $("#no-results").css("display", "none");
+          // $("#no-results").css("display", "none");
 
           // Show the map
           $(".map").css("visibility", "visible");
@@ -474,12 +494,38 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           //$('.item.recurring a.details').first().one().trigger('tap');
 
           //$(".item.recurring").prependTo("#listings");
-        } else {
+        } else if (document.querySelector(".active-c") !== null && locationSelected) {
           // $("#no-results").addClass("display");
 
           // Show the no results display
-          $("#no-results").css("display", "block");
-          $("#listings").css("display", "none");
+          const noResultsElement = document.querySelector("#no-results");
+          const noResults = noResultsElement.cloneNode(true);
+          noResults.querySelector(".no-results-in-area").style.display = "block";
+          noResults.querySelector(".no-results-text").style.display = "none";
+          listings.insertBefore(noResults, listings.firstChild);
+
+          const resultsover100 = document.querySelectorAll(".active-c");
+          const over100Array = [...resultsover100];
+
+          over100Array.forEach((result) => {
+            result.style.display = "flex";
+          });
+
+          const askLawggleCard = document.querySelector(".ask-lawggle");
+          listings.appendChild(askLawggleCard);
+
+          var spacingElement = listings.appendChild(document.createElement("div"));
+          spacingElement.style.height = "15px";
+
+          $(".map").css("visibility", "visible");
+          // $("#listings").css("display", "none");
+        } else if (locationSelected) {
+          // Show the no-results display
+          const noResultsElement = document.querySelector("#no-results");
+          const noResults = noResultsElement.cloneNode(true);
+          noResults.querySelector(".no-results-in-area").style.display = "none";
+          noResults.querySelector(".no-results-text").style.display = "block";
+          listings.insertBefore(noResults, listings.firstChild);
 
           $(".map").css("visibility", "hidden");
         }
@@ -559,6 +605,7 @@ $("#geocoder").on("select", function () {
   $(".next.button").trigger("tap");
   $(".listload").css("visibility", "visible");
   console.log("tapped");
+  locationSelected = true;
 });
 
 // Adding next button to the select location step
