@@ -104,6 +104,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
           hide: jsonData[i].Hide,
           address: jsonData[i].Address,
           consult: jsonData[i].Consult,
+          country: jsonData[i].Country,
         },
       });
 
@@ -309,6 +310,24 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         mapButton.addEventListener("click", function (e) {
           flyToStore(store);
           createPopUp(store);
+          
+        // Adding the Canada or USA flag based on Country
+         if (prop.country == "Canada") {
+            resultItem.querySelector(".result-ca-flag").style.display = "block";
+            resultItem.querySelector(".result-usa-flag").style.display = "none";
+        } else if (
+            prop.country == "USA" ||
+            prop.country == "US" ||
+            prop.country == "America" ||
+            prop.country == "United States"
+        ) {
+          resultItem.querySelector(".result-usa-flag").style.display = "block";
+          resultItem.querySelector(".result-ca-flag").style.display = "none";
+        } else {
+            resultItem.querySelector(".result-usa-flag").style.display = "none";
+            resultItem.querySelector(".result-ca-flag").style.display = "none";
+            resultItem.querySelector(".result-map-pin").style.display = "block";
+        }
 
           // Removing active tag from currently active listing
           var activeItem = document.getElementsByClassName("active");
