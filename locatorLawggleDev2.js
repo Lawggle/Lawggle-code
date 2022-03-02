@@ -262,9 +262,9 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
         // Adding the Canada or USA flag based on Country
 
-        const caFlag = resultItem.querySelector(".result-ca-flag").style.display;
-        const usFlag = resultItem.querySelector(".result-usa-flag").style.display;
-        const mapPin = resultItem.querySelector(".result-map-pin").style.display;
+        let caFlag = resultItem.querySelector(".result-ca-flag").style.display;
+        let usFlag = resultItem.querySelector(".result-usa-flag").style.display;
+        let mapPin = resultItem.querySelector(".result-map-pin").style.display;
         usFlag = "none";
         caFlag = "none";
         mapPin = "none";
