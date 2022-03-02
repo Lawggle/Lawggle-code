@@ -35,7 +35,8 @@ const checkForContactInfo = (fieldName, fieldValue) => {
 
   var numberMatch1 = fieldValue.match(/[0-9][0-9][0-9].[0-9][0-9][0-9][0-9]/);
   var numberMatch2 = fieldValue.match(/[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/);
-  if (numberMatch1 || numberMatch2) {
+  var numberMatch3 = fieldValue.match(/[0-9][0-9][0-9][0-9][0-9][0-9][0-9]/);
+  if (numberMatch1 || numberMatch2 || numberMatch3) {
     $(".alert-wrap").css("display", "flex");
     $(".alert-msg").text(`${fieldName} cannot contain contact numbers`);
     $("#updateLoading").css("opacity", "0");
