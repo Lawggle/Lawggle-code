@@ -337,7 +337,14 @@ function successFunc(data) {
     $("#Pro-Types").val(value["Membership Type"]);
     $("#Pro-Plan-ID").val(value["Membership Plan ID"]);
     $("#UUID").val(UUID);
-
+    
+    //adding pro name to data layer for tracking in GA4
+    var pName = $("#Pro-Name").val();
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            'pro name': pName
+           });
+    
     // Initialize and add the map
     function initMap() {
       // The location of Uluru
