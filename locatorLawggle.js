@@ -533,6 +533,11 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         $(".listload").css("visibility", "hidden").delay(1000);
         $(".footer-flex-container").addClass("s-build");
       }
+      
+      //adding a search event for tracking searches in GA4
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({'event': 'search'});
+      
     });
   });
 });
