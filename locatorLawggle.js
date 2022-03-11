@@ -145,7 +145,8 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             'event': 'Search',
             'type of pro': pro,
             'expertise': expert,
-            'language': lang
+            'language': lang,
+            'location': searchResult
           });
         
         stores.features.forEach(function (store) {
