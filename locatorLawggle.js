@@ -141,7 +141,12 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         };
          //adding a search event for tracking searches in GA4
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({'event': 'Search'});
+          window.dataLayer.push({
+            'event': 'Search',
+            'type of pro': pro,
+            'expertise': expert,
+            'language': lang
+          });
         
         stores.features.forEach(function (store) {
           Object.defineProperty(store.properties, "distance", {
