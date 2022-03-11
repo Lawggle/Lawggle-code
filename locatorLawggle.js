@@ -139,6 +139,10 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         var options = {
           units: "kilometers",
         };
+         //adding a search event for tracking searches in GA4
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({'event': 'search'});
+        
         stores.features.forEach(function (store) {
           Object.defineProperty(store.properties, "distance", {
             value: turf.distance(searchResult, store.geometry, options),
@@ -290,8 +294,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         } else {
           resultItem.querySelector(".consultation-details").style.display = "none";
         }
-
-        // TODO add socials links and make them conditionals based on plan ID
 
         if (prop.firm) {
           resultItem.querySelector(".result-profirm").innerHTML = prop.firm;
@@ -467,10 +469,6 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
 
           // Show the map
           $(".map").css("visibility", "visible");
-          
-          //adding a search event for tracking searches in GA4
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({'event': 'search'});
 
           var parent = $("#listings");
           var divs = $(".result-item.recurring");
