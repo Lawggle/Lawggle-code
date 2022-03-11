@@ -136,6 +136,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
       // This is where it stops waiting for user location input
       geocoder.on("result", function (ev) {
         var searchResult = ev.result.geometry;
+        var resultPlaceName = e.place_name;
         var options = {
           units: "kilometers",
         };
@@ -146,7 +147,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
             'type of pro': pro,
             'expertise': expert,
             'language': lang,
-            'location': searchResult
+            'location': resultPlaceName
           });
         
         stores.features.forEach(function (store) {
