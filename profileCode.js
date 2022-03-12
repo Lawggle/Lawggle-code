@@ -342,7 +342,7 @@ function successFunc(data) {
     var pName = $("#Pro-Name").val();
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
-            'event': 'profile_viewed'
+            'event': 'profile_viewed',
             'pro name': pName
            });
     
