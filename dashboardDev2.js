@@ -12,25 +12,25 @@ MemberStack.onReady.then(function (member) {
   $("#mPhone").text(mPhone);
   
   console.log(plan);
-  if (membership == "5ef284eb9eddae000437af3a") {
+  if (plan == "5ef284eb9eddae000437af3a") {
     $("#upGrade").show();
   }
-  if (plan == "5ef284eb9eddae000437af3a") {
+  if (plan == ("5ef284eb9eddae000437af3a") {
+    $(".firm-adds").hide();
+  }
+  if (plan == "622f607024de5d00043531c8") {
+    $(".firm-adds").hide();
+  }
+  if (plan == "622f65a68974290004fd1367") {
     $(".firm-adds").hide();
   }
   if (plan == "60751a3a98f9250004560db2") {
     $(".firm-adds").hide();
   }
-  if (plan == "620dc1ac75db6000046809db") {
+  if (plan == "622f65c8a07083000430a478") {
     $(".firm-adds").hide();
   }
-  if (plan == "620dc1f66ee4e4000493deba") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "620dd7f584b4320004530679") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "620dd81e87772e0004fa3d94") {
+  if (plan == "622f65f78974290004fd136c") {
     $(".firm-adds").hide();
   }
   if (Firm) {
