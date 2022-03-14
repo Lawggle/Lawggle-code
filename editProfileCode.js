@@ -79,6 +79,7 @@ MemberStack.onReady.then(function (member) {
   var mID = member["id"];
   var membership = member.membership;
   var plan = membership.id;
+  var mPlan = membership.name;
 
   // Links View live profile button to the profile page
   function goToURL() {
@@ -89,7 +90,7 @@ MemberStack.onReady.then(function (member) {
   });
 
   // Makes firm required if membership is of type firm
-  if (membership.name == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) {
+  if (mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) {
     $("#Firm").prop("required", true);
   }
 
