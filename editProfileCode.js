@@ -91,7 +91,7 @@ MemberStack.onReady.then(function (member) {
 
   // Makes firm required if membership is of type firm
   if (mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) {
-    $("#Firm").prop("required", true);
+    $("#Firm").prop('required', true);
   }
 
   var url = "https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID;
