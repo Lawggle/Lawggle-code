@@ -15,7 +15,7 @@ MemberStack.onReady.then(function (member) {
   if (mplan != "Free Plan") {
     $("#upGrade").hide();
   }
-  if (mplan == ("Free Plan" || "Lawggle Premier" || "Lawggle Premier Annual" || "Lawggle Elite" || "Lawggle Elite Annual" || "Firm Team Member") {
+  if (mplan == ("Free Plan" || "Lawggle Premier" || "Lawggle Premier Annual" || "Lawggle Elite" || "Lawggle Elite Annual" || "Firm Team Member")) {
     $(".firm-adds").hide();
   }
 
