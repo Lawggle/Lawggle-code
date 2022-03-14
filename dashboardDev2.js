@@ -11,11 +11,11 @@ MemberStack.onReady.then(function (member) {
   $("#mEmail").text(mEmail);
   $("#mPhone").text(mPhone);
   
-  console.log(mplan);
-  if (mplan != "Free Plan") {
+  console.log(mPlan);
+  if (mPlan != "Free Plan") {
     $("#upGrade").hide();
   }
-  if (mplan == ("Free Plan" || "Lawggle Premier" || "Lawggle Premier Annual" || "Lawggle Elite" || "Lawggle Elite Annual" || "Firm Team Member")) {
+  if (mPlan == ("Free Plan" || "Lawggle Premier" || "Lawggle Premier Annual" || "Lawggle Elite" || "Lawggle Elite Annual" || "Firm Team Member")) {
     $(".firm-adds").hide();
   }
 
