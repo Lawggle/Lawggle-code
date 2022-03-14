@@ -234,7 +234,7 @@ function successFunc(data) {
 
     //Changing text and href of contact details or hiding them if no value is present
     if (
-      value["Membership Plan ID"] == ("620dd7f584b4320004530679" || "620dd81e87772e0004fa3d94") &&
+      value["Membership Plan ID"] == ("622f65c8a07083000430a478" || "622f65f78974290004fd136c") &&
       (value["Public Phone"] || value["Public Email"] || value.Url)
     ) {
       if (value["Public Phone"]) {
@@ -342,7 +342,7 @@ function successFunc(data) {
     var pName = $("#Pro-Name").val();
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
-            'event': 'profile_viewed',
+            'event': 'profile_view',
             'pro name': pName
            });
     
