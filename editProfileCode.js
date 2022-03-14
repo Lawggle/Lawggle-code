@@ -88,11 +88,9 @@ MemberStack.onReady.then(function (member) {
     goToURL();
   });
 
-  // Makes firm required if membership if of type firm
-  if (
-    membership.id == "620dd862f64f9b0004ffc4ce" ||
-    (membership.id == "620dd8b051846c00048f0e3b") | (membership.id == "620dd8dd51846c00048f0e3d")
-  ) {
+  // Makes firm required if membership is of type firm
+  if (membership.name == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) 
+    {
     $("#Firm").prop("required", true);
   }
 
@@ -199,11 +197,9 @@ MemberStack.onReady.then(function (member) {
       if (value["Publications-3"]) {
         $("#Publications-3").val(value["Publications-3"]);
       }
-
       if (value["Hourly Rate"]) {
         $("#Hourly-rate").val(value["Hourly Rate"]);
       }
-
       if (value.Contingency) {
         $("#Contingency").val(value.Contingency);
       }
@@ -268,7 +264,7 @@ MemberStack.onReady.then(function (member) {
     var firm = $("#Firm").val();
     if (
       !firm &&
-      membership.id == ("620dd862f64f9b0004ffc4ce" || "620dd8b051846c00048f0e3b" || "620dd8dd51846c00048f0e3d")
+      membership.name == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")
     ) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
