@@ -12,8 +12,8 @@ MemberStack.onReady.then(function (member) {
   $("#mPhone").text(mPhone);
   
   console.log(plan);
-  if (plan == "5ef284eb9eddae000437af3a") {
-    $("#upGrade").show();
+  if (plan != "5ef284eb9eddae000437af3a") {
+    $("#upGrade").hide();
   }
   if (plan == ("5ef284eb9eddae000437af3a") {
     $(".firm-adds").hide();
