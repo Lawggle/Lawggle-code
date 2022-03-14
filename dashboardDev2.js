@@ -11,28 +11,14 @@ MemberStack.onReady.then(function (member) {
   $("#mEmail").text(mEmail);
   $("#mPhone").text(mPhone);
   
-  console.log(plan);
-  if (plan != "5ef284eb9eddae000437af3a") {
+  console.log(mplan);
+  if (mplan != "Free Plan") {
     $("#upGrade").hide();
   }
-  if (plan == ("5ef284eb9eddae000437af3a") {
+  if (mplan == ("Free Plan" || "Lawggle Premier" || "Lawggle Premier Annual" || "Lawggle Elite" || "Lawggle Elite Annual" || "Firm Team Member") {
     $(".firm-adds").hide();
   }
-  if (plan == "622f607024de5d00043531c8") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "622f65a68974290004fd1367") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "60751a3a98f9250004560db2") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "622f65c8a07083000430a478") {
-    $(".firm-adds").hide();
-  }
-  if (plan == "622f65f78974290004fd136c") {
-    $(".firm-adds").hide();
-  }
+
   if (Firm) {
     $("#Firm-2").val(Firm);
   }
