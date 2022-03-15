@@ -264,7 +264,7 @@ MemberStack.onReady.then(function (member) {
     var firm = $("#Firm").val();
     if (
       !firm &&
-      membership.name == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")
+      mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")
     ) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
