@@ -90,6 +90,7 @@ MemberStack.onReady.then(function (member) {
   });
 
   // Makes firm required if membership is of type firm
+  console.log(mPlan);
   if (mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) {
     $("#Firm").prop('required', true);
   }
