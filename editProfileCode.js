@@ -262,8 +262,8 @@ MemberStack.onReady.then(function (member) {
     if ($("#wf-form-Contact-Form").valid()) {
     }
     $("#updateLoading").css("opacity", "1");
-    $("#saveNotice").css("opacity", "0");
     makeCall = true;
+    
     var firm = $("#Firm").val();
     if (
       (firm == "" && mPlan == "Firm 5") ||
@@ -276,7 +276,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please enter your firm name");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
     var furl = $("#Firm-url").val();
     var type = $("select#Type-law").val();
@@ -285,7 +284,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please select your profession type");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
     var items = $("select#Area-law").val();
     // Checks if number of areas selected is more than 5 or none
@@ -297,14 +295,12 @@ MemberStack.onReady.then(function (member) {
           "Please select 5 or less Areas of Expertise or upgrade to Lawggle Elite Membership to increase limits"
         );
         $("#updateLoading").css("opacity", "0");
-        $("#saveNotice").css("opacity", "1");
       }
     } else if (items.length == 0) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please select at least one Area of Expertise");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
     var pronouns = $("select#pronouns-field").val();
     var area = items.join(", ");
@@ -315,7 +311,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please select at least one language");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
     var language = languageItems.join(", ");
 
@@ -325,7 +320,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please enter your address");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
 
     var bioValue = $("#Bio").val();
@@ -334,7 +328,6 @@ MemberStack.onReady.then(function (member) {
       $(".alert-wrap").css("display", "flex");
       $(".alert-msg").text("Please enter your bio");
       $("#updateLoading").css("opacity", "0");
-      $("#saveNotice").css("opacity", "1");
     }
     checkForContactInfo("Bio", bioValue);
     var bio = bioValue.replace(/\n/g, "<br />");
@@ -365,7 +358,6 @@ MemberStack.onReady.then(function (member) {
         $(".alert-msg").text("Please enter your 10 digit phone number without any dashes, brackets or spaces");
         $(".alert-wrap").css("display", "flex");
         $("#updateLoading").css("opacity", "0");
-        $("#saveNotice").css("opacity", "1");
         makeCall = false;
       }
     }
