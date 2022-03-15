@@ -365,6 +365,7 @@ MemberStack.onReady.then(function (member) {
 
     function successFuncp(data) {
       $("#updateLoading").css("opacity", "0");
+      $("#saveNotice").css("opacity", "0");
       $("#updateSuccess").css("display", "block");
       $("#updateSuccess").trigger("click");
       console.log(data);
