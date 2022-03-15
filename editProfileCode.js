@@ -90,9 +90,10 @@ MemberStack.onReady.then(function (member) {
   });
 
   // Makes firm required if membership is of type firm
-  console.log(mPlan);
-  if (mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")) {
+  if (mPlan == "Firm 5" || mPlan == "Firm 10" || mPlan == "Firm 15" || mPlan == "Firm Unlimited" || mPlan == "Firm Team Member") {
     $("#Firm").prop('required', true);
+  } else {
+    $("#Firm").prop("required", false);
   }
 
   var url = "https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID;
@@ -265,7 +266,7 @@ MemberStack.onReady.then(function (member) {
     var firm = $("#Firm").val();
     if (
       !firm &&
-      mPlan == ("Firm 5" || "Firm 10" || "Firm 15" || "Firm Unlimited" || "Firm Team Member")
+      mPlan == "Firm 5" || mPlan == "Firm 10" || mPlan == "Firm 15" || mPlan == "Firm Unlimited" || mPlan == "Firm Team Member"
     ) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
