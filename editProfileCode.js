@@ -266,8 +266,11 @@ MemberStack.onReady.then(function (member) {
     makeCall = true;
     var firm = $("#Firm").val();
     if (
-      firm == "" &&
-      mPlan == "Firm 5" || mPlan == "Firm 10" || mPlan == "Firm 15" || mPlan == "Firm Unlimited" || mPlan == "Firm Team Member"
+      (firm == "" && mPlan == "Firm 5") ||
+      (firm == "" && mPlan == "Firm 10") ||
+      (firm == "" && mPlan == "Firm 15") ||
+      (firm == "" && mPlan == "Firm Unlimited") ||
+      (firm == "" && mPlan == "Firm Team Member")
     ) {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
