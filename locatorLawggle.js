@@ -143,7 +143,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
          //adding a search event for tracking searches in GA4
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
-            'event': 'Search',
+            'event': 'search',
             'type of pro': pro,
             'expertise': expert,
             'language': lang,
