@@ -331,7 +331,8 @@ function successFunc(data) {
     });
 
     // Adding member name and email to talk modal form
-    $("#Pro-Name").val(value["First Name"] + " " + value["Last Name"]);
+    $("#Pro-First-Name").val(value["First Name"]);
+    $("#Pro-Last-Name").val(value["Last Name"]);
     $("#Pro-Email").val(value["Email"]);
     $("#Pro-MID").val(value["MID"]);
     $("#Pro-Types").val(value["Membership Type"]);
@@ -339,7 +340,7 @@ function successFunc(data) {
     $("#UUID").val(UUID);
     
     //adding pro name to data layer for tracking in GA4
-    var pName = $("#Pro-Name").val();
+    var pName = value["First Name"] + " " + value["Last Name"]
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
             'event': 'profile_view',
