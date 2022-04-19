@@ -6,6 +6,16 @@ MemberStack.onReady.then(function (member) {
   var mPlan = membership.name;
   var mEmail = member["email"];
   var mPhone = member["phone"];
+  var mName =  member["first-name"];
+  var mlName =  member["last-name"];
+  
+  //adding details to the datalayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+   'event': 'login',
+   'member_id': mID,
+   'member_name':  
+});
   
   $("#mPlan").text(mPlan);
   $("#mEmail").text(mEmail);
