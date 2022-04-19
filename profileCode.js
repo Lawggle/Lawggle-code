@@ -344,7 +344,7 @@ function successFunc(data) {
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
             'event': 'profile_view',
-            'pro name': pName
+            'member_name': pName
            });
     
     // Initialize and add the map
