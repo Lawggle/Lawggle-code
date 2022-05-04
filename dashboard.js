@@ -115,12 +115,12 @@ MemberStack.onReady.then(function (member) {
       .then((campaigns) => {
         $("#total-campaigns").text(campaigns.length);
 
-        let totalClicks = 0;
+        let totalResults = 0;
         campaigns.forEach((booster) => {
-          totalClicks = parseInt(totalClicks) + parseInt(booster.Clicks);
+          totalResults = parseInt(totalResults) + parseInt(booster.Results);
         });
 
-        $("#total-clicks").text(totalClicks);
+        $("#total-results").text(totalResults);
       })
       .catch((error) => {
         console.error(error);
