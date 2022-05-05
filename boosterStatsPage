@@ -22,17 +22,22 @@ MemberStack.onReady.then(function (member) {
       var count = 0;
       //   Run loop on returned results and render inside row container
       data.forEach((row) => {
+        // Only render if row is set to show "yes"
+        if (row.Show == "yes") {
+          count++;
           //   Create copy of sample row
           const newRow = templateRow.cloneNode(true);
 
           //   Replace data with row from sheet
-          newRow.querySelector(".data-date").innerHTML = row["Active"];
-          newRow.querySelector(".data-duration").innerHTML = row["Duration"];
-          newRow.querySelector(".data-campaign").innerHTML = row["Booster"];
-          newRow.querySelector(".data-impressions").innerHTML = row["Impressions"];
-          newRow.querySelector(".data-results").innerHTML = row["Results"];
-          newRow.querySelector(".data-ctr").innerHTML = row["CTR"];
-          newRow.querySelector(".data-cpr").innerHTML = row["CPR"];
+          newRow.querySelector(".data-date").innerHTML = row.Active;
+          newRow.querySelector(".data-duration").innerHTML = row.Duration;
+          newRow.querySelector(".data-campaign").innerHTML = row.Booster;
+          newRow.querySelector(".data-impressions").innerHTML = row.Impressions;
+          newRow.querySelector(".data-results").innerHTML = row.Results;
+          newRow.querySelector(".data-ctr").innerHTML = row.CTR;
+          newRow.querySelector(".data-cpr").innerHTML = row.CPR;
+         } 
+       };
 
           // Showing the sample row
           newRow.style.display = "flex";
