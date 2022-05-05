@@ -37,7 +37,6 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".data-ctr").innerHTML = row.CTR;
           newRow.querySelector(".data-cpr").innerHTML = row.CPR;
          } 
-       });
 
           // Showing the sample row
           newRow.style.display = "flex";
