@@ -50,4 +50,3 @@ MemberStack.onReady.then(function (member) {
     .catch((error) => {
       console.error(error);
   });
-});
