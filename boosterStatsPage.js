@@ -29,7 +29,7 @@ MemberStack.onReady.then(function (member) {
           const newRow = templateRow.cloneNode(true);
 
           //   Replace data with row from sheet
-          newRow.querySelector(".data-date").innerHTML = row.Active;
+          newRow.querySelector(".data-active").innerHTML = row.Active;
           newRow.querySelector(".data-duration").innerHTML = row.Duration;
           newRow.querySelector(".data-campaign").innerHTML = row.Booster;
           newRow.querySelector(".data-impressions").innerHTML = row.Impressions;
