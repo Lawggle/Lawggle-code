@@ -25,7 +25,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
   $(".loader").show();
   function test(type, language) {
     var url = $.trim(
-      "https://api.steinhq.com/v1/storages/62912de5bca21f053e98687d/Pros/search?Language=*" +
+      "https://api.steinhq.com/v1/storages/62912de5bca21f053e98687d/Pros?searchLanguage=*" +
         lang +
         "*&Type of Pro=" +
         pro +
