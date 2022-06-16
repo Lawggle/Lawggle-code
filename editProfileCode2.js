@@ -160,6 +160,15 @@ MemberStack.onReady.then(function (member) {
       if (value.Address) {
         $("#Address").val(value.Address);
       }
+      if (value.City) {
+        $("#City").val(value.City);
+      }
+      if (value.Province) {
+        $("#Province").val(value.Province);
+      }
+      if (value["Postal Code"]) {
+        $("#Area-Code").val(value["Area Code"]);
+      }
       if (value.Bio) {
         $("#Bio").val(value.Bio);
       }
@@ -318,9 +327,34 @@ MemberStack.onReady.then(function (member) {
     if (address == "") {
       makeCall = false;
       $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please enter your address");
+      $(".alert-msg").text("Please enter your street address");
       $("#updateLoading").css("opacity", "0");
     }
+    
+     var city = $("#City").val();
+    if (city == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please enter your city");
+      $("#updateLoading").css("opacity", "0");
+    }
+    
+     var province = $("select#Province").val();
+    if (province == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please select your province/state");
+      $("#updateLoading").css("opacity", "0");
+    }
+    
+     var postal = $("#Postal-Code").val();
+    if (postal == "") {
+      makeCall = false;
+      $(".alert-wrap").css("display", "flex");
+      $(".alert-msg").text("Please enter your postal/zip code");
+      $("#updateLoading").css("opacity", "0");
+    }
+    
 
     var bioValue = $("#Bio").val();
     if (bioValue == "") {
@@ -390,6 +424,9 @@ MemberStack.onReady.then(function (member) {
           ["Area of Law"]: area,
           Url: furl,
           Address: address,
+          City: city,
+          Province: province,
+          ["Postal Code"]: postal,
           Bio: bio,
           Education: education,
           ["Education-2"]: edTwo,
