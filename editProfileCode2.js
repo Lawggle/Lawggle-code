@@ -167,7 +167,7 @@ MemberStack.onReady.then(function (member) {
         $("#Province").val(value.Province);
       }
       if (value["Postal Code"]) {
-        $("#Area-Code").val(value["Area Code"]);
+        $("#Postal-Code").val(value["Postal Code"]);
       }
       if (value.Bio) {
         $("#Bio").val(value.Bio);
