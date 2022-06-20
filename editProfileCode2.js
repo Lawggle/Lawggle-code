@@ -324,12 +324,6 @@ MemberStack.onReady.then(function (member) {
     var language = languageItems.join(", ");
 
     var address = $("#Address").val();
-    if (address == "") {
-      makeCall = false;
-      $(".alert-wrap").css("display", "flex");
-      $(".alert-msg").text("Please enter your street address");
-      $("#updateLoading").css("opacity", "0");
-    }
     
      var city = $("#City").val();
     if (city == "") {
