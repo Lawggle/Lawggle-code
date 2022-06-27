@@ -83,6 +83,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         },
         properties: {
           mid: jsonData[i].MID,
+          alias: jsonData[i].Alias,
           name: jsonData[i]["First Name"],
           plan: jsonData[i]["Membership Type"],
           planID: jsonData[i]["Membership Plan ID"],
@@ -311,7 +312,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         // Getting the View Profile Button and setting properties
         profileButton = resultItem.querySelector(".view-profile-button");
         profileButton.id = "link-" + prop.id;
-        profileButton.href = `profile?profile=${prop.mid}`;
+        profileButton.href = `profile?profile=${prop.alias}`;
 
         // Adding image to Result
         if (prop.image) {
@@ -431,7 +432,7 @@ $("#fireSearch .w-dropdown-link").on("click", function () {
         .setLngLat(currentFeature.geometry.coordinates)
         .setHTML(
           '<a href="profile?profile=' +
-            currentFeature.properties.mid +
+            currentFeature.properties.alias +
             '" target="_blank"><h4>' +
             currentFeature.properties.name +
             " " +
