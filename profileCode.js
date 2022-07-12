@@ -350,7 +350,7 @@ function successFunc(data) {
     // Initialize and add the map
     function initMap() {
       // The location of Uluru
-      var address = value.Address;
+      var address = value.Address + " " + value.City + " " + value.Province  + " " + value["Postal Code"];
 
       var map = new google.maps.Map(document.getElementById("map"), {
         mapTypeId: google.maps.MapTypeId.TERRAIN,
