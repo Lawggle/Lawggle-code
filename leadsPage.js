@@ -13,7 +13,7 @@ MemberStack.onReady.then(function (member) {
   const rowsWrapper = document.querySelector(".table-data-wrapper");
 
   //   Make API call to google sheet and get data
-  fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/MID/${mID}`)
+  fetch(`https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/tabs/Leads/MID/${mID}`)
     .then((response) => response.json())
     .then((data) => {
       $(".table-wrapper").css("opacity", "100%");
@@ -69,7 +69,7 @@ MemberStack.onReady.then(function (member) {
           newRow.querySelector(".delete").onclick = function () {
             newRow.style.display = "none";
 
-            fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/UUID/${row["UUID"]}`, {
+            fetch(`https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/tabs/Leads/UUID/${row["UUID"]}`, {
               method: "PATCH",
               mode: "cors",
               headers: {
