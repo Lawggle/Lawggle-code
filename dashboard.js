@@ -33,7 +33,7 @@ MemberStack.onReady.then(function (member) {
   }
 
   
-  fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID)
+  fetch("https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/MID/" + mID)
     .then((response) => response.json())
     .then((data) => {
       console.log(mID);
@@ -57,7 +57,7 @@ MemberStack.onReady.then(function (member) {
     var mFirm = $("#firmName").text();
     console.log(mFirm);
 
-    fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/Firm/" + mFirm)
+    fetch("https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/Firm/" + mFirm)
       .then((response) => response.json())
       .then((data) => {
         $.each(data, function (key, value) {
@@ -82,7 +82,7 @@ MemberStack.onReady.then(function (member) {
     }
     console.log(pLive);
 
-    fetch("https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/MID/" + mID, {
+    fetch("https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/MID/" + mID, {
       method: "PATCH",
       mode: "cors",
       headers: {
@@ -100,7 +100,7 @@ MemberStack.onReady.then(function (member) {
   const getStats = () => {
     // Get the leads stats
     //   Make API call to google sheet and get leads data
-    fetch(`https://sheet.best/api/sheets/c537b30c-6a62-49e9-bbb7-913b076eee99/tabs/Leads/MID/${mID}`)
+    fetch(`https://sheet.best/api/sheets/87c02226-b9fc-4f91-a018-ce0fca93e9aa/tabs/Leads/MID/${mID}`)
       .then((response) => response.json())
       .then((leads) => {
         $("#active-leads").text(leads.length);
