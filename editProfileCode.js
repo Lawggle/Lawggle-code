@@ -16,8 +16,8 @@ const upgradeToPremier = () => {
     $(".upgrade-message").css("display", "none");
   }, 2000);
 };
-const upgradeToElite = () => {
-  $(".upgrade-text").text("Upgrade to Lawggle Elite to unlock this field");
+const upgradeToAdvanced = () => {
+  $(".upgrade-text").text("Upgrade to Lawggle Advanced to unlock this field");
   $(".upgrade-message").css("display", "block");
 
   setTimeout(() => {
@@ -218,7 +218,7 @@ MemberStack.onReady.then(function (member) {
         $("#Consult").val(value.Consult);
       }
 
-      if (membership.name == ("Lawggle Elite" || "Lawggle Elite Annual")) {
+      if (membership.name == ("Lawggle Advanced" || "Lawggle Advanced Annual")) {
         if (value["Public Phone"]) {
           $("#Public-phone").val(value["Public Phone"]);
         }
@@ -227,20 +227,20 @@ MemberStack.onReady.then(function (member) {
         }
       } else {
         $("#Public-phone").attr("disabled", "disabled");
-        $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Elite");
+        $("#Public-phone").attr("placeholder", "Upgrade to Lawggle Advanced");
         $("#Public-email").attr("disabled", "disabled");
-        $("#Public-email").attr("placeholder", "Upgrade to Lawggle Elite");
+        $("#Public-email").attr("placeholder", "Upgrade to Lawggle Advanced");
       }
 
-      if (membership.name == "Free Plan") {
+      if (membership.name == ("Free Plan" || "Lawggle Essentials")) {
         $("#Twitter-url").attr("disabled", "disabled");
         $("#Facebook-url").attr("disabled", "disabled");
         $("#Linkedin-url").attr("disabled", "disabled");
         $("#Instagram-url").attr("disabled", "disabled");
-        $("#Twitter-url").attr("placeholder", "Upgrade to Lawggle Premier");
-        $("#Facebook-url").attr("placeholder", "Upgrade to Lawggle Premier");
-        $("#Linkedin-url").attr("placeholder", "Upgrade to Lawggle Premier");
-        $("#Instagram-url").attr("placeholder", "Upgrade to Lawggle Premier");
+        $("#Twitter-url").attr("placeholder", "Upgrade to Lawggle Advanced");
+        $("#Facebook-url").attr("placeholder", "Upgrade to Lawggle Advanced");
+        $("#Linkedin-url").attr("placeholder", "Upgrade to Lawggle Advanced");
+        $("#Instagram-url").attr("placeholder", "Upgrade to Lawggle Advanced");
       } else {
         if (value.Twitter) {
           $("#Twitter-url").val(value.Twitter);
@@ -297,11 +297,11 @@ MemberStack.onReady.then(function (member) {
     var items = $("select#Area-law").val();
     // Checks if number of areas selected is more than 5 or none
     if (items.length > 5) {
-      if (membership.name != ("Lawggle Elite" || "Lawggle Elite Annual")) {
+      if (membership.name != ("Lawggle Advanced" || "Lawggle Advanced Annual")) {
         makeCall = false;
         $(".alert-wrap").css("display", "flex");
         $(".alert-msg").text(
-          "Please select 5 or less Areas of Expertise or upgrade to Lawggle Elite Membership to increase limits"
+          "Please select 5 or less Areas of Expertise or upgrade to Lawggle Advanced Membership to increase limits"
         );
         $("#updateLoading").css("opacity", "0");
       }
