@@ -301,7 +301,7 @@ MemberStack.onReady.then(function (member) {
         makeCall = false;
         $(".alert-wrap").css("display", "flex");
         $(".alert-msg").text(
-          "Please select 5 or less Areas of Expertise or upgrade to Lawggle Advanced Membership to increase limits"
+          "Please select 1 or less Areas of Expertise or upgrade to Lawggle Advanced Membership to increase limits"
         );
         $("#updateLoading").css("opacity", "0");
       }
