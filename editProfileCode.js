@@ -296,7 +296,7 @@ MemberStack.onReady.then(function (member) {
     }
     var items = $("select#Area-law").val();
     // Checks if number of areas selected is more than 5 or none
-    if (items.length > 5) {
+    if (items.length > 1) {
       if (membership.name != ("Lawggle Advanced" || "Lawggle Advanced Annual")) {
         makeCall = false;
         $(".alert-wrap").css("display", "flex");
